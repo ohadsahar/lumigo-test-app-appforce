@@ -39,7 +39,6 @@ export const createTask = (taskName: string) => (dispatch: any) => {
 };
 
 export const editTask = (task: TaskProps) => (dispatch: any) => {
-  const tasks = store.getState().taskState.tasks;
   const { currentTaskDB } = handleDB();
   const isSearching = store.getState().taskState.searchable;
   if (!task.editable) {
@@ -63,12 +62,19 @@ export const editTask = (task: TaskProps) => (dispatch: any) => {
 
 export const stopTask = (task: TaskProps) => (dispatch: any) => {
   const tasks = store.getState().taskState.tasks;
+  const { currentTaskDB } = handleDB();
   let taskIndex = tasks.findIndex(
     (currentTask: TaskProps) => currentTask.id === task.id
   );
+  let dbIndex = currentTaskDB.findIndex(
+    (currentTask: TaskProps) => currentTask.id === task.id
+  );
+  if (dbIndex >= 0) {
+    currentTaskDB[dbIndex].status = TaskStatusType.PENDING;
+  }
   if (taskIndex >= 0) {
     tasks[taskIndex].status = TaskStatusType.PENDING;
-    setLocalStorageData(tasks);
+    setLocalStorageData(currentTaskDB);
     dispatch(updateLists(STOP_TASK, tasks));
     dispatch(setAlert(Strings.AlertSuccessTaskMovedToDoLater, Strings.Success));
   } else {
@@ -77,13 +83,20 @@ export const stopTask = (task: TaskProps) => (dispatch: any) => {
 };
 
 export const finishTask = (task: TaskProps) => (dispatch: any) => {
+  const { currentTaskDB } = handleDB();
   const tasks = store.getState().taskState.tasks;
   let taskIndex = tasks.findIndex(
     (currentTask: TaskProps) => currentTask.id === task.id
   );
+  let dbIndex = currentTaskDB.findIndex(
+    (currentTask: TaskProps) => currentTask.id === task.id
+  );
+  if (dbIndex >= 0) {
+    currentTaskDB[dbIndex].status = TaskStatusType.COMPLETED;
+  }
   if (taskIndex >= 0) {
     tasks[taskIndex].status = TaskStatusType.COMPLETED;
-    setLocalStorageData(tasks);
+    setLocalStorageData(currentTaskDB);
     dispatch(updateLists(FINISH_TASK, tasks));
     dispatch(setAlert(Strings.AlertSuccessFinishTask, Strings.Success));
   } else {

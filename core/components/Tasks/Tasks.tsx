@@ -1,8 +1,5 @@
 import { Strings } from "@/constants/strings";
 import { TaskStatusType } from "@/constants/task_status";
-import Task from "@/core/components/Task/Task";
-import TaskForm from "@/core/components/TaskForm/task_form";
-import AppTitle from "@/shared/typography/app_title";
 import {
   deleteTask,
   editTask,
@@ -12,14 +9,10 @@ import {
 } from "@/store/actions/tasks.actions";
 import { TaskProps } from "interfaces/task_props.interface";
 import { useEffect, useState } from "react";
-import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  DownArrowWrapper,
-  TasksLayout,
-  TasksWrapper,
-  TaskTitleWrapper,
-} from "./styled";
+import CompletedTasksList from "../CompletedTasksList/completed_tasks_list";
+import CreatedTasksList from "../CreatedTasksList/created_tasks_list";
+import DoLaterTasksList from "../ToDoLaterTasksList/do_later_tasks_list";
 const Tasks = () => {
   const dispatch = useDispatch();
   const [doLaterOpen, setDoLaterOpen] = useState<boolean>(false);
@@ -65,100 +58,27 @@ const Tasks = () => {
 
   return (
     <>
-      <TasksWrapper>
-        <TasksLayout>
-          {tasks?.length > 0 &&
-            tasks?.map((task: TaskProps) => (
-              <div key={task.id}>
-                {task.status === TaskStatusType.CREATED ? (
-                  !task?.editable ? (
-                    <Task
-                      task={task}
-                      handleAction={(data: string) => handleAction(data, task)}
-                      handleEdit={() => onEdit(task)}
-                    />
-                  ) : (
-                    <TaskForm task={task} />
-                  )
-                ) : (
-                  <></>
-                )}
-              </div>
-            ))}
-        </TasksLayout>
-      </TasksWrapper>
-      <TasksWrapper>
-        <TaskTitleWrapper onClick={() => setDoLaterOpen(!doLaterOpen)}>
-          <DownArrowWrapper>
-            {doLaterOpen ? <FaAngleDown /> : <FaAngleRight />}
-          </DownArrowWrapper>
-          <AppTitle
-            title={`${Strings.DoLaterListName} (${taskPendingCount})`}
-            fontWeight={"bold"}
-            fontSize={"2vw"}
-          />
-        </TaskTitleWrapper>
-        {!doLaterOpen ? (
-          <TasksLayout isOpen={doLaterOpen}>
-            {tasks?.length > 0 &&
-              tasks?.map((task: TaskProps) =>
-                task.status === TaskStatusType.PENDING ? (
-                  <div key={task?.id}>
-                    {!task.editable ? (
-                      <Task
-                        showPause={false}
-                        task={task}
-                        handleAction={(data: string) =>
-                          handleAction(data, task)
-                        }
-                        handleEdit={() => onEdit(task)}
-                      />
-                    ) : (
-                      <TaskForm task={task} />
-                    )}
-                  </div>
-                ) : null
-              )}
-          </TasksLayout>
-        ) : (
-          <></>
-        )}
-      </TasksWrapper>
-      <TasksWrapper>
-        <TaskTitleWrapper onClick={() => setCompletedOpen(!completedOpen)}>
-          <DownArrowWrapper>
-            {completedOpen ? <FaAngleDown /> : <FaAngleRight />}
-          </DownArrowWrapper>
-          <AppTitle
-            title={`${Strings.CompletedListName} (${taskCompletedCount})`}
-            fontWeight={"bold"}
-            fontSize={"2vw"}
-          />
-        </TaskTitleWrapper>
-        {!completedOpen ? (
-          <TasksLayout isOpen={completedOpen}>
-            {tasks?.length > 0 &&
-              tasks?.map((task: TaskProps) =>
-                task.status === TaskStatusType.COMPLETED ? (
-                  <div key={task?.id}>
-                    {!task?.editable ? (
-                      <Task
-                        showCheck={false}
-                        task={task}
-                        handleAction={(data: string) =>
-                          handleAction(data, task)
-                        }
-                        handleEdit={() => onEdit(task)}
-                      />
-                    ) : (
-                      <TaskForm task={task} />
-                    )}
-                  </div>
-                ) : null
-              )}
-          </TasksLayout>
-        ) : null}
-      </TasksWrapper>
+      <CreatedTasksList
+        tasks={tasks}
+        handleAction={handleAction}
+        onEdit={onEdit}
+      />
+      <DoLaterTasksList
+        doLaterOpen={doLaterOpen}
+        tasks={tasks}
+        handleAction={handleAction}
+        onEdit={onEdit}
+        taskPendingCount={taskPendingCount}
+        setDoLaterOpen={setDoLaterOpen}
+      />
+      <CompletedTasksList
+        setCompletedOpen={setCompletedOpen}
+        taskCompletedCount={taskCompletedCount}
+        completedOpen={completedOpen}
+        tasks={tasks}
+        handleAction={handleAction}
+        onEdit={onEdit}
+      />
     </>
   );
 };

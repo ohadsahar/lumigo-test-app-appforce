@@ -24,7 +24,11 @@ const TaskForm = ({ task }: any) => {
     }
   };
 
-  const onSubmit = () => {
+  const onSubmit = (event?: any) => {
+    event?.preventDefault();
+    if (event?.keyCode == 13) {
+      event.preventDefault();
+    }
     setTaskValue(taskValue.trim());
     if (task && taskValue) {
       task.editable = false;
@@ -44,7 +48,7 @@ const TaskForm = ({ task }: any) => {
   };
 
   return (
-    <FormWrapper>
+    <FormWrapper onSubmit={() => onSubmit(event)}>
       <AppInputField
         isEditable={task?.taskName?.length > 0}
         onChange={(data: string) => onChangeTaskname(data)}

@@ -13,8 +13,9 @@ const SearchBar = () => {
   const onChange = (value: string) => {
     dispatch(search(value) as any);
   };
+
   return (
-    <FormWrapper>
+    <FormWrapper onSubmit={() => event?.preventDefault()}>
       <InputFieldWrapper>
         <InputWrapper
           placeholder={Strings.SearchBarPlaceHolder}
