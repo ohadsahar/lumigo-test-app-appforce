@@ -7,7 +7,7 @@ export const CardTask = styled.div<any>`
   background-color: ${(props) => props.theme.colors.third};
   padding: 1.2rem;
   border-radius: 4px;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 `;
 
 export const CardDetailsWrapper = styled.div`

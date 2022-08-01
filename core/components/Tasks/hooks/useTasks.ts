@@ -17,28 +17,21 @@ export const useTasks = () => {
   const [doLaterOpen, setDoLaterOpen] = useState<boolean>(false);
   const [completedOpen, setCompletedOpen] = useState<boolean>(false);
 
-  const taskPendingCount = useMemo(() => {
-    return (
-      tasks?.filter((task: TaskProps) => task.status === TaskStatusType.PENDING)
-        .length ?? 0
-    );
-  }, [tasks]);
+  const taskPendingCount =
+    tasks?.filter((task: TaskProps) => task.status === TaskStatusType.PENDING)
+      .length ?? 0;
 
-  const taskCompletedCount = useMemo(() => {
-    return (
-      tasks?.filter(
-        (task: TaskProps) => task.status === TaskStatusType.COMPLETED
-      ).length ?? 0
-    );
-  }, [tasks]);
+  const taskCompletedCount =
+    tasks?.filter((task: TaskProps) => task.status === TaskStatusType.COMPLETED)
+      .length ?? 0;
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadTasks() as any);
-  }, []);
+  }, [dispatch]);
 
   const handleEdit = useCallback((task: TaskProps) => {
-    dispatch(editTask({ ...task, editable: true }) as any);
+    dispatch(editTask({ ...task, editMode: true }) as any);
   }, []);
 
   const handleAction = useCallback((action: string, task: TaskProps) => {

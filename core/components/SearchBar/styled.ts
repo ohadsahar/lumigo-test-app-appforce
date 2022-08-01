@@ -5,7 +5,6 @@ export const FormWrapper = styled.form`
   padding: 0.5vh 0vh;
 `;
 
-
 export const InputFieldWrapper = styled.div`
   position: relative;
   width: 100%;

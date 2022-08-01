@@ -1,5 +1,6 @@
-import { SET_ALERT, REMOVE_ALERT } from "../types/alert.types";
+import { Dispatch } from "redux";
 import { v4 as uuid } from "uuid";
+import { REMOVE_ALERT, SET_ALERT } from "../types/alert.types";
 
 export const setAlert = (msg: string, alertType: string) => (dispatch: any) => {
   const id = uuid();

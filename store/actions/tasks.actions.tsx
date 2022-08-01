@@ -1,12 +1,12 @@
-import store from "@/store/store";
-import { TaskProps } from "interfaces/task_props.interface";
-import { v4 as uuid } from "uuid";
-import { RESET_PROGRESS, SEARCH, SET_TASK } from "@/store/types/tasks.types";
-import { setAlert } from "./alert.actions";
-import { Strings } from "@/constants/strings";
 import { LocalStorageKeys } from "@/constants/local_storage_keys";
+import { Strings } from "@/constants/strings";
 import { TaskStatusType } from "@/constants/task_status";
+import store from "@/store/store";
+import { RESET_PROGRESS, SEARCH, SET_TASK } from "@/store/types/tasks.types";
+import { TaskProps } from "interfaces/task_props.interface";
 import { LocalStorageService } from "services/LocalStorage.service";
+import { v4 as uuid } from "uuid";
+import { setAlert } from "./alert.actions";
 
 export const loadTasks = () => (dispatch: any) => {
   dispatch(resetDataFromLocalStorage(SET_TASK));
@@ -19,7 +19,7 @@ export const createTask = (taskName: string) => (dispatch: any) => {
     id,
     taskName,
     status: TaskStatusType.CREATED,
-    editable: false,
+    editMode: false,
   };
   const newTasks = [...currentTasks, newTask];
   setLocalStorageData(newTasks);
@@ -33,12 +33,13 @@ export const createTask = (taskName: string) => (dispatch: any) => {
 export const editTask = (task: TaskProps) => (dispatch: any) => {
   const { currentTaskDB } = handleDB();
   const isSearching = store.getState().taskState.searchable;
-  if (!task.editable) {
+  if (!task.editMode) {
     dispatch(setAlert(Strings.AlertSuccessEditTask, Strings.Success));
   }
   const indexToUpdate = currentTaskDB.findIndex(
     (currentTask: TaskProps) => currentTask.id === task.id
   );
+
   if (indexToUpdate >= 0) {
     currentTaskDB[indexToUpdate] = task;
     setLocalStorageData(currentTaskDB);
@@ -128,7 +129,7 @@ export const search = (searchValue: string) => (dispatch: any) => {
         tasks: currentTasks,
         lastSearchedWord: searchValue,
         searchable: searchValue.length > 0 ? true : false,
-        editable: true,
+        editMode: true,
       },
     });
   } else {
@@ -161,7 +162,7 @@ const handleDB = () => {
   const currentTasks = LocalStorageService.getNameByKey(LocalStorageKeys.Tasks);
   let currentTaskDB: TaskProps[] = [];
   if (currentTasks) {
-    currentTaskDB = (JSON.parse(currentTasks) as TaskProps[]) ?? [];
+    currentTaskDB = (currentTasks as TaskProps[]) ?? [];
   }
   return { currentTaskDB };
 };

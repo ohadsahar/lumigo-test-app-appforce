@@ -3,7 +3,7 @@ import { TaskStatusType } from "@/constants/task_status";
 import { TaskProps } from "interfaces/task_props.interface";
 import React, { Dispatch, SetStateAction } from "react";
 import Task from "@/core/components/Task/Task";
-import TaskForm from "../TaskForm/task_form";
+import TaskForm from "../TaskForm/TaskForm";
 import {
   DownArrowWrapper,
   TasksLayout,
@@ -49,7 +49,7 @@ const DoLaterTasksList = ({
             (task: TaskProps) =>
               task.status === TaskStatusType.PENDING && (
                 <div key={task?.id}>
-                  {!task.editable ? (
+                  {!task.editMode ? (
                     <Task
                       showPause={false}
                       task={task}
@@ -57,7 +57,8 @@ const DoLaterTasksList = ({
                       handleEdit={() => handleEdit(task)}
                     />
                   ) : (
-                    <TaskForm task={task} />
+                    task.status === TaskStatusType.PENDING &&
+                    task.editMode && <TaskForm {...task} />
                   )}
                 </div>
               )

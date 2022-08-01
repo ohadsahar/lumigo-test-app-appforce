@@ -14,7 +14,6 @@ const Tasks = () => {
     setDoLaterOpen,
     setCompletedOpen,
   } = useTasks();
-
   return (
     <>
       <CreatedTasksList

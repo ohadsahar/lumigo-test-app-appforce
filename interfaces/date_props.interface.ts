@@ -1,6 +1,6 @@
 export interface DateProps {
-    day: number;
-    month: string;
-    year: number;
-    currentDay:string;
+  day: number;
+  month: string;
+  year: number;
+  currentDay: string;
 }

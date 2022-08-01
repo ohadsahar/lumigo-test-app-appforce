@@ -17,13 +17,13 @@ export const tasksReducer = (state = initialState, action: any) => {
         tasks: payload,
         loading: false,
       };
-      
+
     case SEARCH:
       return {
         ...state,
         tasks: payload.tasks,
         loading: false,
-        editable: payload.editable,
+        editMode: payload.editMode,
         searchable: payload.searchable,
         lastSearchedWord: payload.lastSearchedWord,
       };

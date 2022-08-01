@@ -7,12 +7,15 @@ export const useSubmitForm = (task: any) => {
   const [isError, setError] = useState<boolean>(false);
   const [taskValue, setTaskValue] = useState<string>(task?.taskName ?? "");
 
-  const onChangeTaskname = useCallback((data: string) => {
-    setTaskValue(data);
-    if (!taskValue && isError) {
-      setError(false);
-    }
-  }, []);
+  const onChangeTaskname = useCallback(
+    (data: string) => {
+      setTaskValue(data);
+      if (!taskValue && isError) {
+        setError(false);
+      }
+    },
+    [taskValue, isError]
+  );
 
   const onSubmit = (event?: any) => {
     event?.preventDefault();
@@ -20,14 +23,8 @@ export const useSubmitForm = (task: any) => {
       event.preventDefault();
     }
     setTaskValue(taskValue.trim());
-    if (task && taskValue) {
-      dispatch(
-        editTask({
-          ...task,
-          editable: false,
-          taskName: taskValue.trim(),
-        }) as any
-      );
+    if (task.taskName && taskValue) {
+      handleEditTask();
     } else {
       if (!taskValue) {
         setError(true);
@@ -39,6 +36,16 @@ export const useSubmitForm = (task: any) => {
         setTaskValue("");
       }
     }
+  };
+
+  const handleEditTask = () => {
+    dispatch(
+      editTask({
+        ...task,
+        editMode: false,
+        taskName: taskValue.trim(),
+      }) as any
+    );
   };
 
   return { onSubmit, taskValue, onChangeTaskname, isError };
