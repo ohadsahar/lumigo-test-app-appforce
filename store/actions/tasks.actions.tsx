@@ -169,20 +169,19 @@ const handleDB = () => {
 const resetDataFromLocalStorage = (type: string) => (dispatch: any) => {
   let tasks = LocalStorageService.getNameByKey(LocalStorageKeys.Tasks);
   if (tasks) {
-    tasks = JSON.parse(tasks);
-  }
-  if (type === SEARCH) {
-    dispatch({
-      type: SEARCH,
-      payload: {
-        tasks: tasks,
-      },
-    });
-  } else {
-    dispatch({
-      type: type,
-      payload: tasks ?? [],
-    });
+    if (type === SEARCH) {
+      dispatch({
+        type: SEARCH,
+        payload: {
+          tasks: tasks,
+        },
+      });
+    } else {
+      dispatch({
+        type: type,
+        payload: tasks ?? [],
+      });
+    }
   }
 };
 
