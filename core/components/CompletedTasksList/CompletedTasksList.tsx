@@ -42,27 +42,26 @@ const CompletedTasksList = ({
           fontSize="2vw"
         />
       </TaskTitleWrapper>
-      {!completedOpen ? (
+      {!completedOpen && (
         <TasksLayout isOpen={completedOpen}>
-          {tasks?.map((task: TaskProps) =>
-            task.status === TaskStatusType.COMPLETED ? (
-              <div key={task?.id}>
-                {!task?.editable ? (
-                  <Task
-                    showCheck={false}
-                    task={task}
-                    handleAction={(data: string) => handleAction(data, task)}
-                    handleEdit={() => handleEdit(task)}
-                  />
-                ) : (
-                  <TaskForm task={task} />
-                )}
-              </div>
-            ) : null
+          {tasks?.map(
+            (task: TaskProps) =>
+              task.status === TaskStatusType.COMPLETED && (
+                <div key={task?.id}>
+                  {!task?.editable ? (
+                    <Task
+                      showCheck={false}
+                      task={task}
+                      handleAction={(data: string) => handleAction(data, task)}
+                      handleEdit={() => handleEdit(task)}
+                    />
+                  ) : (
+                    <TaskForm task={task} />
+                  )}
+                </div>
+              )
           )}
         </TasksLayout>
-      ) : (
-        <></>
       )}
     </TasksWrapper>
   );

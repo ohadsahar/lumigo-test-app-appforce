@@ -15,7 +15,7 @@ const Header = () => {
       <DateWrapper>
         <DayWrapper>
           <AppTitle
-            title={convertedDate?.day}
+            title={convertedDate?.day.toString()}
             fontWeight={"bold"}
             fontSize={"5vw"}
           />
@@ -27,7 +27,7 @@ const Header = () => {
             fontSize={"2vw"}
           />
           <AppTitle
-            title={convertedDate?.year}
+            title={convertedDate?.year.toString()}
             fontWeight={"200"}
             fontSize={"2vw"}
           />

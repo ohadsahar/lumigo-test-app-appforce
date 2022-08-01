@@ -6,7 +6,7 @@ import { ActionsWrapper } from "./styled";
 
 interface ActionsProps {
   handleAction: Function;
-  showPause: Function;
+  showPause: boolean;
   showCheck: boolean;
 }
 

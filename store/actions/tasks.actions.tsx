@@ -6,6 +6,7 @@ import { setAlert } from "./alert.actions";
 import { Strings } from "@/constants/strings";
 import { LocalStorageKeys } from "@/constants/local_storage_keys";
 import { TaskStatusType } from "@/constants/task_status";
+import { LocalStorageService } from "services/LocalStorage.service";
 
 export const loadTasks = () => (dispatch: any) => {
   dispatch(resetDataFromLocalStorage(SET_TASK));
@@ -157,7 +158,7 @@ const updateLists = (type: string, tasks: TaskProps[]) => (dispatch: any) => {
 };
 
 const handleDB = () => {
-  const currentTasks = localStorage.getItem(LocalStorageKeys.Tasks);
+  const currentTasks = LocalStorageService.getNameByKey(LocalStorageKeys.Tasks);
   let currentTaskDB: TaskProps[] = [];
   if (currentTasks) {
     currentTaskDB = (JSON.parse(currentTasks) as TaskProps[]) ?? [];
@@ -166,7 +167,7 @@ const handleDB = () => {
 };
 
 const resetDataFromLocalStorage = (type: string) => (dispatch: any) => {
-  let tasks = localStorage.getItem(LocalStorageKeys.Tasks);
+  let tasks = LocalStorageService.getNameByKey(LocalStorageKeys.Tasks);
   if (tasks) {
     tasks = JSON.parse(tasks);
   }
@@ -186,5 +187,5 @@ const resetDataFromLocalStorage = (type: string) => (dispatch: any) => {
 };
 
 const setLocalStorageData = (tasks: TaskProps[]) => {
-  localStorage.setItem(LocalStorageKeys.Tasks, JSON.stringify(tasks));
+  LocalStorageService.setByKeyName(LocalStorageKeys.Tasks, tasks);
 };
