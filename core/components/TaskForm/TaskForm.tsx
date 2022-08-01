@@ -24,7 +24,7 @@ const TaskForm = (task: TaskFormProps) => {
         onSubmit={onSubmit}
         value={taskValue}
       />
-      {/* {isError ? <ErrorText text={Strings.ValidationRequiredField} /> : null} */}
+      {isError && <ErrorText text={Strings.ValidationRequiredField} />}
     </FormWrapper>
   );
 };

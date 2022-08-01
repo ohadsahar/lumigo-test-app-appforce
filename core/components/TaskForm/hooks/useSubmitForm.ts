@@ -1,10 +1,9 @@
 import { createTask, editTask } from "@/store/actions/tasks.actions";
-import { Dispatcher } from "@/store/store";
 import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 
 export const useSubmitForm = (task: any) => {
-  const dispatch: Dispatcher = useDispatch();
+  const dispatch = useDispatch();
   const [isError, setError] = useState<boolean>(false);
   const [taskValue, setTaskValue] = useState<string>(task?.taskName ?? "");
 
@@ -18,7 +17,7 @@ export const useSubmitForm = (task: any) => {
     [taskValue, isError]
   );
 
-  const onSubmit = useCallback((event?: any) => {
+  const onSubmit = (event?: any) => {
     event?.preventDefault();
     setTaskValue(taskValue.trim());
     if (task.taskName && taskValue) {
@@ -30,21 +29,21 @@ export const useSubmitForm = (task: any) => {
         if (isError) {
           setError(false);
         }
-        dispatch(createTask(taskValue));
+        dispatch(createTask(taskValue) as any);
         setTaskValue("");
       }
     }
-  }, []);
+  };
 
-  const handleEditTask = useCallback(() => {
+  const handleEditTask = () => {
     dispatch(
       editTask({
         ...task,
         editMode: false,
         taskName: taskValue.trim(),
-      })
+      }) as any
     );
-  }, []);
+  };
 
   return { onSubmit, taskValue, onChangeTaskname, isError };
 };
