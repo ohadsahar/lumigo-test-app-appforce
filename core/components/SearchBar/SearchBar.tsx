@@ -1,18 +1,10 @@
 import { Strings } from "@/constants/strings";
-import React from "react";
-import { FormWrapper, InputFieldWrapper, InputWrapper } from "./styled";
-import { useDispatch, useSelector } from "react-redux";
-import { search } from "@/store/actions/tasks.actions";
 import AppTitle from "@/shared/typography/app_title";
+import { useSearchBar } from "./hooks/useSearchBar";
+import { FormWrapper, InputFieldWrapper, InputWrapper } from "./styled";
 
 const SearchBar = () => {
-  const dispatch = useDispatch();
-  const tasks = useSelector((state: any) => state.taskState.tasks);
-  const countSearchedTasks = tasks?.length;
-
-  const onChange = (value: string) => {
-    dispatch(search(value) as any);
-  };
+  const { countSearchedTasks, onChange } = useSearchBar();
 
   return (
     <FormWrapper onSubmit={() => event?.preventDefault()}>

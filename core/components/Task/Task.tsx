@@ -1,14 +1,22 @@
 import Actions from "@/shared/Actions/actions";
+import { TaskProps } from "interfaces/task_props.interface";
 import React from "react";
 import { CardTask, CardDetailsWrapper } from "./styled";
 
+interface TaskViewProps {
+  task: TaskProps;
+  handleAction: Function;
+  handleEdit: Function;
+  showPause?: boolean;
+  showCheck?: boolean;
+}
 const Task = ({
   task,
   handleAction,
   handleEdit,
   showPause = true,
   showCheck = true,
-}: any) => {
+}: TaskViewProps) => {
   return (
     <CardTask>
       <CardDetailsWrapper onClick={() => handleEdit()}>

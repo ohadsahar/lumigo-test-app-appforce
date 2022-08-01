@@ -1,7 +1,7 @@
 import React from "react";
 import { ErrorTextWrapper } from "./styled";
 
-const ErrorText = ({text}: any) => {
+const ErrorText = (text: string) => {
   return <ErrorTextWrapper>{text}</ErrorTextWrapper>;
 };
 

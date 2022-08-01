@@ -1,9 +1,23 @@
-import React from 'react';
-import { AppTitleWrapper } from './styled';
+import React from "react";
+import { AppTitleWrapper } from "./styled";
 
-const AppTitle = ({ title, fontWeight = 100, color = 'white', fontSize = '3vw' }: any) => {
-
-  return <AppTitleWrapper fontSize={fontSize} fontWeight={fontWeight} color={color}>{title} </AppTitleWrapper>;
+export interface AppTitleProps {
+  title?: string;
+  fontWeight?: string;
+  color?: string;
+  fontSize?: string;
+}
+const AppTitle = ({
+  title,
+  fontWeight = "100",
+  color = "white",
+  fontSize = "3vw",
+}: AppTitleProps) => {
+  return (
+    <AppTitleWrapper fontSize={fontSize} fontWeight={fontWeight} color={color}>
+      {title}{" "}
+    </AppTitleWrapper>
+  );
 };
 
 export default AppTitle;

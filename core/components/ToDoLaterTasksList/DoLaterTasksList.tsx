@@ -1,7 +1,7 @@
 import { TaskStatusType } from "@/constants/task_status";
 
 import { TaskProps } from "interfaces/task_props.interface";
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import Task from "@/core/components/Task/Task";
 import TaskForm from "../TaskForm/task_form";
 import {
@@ -14,14 +14,23 @@ import { Strings } from "@/constants/strings";
 import AppTitle from "@/shared/typography/app_title";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";
 
+interface DoLaterTasksListProps {
+  tasks: TaskProps[];
+  doLaterOpen: boolean;
+  taskPendingCount: number;
+  setDoLaterOpen: Dispatch<SetStateAction<boolean>>;
+  handleAction: Function;
+  handleEdit: Function;
+}
+
 const DoLaterTasksList = ({
   doLaterOpen,
   tasks,
   handleAction,
-  onEdit,
+  handleEdit,
   setDoLaterOpen,
   taskPendingCount,
-}: any) => {
+}: DoLaterTasksListProps) => {
   return (
     <TasksWrapper>
       <TaskTitleWrapper onClick={() => setDoLaterOpen(!doLaterOpen)}>
@@ -30,29 +39,28 @@ const DoLaterTasksList = ({
         </DownArrowWrapper>
         <AppTitle
           title={`${Strings.DoLaterListName} (${taskPendingCount})`}
-          fontWeight={"bold"}
-          fontSize={"2vw"}
+          fontWeight="bold"
+          fontSize="2vw"
         />
       </TaskTitleWrapper>
       {!doLaterOpen ? (
         <TasksLayout isOpen={doLaterOpen}>
-          {tasks?.length > 0 &&
-            tasks?.map((task: TaskProps) =>
-              task.status === TaskStatusType.PENDING ? (
-                <div key={task?.id}>
-                  {!task.editable ? (
-                    <Task
-                      showPause={false}
-                      task={task}
-                      handleAction={(data: string) => handleAction(data, task)}
-                      handleEdit={() => onEdit(task)}
-                    />
-                  ) : (
-                    <TaskForm task={task} />
-                  )}
-                </div>
-              ) : null
-            )}
+          {tasks?.map((task: TaskProps) =>
+            task.status === TaskStatusType.PENDING ? (
+              <div key={task?.id}>
+                {!task.editable ? (
+                  <Task
+                    showPause={false}
+                    task={task}
+                    handleAction={(data: string) => handleAction(data, task)}
+                    handleEdit={() => handleEdit(task)}
+                  />
+                ) : (
+                  <TaskForm task={task} />
+                )}
+              </div>
+            ) : null
+          )}
         </TasksLayout>
       ) : (
         <></>

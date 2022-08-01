@@ -1,23 +1,14 @@
 import store from "@/store/store";
 import { TaskProps } from "interfaces/task_props.interface";
 import { v4 as uuid } from "uuid";
-import {
-  CREATE_TASK,
-  DELETE_TASK,
-  EDIT_TASK,
-  FINISH_TASK,
-  LOAD_TASKS,
-  RESET_PROGRESS,
-  SEARCH,
-  STOP_TASK,
-} from "@/store/types/tasks.types";
+import { RESET_PROGRESS, SEARCH, SET_TASK } from "@/store/types/tasks.types";
 import { setAlert } from "./alert.actions";
 import { Strings } from "@/constants/strings";
 import { LocalStorageKeys } from "@/constants/local_storage_keys";
 import { TaskStatusType } from "@/constants/task_status";
 
 export const loadTasks = () => (dispatch: any) => {
-  dispatch(resetDataFromLocalStorage(LOAD_TASKS));
+  dispatch(resetDataFromLocalStorage(SET_TASK));
 };
 
 export const createTask = (taskName: string) => (dispatch: any) => {
@@ -32,7 +23,7 @@ export const createTask = (taskName: string) => (dispatch: any) => {
   const newTasks = [...currentTasks, newTask];
   setLocalStorageData(newTasks);
   dispatch({
-    type: CREATE_TASK,
+    type: SET_TASK,
     payload: newTasks,
   });
   dispatch(setAlert(Strings.AlertSuccessCreatedTask, Strings.Success));
@@ -50,7 +41,7 @@ export const editTask = (task: TaskProps) => (dispatch: any) => {
   if (indexToUpdate >= 0) {
     currentTaskDB[indexToUpdate] = task;
     setLocalStorageData(currentTaskDB);
-    dispatch({ type: EDIT_TASK, payload: currentTaskDB });
+    dispatch({ type: SET_TASK, payload: currentTaskDB });
     if (isSearching) {
       const searchedWord = store.getState().taskState.lastSearchedWord;
       dispatch(search(searchedWord));
@@ -75,7 +66,7 @@ export const stopTask = (task: TaskProps) => (dispatch: any) => {
   if (taskIndex >= 0) {
     tasks[taskIndex].status = TaskStatusType.PENDING;
     setLocalStorageData(currentTaskDB);
-    dispatch(updateLists(STOP_TASK, tasks));
+    dispatch(updateLists(SET_TASK, tasks));
     dispatch(setAlert(Strings.AlertSuccessTaskMovedToDoLater, Strings.Success));
   } else {
     dispatch(setAlert(Strings.AlertFailedPauseTask, Strings.Error));
@@ -97,7 +88,7 @@ export const finishTask = (task: TaskProps) => (dispatch: any) => {
   if (taskIndex >= 0) {
     tasks[taskIndex].status = TaskStatusType.COMPLETED;
     setLocalStorageData(currentTaskDB);
-    dispatch(updateLists(FINISH_TASK, tasks));
+    dispatch(updateLists(SET_TASK, tasks));
     dispatch(setAlert(Strings.AlertSuccessFinishTask, Strings.Success));
   } else {
     dispatch(setAlert(Strings.AlertFailedCompleteTask, Strings.Error));
@@ -113,7 +104,7 @@ export const deleteTask = (task: TaskProps) => (dispatch: any) => {
   if (taskIndex >= 0) {
     currentTaskDB.splice(taskIndex, 1);
     setLocalStorageData(currentTaskDB);
-    dispatch(updateLists(DELETE_TASK, currentTaskDB));
+    dispatch(updateLists(SET_TASK, currentTaskDB));
     if (isSearching) {
       const searchedWord = store.getState().taskState.lastSearchedWord;
       dispatch(search(searchedWord));

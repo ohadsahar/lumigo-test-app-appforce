@@ -1,6 +1,5 @@
-import { AppTitleProps } from 'interfaces/app_title_props.interface';
-import styled from 'styled-components';
-
+import styled from "styled-components";
+import { AppTitleProps } from "./app_title";
 
 export const AppTitleWrapper = styled.p<AppTitleProps>`
   font-size: ${(props: AppTitleProps) => props.fontSize};
@@ -10,10 +9,9 @@ export const AppTitleWrapper = styled.p<AppTitleProps>`
   break-word: word-break;
 `;
 
-
 export const ErrorTextWrapper = styled.div`
   display: flex;
   padding-top: 1vw;
-  color:red;
-  font-weight:600;
+  color: red;
+  font-weight: 600;
 `;

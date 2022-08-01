@@ -3,7 +3,19 @@ import { AddWrapper, InputFieldWrapper, InputWrapper } from "./styled";
 import { FaPlus, FaCheck } from "react-icons/fa";
 import { Strings } from "@/constants/strings";
 
-const AppInputField = ({ onChange, onSubmit, value, isEditable }: any) => {
+interface InputFieldProps {
+  onChange: Function;
+  onSubmit: Function;
+  value: string;
+  isEditable: boolean;
+}
+
+const AppInputField = ({
+  onChange,
+  onSubmit,
+  value,
+  isEditable,
+}: InputFieldProps) => {
   return (
     <InputFieldWrapper>
       <InputWrapper

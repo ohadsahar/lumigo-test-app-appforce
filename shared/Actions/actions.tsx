@@ -4,7 +4,13 @@ import React from "react";
 import { FaPause, FaCheck, FaTimes } from "react-icons/fa";
 import { ActionsWrapper } from "./styled";
 
-const Actions = ({ handleAction, showPause, showCheck }: any) => {
+interface ActionsProps {
+  handleAction: Function;
+  showPause: Function;
+  showCheck: boolean;
+}
+
+const Actions = ({ handleAction, showPause, showCheck }: ActionsProps) => {
   return (
     <ActionsWrapper>
       <FaTimes
