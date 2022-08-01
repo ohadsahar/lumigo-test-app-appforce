@@ -6,15 +6,13 @@ import { useSubmitForm } from "./hooks/useSubmitForm";
 import { FormWrapper } from "./styled";
 
 interface TaskFormProps {
-  task: {
-    id?: string;
-    taskName: string;
-    status: TaskStatusType;
-    editable: boolean;
-  };
+  id?: string;
+  taskName: string;
+  status: TaskStatusType;
+  editMode: boolean;
 }
 
-const TaskForm = ({ task }: TaskFormProps) => {
+const TaskForm = (task: TaskFormProps) => {
   const { onSubmit, taskValue, onChangeTaskname, isError } =
     useSubmitForm(task);
 
@@ -26,7 +24,7 @@ const TaskForm = ({ task }: TaskFormProps) => {
         onSubmit={onSubmit}
         value={taskValue}
       />
-      {isError ? <ErrorText text={Strings.ValidationRequiredField} /> : null}
+      {/* {isError ? <ErrorText text={Strings.ValidationRequiredField} /> : null} */}
     </FormWrapper>
   );
 };

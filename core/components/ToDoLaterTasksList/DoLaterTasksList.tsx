@@ -3,7 +3,7 @@ import { TaskStatusType } from "@/constants/task_status";
 import { TaskProps } from "interfaces/task_props.interface";
 import React, { Dispatch, SetStateAction } from "react";
 import Task from "@/core/components/Task/Task";
-import TaskForm from "../TaskForm/task_form";
+import TaskForm from "../TaskForm/TaskForm";
 import {
   DownArrowWrapper,
   TasksLayout,
@@ -43,27 +43,23 @@ const DoLaterTasksList = ({
           fontSize="2vw"
         />
       </TaskTitleWrapper>
-      {!doLaterOpen ? (
+      {!doLaterOpen && (
         <TasksLayout isOpen={doLaterOpen}>
-          {tasks?.map((task: TaskProps) =>
-            task.status === TaskStatusType.PENDING ? (
-              <div key={task?.id}>
-                {!task.editable ? (
-                  <Task
-                    showPause={false}
-                    task={task}
-                    handleAction={(data: string) => handleAction(data, task)}
-                    handleEdit={() => handleEdit(task)}
-                  />
-                ) : (
-                  <TaskForm task={task} />
-                )}
-              </div>
-            ) : null
-          )}
+          {tasks?.map((task: TaskProps) => (
+            <div key={task?.id}>
+              {!task.editMode ? (
+                <Task
+                  showPause={false}
+                  task={task}
+                  handleAction={(data: string) => handleAction(data, task)}
+                  handleEdit={() => handleEdit(task)}
+                />
+              ) : (
+                <TaskForm {...task} />
+              )}
+            </div>
+          ))}
         </TasksLayout>
-      ) : (
-        <></>
       )}
     </TasksWrapper>
   );

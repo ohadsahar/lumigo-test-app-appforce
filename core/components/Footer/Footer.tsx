@@ -3,10 +3,11 @@ import { resetProgress } from "@/store/actions/tasks.actions";
 import React from "react";
 import { BottomSection } from "./styled";
 import { Strings } from "@/constants/strings";
-import { useAppDispatch } from "@/store/store";
+import { useDispatch } from "react-redux";
+import { AppDispatch, useAppDispatch } from "@/store/store";
 
 const Footer = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
 
   const handleResetProgress = () => {
     dispatch(resetProgress() as any);
