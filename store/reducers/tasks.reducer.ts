@@ -1,13 +1,21 @@
 import { RESET_PROGRESS, SEARCH, SET_TASK } from "@/store/types/tasks.types";
+import { TaskProps } from "interfaces/task_props.interface";
+import { AnyAction } from "redux";
 
-const initialState: any = {
+interface StoreInitialStateProps {
+  tasks: TaskProps[];
+  loading: boolean;
+  searchable: boolean;
+  lastSearchedWord: string;
+}
+const initialState: StoreInitialStateProps = {
   tasks: [],
   loading: true,
   searchable: false,
   lastSearchedWord: "",
 };
 
-export const tasksReducer = (state = initialState, action: any) => {
+export const tasksReducer = (state = initialState, action: AnyAction) => {
   const { type, payload } = action;
 
   switch (type) {

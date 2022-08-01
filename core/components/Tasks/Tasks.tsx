@@ -4,7 +4,9 @@ import DoLaterTasksList from "@/core/components/ToDoLaterTasksList/DoLaterTasksL
 import { useTasks } from "./hooks/useTasks";
 const Tasks = () => {
   const {
-    tasks,
+    createdTasks,
+    toDoLaterTasks,
+    completedTasks,
     taskPendingCount,
     taskCompletedCount,
     handleEdit,
@@ -17,12 +19,12 @@ const Tasks = () => {
   return (
     <>
       <CreatedTasksList
-        tasks={tasks}
+        tasks={createdTasks}
         handleAction={handleAction}
         handleEdit={handleEdit}
       />
       <DoLaterTasksList
-        tasks={tasks}
+        tasks={toDoLaterTasks}
         doLaterOpen={doLaterOpen}
         taskPendingCount={taskPendingCount}
         handleAction={handleAction}
@@ -30,7 +32,7 @@ const Tasks = () => {
         setDoLaterOpen={setDoLaterOpen}
       />
       <CompletedTasksList
-        tasks={tasks}
+        tasks={completedTasks}
         completedOpen={completedOpen}
         taskCompletedCount={taskCompletedCount}
         setCompletedOpen={setCompletedOpen}

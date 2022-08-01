@@ -1,18 +1,18 @@
 import { LocalStorageKeys } from "@/constants/local_storage_keys";
 import { Strings } from "@/constants/strings";
 import { TaskStatusType } from "@/constants/task_status";
-import store from "@/store/store";
+import store, { Dispatcher } from "@/store/store";
 import { RESET_PROGRESS, SEARCH, SET_TASK } from "@/store/types/tasks.types";
 import { TaskProps } from "interfaces/task_props.interface";
 import { LocalStorageService } from "services/LocalStorage.service";
 import { v4 as uuid } from "uuid";
 import { setAlert } from "./alert.actions";
 
-export const loadTasks = () => (dispatch: any) => {
+export const loadTasks = () => (dispatch: Dispatcher) => {
   dispatch(resetDataFromLocalStorage(SET_TASK));
 };
 
-export const createTask = (taskName: string) => (dispatch: any) => {
+export const createTask = (taskName: string) => (dispatch: Dispatcher) => {
   const id = uuid();
   const currentTasks = store.getState().taskState.tasks;
   const newTask: TaskProps = {
@@ -30,7 +30,7 @@ export const createTask = (taskName: string) => (dispatch: any) => {
   dispatch(setAlert(Strings.AlertSuccessCreatedTask, Strings.Success));
 };
 
-export const editTask = (task: TaskProps) => (dispatch: any) => {
+export const editTask = (task: TaskProps) => (dispatch: Dispatcher) => {
   const { currentTaskDB } = handleDB();
   const isSearching = store.getState().taskState.searchable;
   if (!task.editMode) {

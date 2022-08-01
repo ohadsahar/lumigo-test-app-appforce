@@ -46,7 +46,7 @@ const CompletedTasksList = ({
         <TasksLayout isOpen={completedOpen}>
           {tasks?.map((task: TaskProps) => (
             <div key={task?.id}>
-              {task.status === TaskStatusType.COMPLETED && !task.editMode ? (
+              {!task.editMode ? (
                 <Task
                   showCheck={false}
                   task={task}
@@ -54,8 +54,7 @@ const CompletedTasksList = ({
                   handleEdit={() => handleEdit(task)}
                 />
               ) : (
-                task.status === TaskStatusType.COMPLETED &&
-                task.editMode && <TaskForm {...task} />
+                <TaskForm {...task} />
               )}
             </div>
           ))}

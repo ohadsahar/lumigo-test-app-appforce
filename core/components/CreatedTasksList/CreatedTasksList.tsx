@@ -21,15 +21,14 @@ const CreatedTasksList = ({
       <TasksLayout>
         {tasks?.map((task: TaskProps) => (
           <div key={task.id}>
-            {task.status === TaskStatusType.CREATED && !task.editMode ? (
+            {!task.editMode ? (
               <Task
                 task={task}
                 handleAction={(data: string) => handleAction(data, task)}
                 handleEdit={() => handleEdit(task)}
               />
             ) : (
-              task.status === TaskStatusType.CREATED &&
-              task.editMode && <TaskForm {...task} />
+              <TaskForm {...task} />
             )}
           </div>
         ))}

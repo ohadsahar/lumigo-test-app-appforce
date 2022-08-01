@@ -45,24 +45,20 @@ const DoLaterTasksList = ({
       </TaskTitleWrapper>
       {!doLaterOpen && (
         <TasksLayout isOpen={doLaterOpen}>
-          {tasks?.map(
-            (task: TaskProps) =>
-              task.status === TaskStatusType.PENDING && (
-                <div key={task?.id}>
-                  {!task.editMode ? (
-                    <Task
-                      showPause={false}
-                      task={task}
-                      handleAction={(data: string) => handleAction(data, task)}
-                      handleEdit={() => handleEdit(task)}
-                    />
-                  ) : (
-                    task.status === TaskStatusType.PENDING &&
-                    task.editMode && <TaskForm {...task} />
-                  )}
-                </div>
-              )
-          )}
+          {tasks?.map((task: TaskProps) => (
+            <div key={task?.id}>
+              {!task.editMode ? (
+                <Task
+                  showPause={false}
+                  task={task}
+                  handleAction={(data: string) => handleAction(data, task)}
+                  handleEdit={() => handleEdit(task)}
+                />
+              ) : (
+                <TaskForm {...task} />
+              )}
+            </div>
+          ))}
         </TasksLayout>
       )}
     </TasksWrapper>
