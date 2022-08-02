@@ -7,7 +7,10 @@ const SearchBar = () => {
   const { countSearchedTasks, onChange } = useSearchBar();
 
   return (
-    <FormWrapper onSubmit={() => event?.preventDefault()}>
+    <FormWrapper
+      onSubmit={(event) => event?.preventDefault()}
+      data-testid="searchbar-box"
+    >
       <InputFieldWrapper>
         <InputWrapper
           placeholder={Strings.SearchBarPlaceHolder}
