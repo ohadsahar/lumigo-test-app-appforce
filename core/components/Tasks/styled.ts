@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-export const TasksWrapper = styled.div<any>`
+interface TasksLayoutProps {
+  isOpen: boolean;
+}
+export const TasksWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -20,7 +23,7 @@ export const DownArrowWrapper = styled.div`
 `;
 
 export const TasksLayout = styled.div<any>`
-  transform: ${(props) =>
+  transform: ${(props: TasksLayoutProps) =>
     props.isOpen ? "translateX(120%)" : "translateX(0%)"};
   transition: 1s ease-in;
 `;
