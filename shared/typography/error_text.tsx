@@ -5,7 +5,11 @@ interface ErrorProps {
   text: string;
 }
 const ErrorText = (errorProps: ErrorProps) => {
-  return <ErrorTextWrapper>{errorProps?.text}</ErrorTextWrapper>;
+  return (
+    <ErrorTextWrapper data-testid="error-text-box">
+      {errorProps?.text}
+    </ErrorTextWrapper>
+  );
 };
 
 export default ErrorText;

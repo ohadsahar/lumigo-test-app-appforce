@@ -4,7 +4,7 @@ import { TaskStatusType } from "@/constants/task_status";
 import store from "@/store/store";
 import { RESET_PROGRESS, SEARCH, SET_TASK } from "@/store/types/tasks.types";
 import { TaskProps } from "interfaces/task_props.interface";
-import { LocalStorageService } from "services/LocalStorage.service";
+import { LocalStorageService } from "@/services/LocalStorage.service";
 import { v4 as uuid } from "uuid";
 import { setAlert } from "./alert.actions";
 

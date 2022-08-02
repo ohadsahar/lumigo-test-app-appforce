@@ -11,7 +11,7 @@ const Header = () => {
   const { convertedDate } = useDate();
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper data-testid="header-box">
       <DateWrapper>
         <DayWrapper>
           <AppTitle

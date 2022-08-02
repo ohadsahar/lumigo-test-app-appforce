@@ -17,6 +17,7 @@ const ProgressLine = () => {
 
   return (
     <ProgressLineWrapper
+      data-testid="progress-line-box"
       tasksPercentage={
         totalTasks > 0 ? calculatePercentage(tasksPercentage) : "100"
       }
