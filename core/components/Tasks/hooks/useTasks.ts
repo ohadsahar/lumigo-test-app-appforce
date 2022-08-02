@@ -9,7 +9,7 @@ import {
 } from "@/store/actions/tasks.actions";
 import { RootState } from "@/store/store";
 import { TaskProps } from "interfaces/task_props.interface";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 export const useTasks = () => {
@@ -23,14 +23,6 @@ export const useTasks = () => {
     dispatch(loadTasks() as any);
   }, [dispatch]);
 
-  const taskPendingCount =
-    tasks?.filter((task: TaskProps) => task.status === TaskStatusType.PENDING)
-      .length ?? 0;
-
-  const taskCompletedCount =
-    tasks?.filter((task: TaskProps) => task.status === TaskStatusType.COMPLETED)
-      .length ?? 0;
-
   const createdTasks = tasks.filter(
     (task: TaskProps) => task.status === TaskStatusType.CREATED
   );
@@ -40,6 +32,14 @@ export const useTasks = () => {
   const completedTasks = tasks.filter(
     (task: TaskProps) => task.status === TaskStatusType.COMPLETED
   );
+
+  const taskPendingCount = useMemo(() => {
+    return toDoLaterTasks.length;
+  }, [toDoLaterTasks]);
+
+  const taskCompletedCount = useMemo(() => {
+    return completedTasks.length;
+  }, [completedTasks]);
 
   const handleEdit = useCallback((task: TaskProps) => {
     dispatch(editTask(task) as any);
