@@ -16,14 +16,16 @@ import {
 interface TaskListProps {
   tasks: TaskProps[];
   completedOpen?: boolean;
+  doLaterOpen?: boolean;
   taskCompletedCount?: number;
+  taskPendingCount?: number;
+  editTaskId: string;
+  listName: TaskStatusType;
   handleAction: Function;
   handleEdit: Function;
-  doLaterOpen?: boolean;
-  taskPendingCount?: number;
   setDoLaterOpen?: Dispatch<SetStateAction<boolean>>;
   setCompletedOpen?: Dispatch<SetStateAction<boolean>>;
-  listName: TaskStatusType;
+  setEditTaskId: Dispatch<SetStateAction<string>>;
 }
 const TasksList = ({
   tasks,
@@ -36,6 +38,8 @@ const TasksList = ({
   setDoLaterOpen,
   setCompletedOpen,
   listName,
+  editTaskId,
+  setEditTaskId,
 }: TaskListProps) => {
   return (
     <TasksWrapper>
@@ -66,20 +70,22 @@ const TasksList = ({
       <TasksLayout>
         {tasks?.map((task: TaskProps) => (
           <div key={task.id}>
-            {!task.editMode ? (
-              <Task
-                showCheck={listName !== TaskStatusType.COMPLETED ?? false}
-                showPause={
-                  (listName === TaskStatusType.COMPLETED ||
-                    listName === TaskStatusType.CREATED) ??
-                  false
-                }
-                task={task}
-                handleAction={(data: string) => handleAction(data, task)}
-                handleEdit={() => handleEdit(task)}
-              />
+            {task.id !== editTaskId ? (
+              <div onClick={() => setEditTaskId(task.id)}>
+                <Task
+                  showCheck={listName !== TaskStatusType.COMPLETED ?? false}
+                  showPause={
+                    (listName === TaskStatusType.COMPLETED ||
+                      listName === TaskStatusType.CREATED) ??
+                    false
+                  }
+                  task={task}
+                  handleAction={(data: string) => handleAction(data, task)}
+                  handleEdit={() => handleEdit(task)}
+                />
+              </div>
             ) : (
-              <TaskForm {...task} />
+              <TaskForm handleEditClick={() => setEditTaskId("")} {...task} />
             )}
           </div>
         ))}
@@ -87,5 +93,4 @@ const TasksList = ({
     </TasksWrapper>
   );
 };
-
 export default TasksList;

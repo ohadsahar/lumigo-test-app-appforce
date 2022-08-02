@@ -14,6 +14,8 @@ const Tasks = () => {
     handleAction,
     setDoLaterOpen,
     setCompletedOpen,
+    editTaskId,
+    setEditTaskId,
   } = useTasks();
   return (
     <>
@@ -25,6 +27,8 @@ const Tasks = () => {
         handleEdit={handleEdit}
         setDoLaterOpen={setDoLaterOpen}
         listName={TaskStatusType.CREATED}
+        editTaskId={editTaskId}
+        setEditTaskId={setEditTaskId}
       />
       <TasksList
         tasks={toDoLaterTasks}
@@ -34,6 +38,8 @@ const Tasks = () => {
         handleEdit={handleEdit}
         setDoLaterOpen={setDoLaterOpen}
         listName={TaskStatusType.PENDING}
+        editTaskId={editTaskId}
+        setEditTaskId={setEditTaskId}
       />
       <TasksList
         tasks={completedTasks}
@@ -43,6 +49,8 @@ const Tasks = () => {
         handleAction={handleAction}
         handleEdit={handleEdit}
         listName={TaskStatusType.COMPLETED}
+        editTaskId={editTaskId}
+        setEditTaskId={setEditTaskId}
       />
     </>
   );

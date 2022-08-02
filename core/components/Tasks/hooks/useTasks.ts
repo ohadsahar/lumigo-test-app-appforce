@@ -16,6 +16,7 @@ export const useTasks = () => {
   const { tasks } = useSelector((state: RootState) => state.taskState);
   const [doLaterOpen, setDoLaterOpen] = useState<boolean>(false);
   const [completedOpen, setCompletedOpen] = useState<boolean>(false);
+  const [editTaskId, setEditTaskId] = useState<string>("");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -72,5 +73,7 @@ export const useTasks = () => {
     completedOpen,
     setDoLaterOpen,
     setCompletedOpen,
+    editTaskId,
+    setEditTaskId,
   };
 };
