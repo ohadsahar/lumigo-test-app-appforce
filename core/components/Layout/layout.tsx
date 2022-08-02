@@ -9,7 +9,7 @@ import { LayoutWrapper, TopSection } from "./styled";
 
 const HomeScreen = () => {
   return (
-    <LayoutWrapper>
+    <LayoutWrapper data-testid="layout-box">
       <Alerts />
       <Header />
       <ProgressLine />

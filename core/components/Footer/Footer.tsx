@@ -7,12 +7,15 @@ import { useDispatch } from "react-redux";
 
 const Footer = () => {
   const dispatch = useDispatch();
-
   const handleResetProgress = () => {
     dispatch(resetProgress() as any);
   };
+
   return (
-    <BottomSection onClick={() => handleResetProgress()}>
+    <BottomSection
+      data-testid="footer-box"
+      onClick={() => handleResetProgress()}
+    >
       <AppTitle
         title={Strings.FooterResetProgress}
         fontWeight={"bold"}

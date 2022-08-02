@@ -8,7 +8,7 @@ const Alerts = () => {
   const alerts = useSelector((state: RootState) => state.alertState);
 
   return (
-    <AlertsWrapper>
+    <AlertsWrapper data-testid="alerts-box">
       {alerts?.map((alert: AlertProps) => (
         <Alert key={alert.id} {...alert} />
       ))}

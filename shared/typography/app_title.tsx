@@ -14,8 +14,13 @@ const AppTitle = ({
   fontSize = "3vw",
 }: AppTitleProps) => {
   return (
-    <AppTitleWrapper fontSize={fontSize} fontWeight={fontWeight} color={color}>
-      {title}{" "}
+    <AppTitleWrapper
+      data-testid="app-title-box"
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      color={color}
+    >
+      {title}
     </AppTitleWrapper>
   );
 };
