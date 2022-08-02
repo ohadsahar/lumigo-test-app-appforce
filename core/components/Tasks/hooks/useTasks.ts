@@ -7,7 +7,7 @@ import {
   loadTasks,
   stopTask,
 } from "@/store/actions/tasks.actions";
-import { Dispatcher, RootState } from "@/store/store";
+import { RootState } from "@/store/store";
 import { TaskProps } from "interfaces/task_props.interface";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,7 +16,11 @@ export const useTasks = () => {
   const { tasks } = useSelector((state: RootState) => state.taskState);
   const [doLaterOpen, setDoLaterOpen] = useState<boolean>(false);
   const [completedOpen, setCompletedOpen] = useState<boolean>(false);
-  const dispatch: Dispatcher = useDispatch();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadTasks() as any);
+  }, [dispatch]);
 
   const taskPendingCount =
     tasks?.filter((task: TaskProps) => task.status === TaskStatusType.PENDING)
@@ -35,10 +39,6 @@ export const useTasks = () => {
   const completedTasks = tasks.filter(
     (task: TaskProps) => task.status === TaskStatusType.COMPLETED
   );
-
-  useEffect(() => {
-    dispatch(loadTasks());
-  }, [dispatch]);
 
   const handleEdit = useCallback((task: TaskProps) => {
     dispatch(editTask({ ...task, editMode: true }) as any);

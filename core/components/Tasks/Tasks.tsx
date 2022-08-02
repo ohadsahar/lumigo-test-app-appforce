@@ -1,6 +1,5 @@
-import CompletedTasksList from "@/core/components/CompletedTasksList/CompletedTasksList";
-import CreatedTasksList from "@/core/components/CreatedTasksList/CreatedTasksList";
-import DoLaterTasksList from "@/core/components/ToDoLaterTasksList/DoLaterTasksList";
+import { TaskStatusType } from "@/constants/task_status";
+import TasksList from "@/core/components/TasksList/TasksList";
 import { useTasks } from "./hooks/useTasks";
 const Tasks = () => {
   const {
@@ -9,35 +8,41 @@ const Tasks = () => {
     completedTasks,
     taskPendingCount,
     taskCompletedCount,
-    handleEdit,
-    handleAction,
     doLaterOpen,
     completedOpen,
+    handleEdit,
+    handleAction,
     setDoLaterOpen,
     setCompletedOpen,
   } = useTasks();
   return (
     <>
-      <CreatedTasksList
+      <TasksList
         tasks={createdTasks}
+        doLaterOpen={doLaterOpen}
+        taskPendingCount={taskPendingCount}
         handleAction={handleAction}
         handleEdit={handleEdit}
+        setDoLaterOpen={setDoLaterOpen}
+        listName={TaskStatusType.CREATED}
       />
-      <DoLaterTasksList
+      <TasksList
         tasks={toDoLaterTasks}
         doLaterOpen={doLaterOpen}
         taskPendingCount={taskPendingCount}
         handleAction={handleAction}
         handleEdit={handleEdit}
         setDoLaterOpen={setDoLaterOpen}
+        listName={TaskStatusType.PENDING}
       />
-      <CompletedTasksList
+      <TasksList
         tasks={completedTasks}
         completedOpen={completedOpen}
         taskCompletedCount={taskCompletedCount}
         setCompletedOpen={setCompletedOpen}
         handleAction={handleAction}
         handleEdit={handleEdit}
+        listName={TaskStatusType.COMPLETED}
       />
     </>
   );

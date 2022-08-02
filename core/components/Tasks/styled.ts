@@ -22,7 +22,7 @@ export const DownArrowWrapper = styled.div`
   color: white;
 `;
 
-export const TasksLayout = styled.div<TasksLayoutProps>`
+export const TasksLayout = styled.div<any>`
   transform: ${(props: TasksLayoutProps) =>
     props.isOpen ? "translateX(120%)" : "translateX(0%)"};
   transition: 1s ease-in;
