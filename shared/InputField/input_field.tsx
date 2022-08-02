@@ -18,6 +18,7 @@ const AppInputField = ({
   isEditable,
   handleEditClick,
 }: InputFieldProps) => {
+  //Talk with amit about it, when using here useCallback it's not updaing item after edit
   const submitChanges = () => {
     onSubmit();
     handleEditClick();
@@ -38,11 +39,7 @@ const AppInputField = ({
         {!isEditable ? (
           <FaPlus onClick={() => onSubmit()} />
         ) : (
-          <FaCheck
-            onClick={() => {
-              submitChanges();
-            }}
-          />
+          <FaCheck onClick={submitChanges} />
         )}
       </AddWrapper>
     </InputFieldWrapper>
