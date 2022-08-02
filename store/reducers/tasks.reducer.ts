@@ -31,7 +31,6 @@ export const tasksReducer = (state = initialState, action: AnyAction) => {
         ...state,
         tasks: payload.tasks,
         loading: false,
-        editMode: payload.editMode,
         searchable: payload.searchable,
         lastSearchedWord: payload.lastSearchedWord,
       };

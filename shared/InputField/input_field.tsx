@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { AddWrapper, InputFieldWrapper, InputWrapper } from "./styled";
 import { FaPlus, FaCheck } from "react-icons/fa";
 import { Strings } from "@/constants/strings";
@@ -8,6 +8,7 @@ interface InputFieldProps {
   onSubmit: Function;
   value: string;
   isEditable: boolean;
+  handleEditClick: Function;
 }
 
 const AppInputField = ({
@@ -15,7 +16,13 @@ const AppInputField = ({
   onSubmit,
   value,
   isEditable,
+  handleEditClick,
 }: InputFieldProps) => {
+  const submitChanges = () => {
+    onSubmit();
+    handleEditClick();
+  };
+
   return (
     <InputFieldWrapper>
       <InputWrapper
@@ -31,7 +38,11 @@ const AppInputField = ({
         {!isEditable ? (
           <FaPlus onClick={() => onSubmit()} />
         ) : (
-          <FaCheck onClick={() => onSubmit()} />
+          <FaCheck
+            onClick={() => {
+              submitChanges();
+            }}
+          />
         )}
       </AddWrapper>
     </InputFieldWrapper>
