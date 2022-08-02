@@ -42,7 +42,7 @@ export const useTasks = () => {
   );
 
   const handleEdit = useCallback((task: TaskProps) => {
-    dispatch(editTask({ ...task, editMode: true }) as any);
+    dispatch(editTask(task) as any);
   }, []);
 
   const handleAction = useCallback((action: string, task: TaskProps) => {

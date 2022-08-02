@@ -39,7 +39,6 @@ export const useSubmitForm = (task: any) => {
     dispatch(
       editTask({
         ...task,
-        editMode: false,
         taskName: taskValue.trim(),
       }) as any
     );

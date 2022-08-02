@@ -10,7 +10,6 @@ interface TaskFormProps {
   id?: string;
   taskName: string;
   status: TaskStatusType;
-  editMode: boolean;
   handleEditClick: Function;
 }
 

@@ -4,5 +4,4 @@ export interface TaskProps {
   id: string;
   taskName: string;
   status: TaskStatusType;
-  editMode: boolean;
 }

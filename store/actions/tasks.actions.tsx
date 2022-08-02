@@ -19,7 +19,6 @@ export const createTask = (taskName: string) => (dispatch: any) => {
     id,
     taskName,
     status: TaskStatusType.CREATED,
-    editMode: false,
   };
   const newTasks = [...currentTasks, newTask];
   setLocalStorageData(newTasks);
@@ -33,9 +32,6 @@ export const createTask = (taskName: string) => (dispatch: any) => {
 export const editTask = (task: TaskProps) => (dispatch: any) => {
   const { currentTaskDB } = handleDB();
   const isSearching = store.getState().taskState.searchable;
-  if (!task.editMode) {
-    dispatch(setAlert(Strings.AlertSuccessEditTask, Strings.Success));
-  }
   const indexToUpdate = currentTaskDB.findIndex(
     (currentTask: TaskProps) => currentTask.id === task.id
   );
@@ -129,7 +125,6 @@ export const search = (searchValue: string) => (dispatch: any) => {
         tasks: currentTasks,
         lastSearchedWord: searchValue,
         searchable: searchValue.length > 0 ? true : false,
-        editMode: true,
       },
     });
   } else {
