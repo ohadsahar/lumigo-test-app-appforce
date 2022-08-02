@@ -4,7 +4,6 @@ import React from "react";
 import { BottomSection } from "./styled";
 import { Strings } from "@/constants/strings";
 import { useDispatch } from "react-redux";
-import { AppDispatch, useAppDispatch } from "@/store/store";
 
 const Footer = () => {
   const dispatch = useDispatch();
