@@ -70,20 +70,19 @@ const TasksList = ({
       <TasksLayout>
         {tasks?.map((task: TaskProps) => (
           <div key={task.id}>
+            <p>{editTaskId}</p>
             {task.id !== editTaskId ? (
-              <div onClick={() => setEditTaskId(task.id)}>
-                <Task
-                  showCheck={listName !== TaskStatusType.COMPLETED ?? false}
-                  showPause={
-                    (listName === TaskStatusType.COMPLETED ||
-                      listName === TaskStatusType.CREATED) ??
-                    false
-                  }
-                  task={task}
-                  handleAction={(data: string) => handleAction(data, task)}
-                  handleEdit={() => handleEdit(task)}
-                />
-              </div>
+              <Task
+                setCurrentEdit={() => setEditTaskId(task.id)}
+                showCheck={listName !== TaskStatusType.COMPLETED ?? false}
+                showPause={[
+                  TaskStatusType.COMPLETED,
+                  TaskStatusType.CREATED,
+                ].includes(listName)}
+                task={task}
+                handleAction={(data: string) => handleAction(data, task)}
+                handleEdit={() => handleEdit(task)}
+              />
             ) : (
               <TaskForm handleEditClick={() => setEditTaskId("")} {...task} />
             )}

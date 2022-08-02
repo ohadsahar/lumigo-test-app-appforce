@@ -18,6 +18,11 @@ const AppInputField = ({
   isEditable,
   handleEditClick,
 }: InputFieldProps) => {
+  const submitChanges = () => {
+    onSubmit();
+    handleEditClick();
+  };
+
   return (
     <InputFieldWrapper>
       <InputWrapper
@@ -35,8 +40,7 @@ const AppInputField = ({
         ) : (
           <FaCheck
             onClick={() => {
-              onSubmit();
-              handleEditClick();
+              submitChanges();
             }}
           />
         )}

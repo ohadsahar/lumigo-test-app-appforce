@@ -1,11 +1,13 @@
 import { createTask, editTask } from "@/store/actions/tasks.actions";
+import { TaskFormProps } from "interfaces/task_form_props.interface";
+import { TaskProps } from "interfaces/task_props.interface";
 import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 
-export const useSubmitForm = (task: any) => {
+export const useSubmitForm = ({ id, taskName, status }: TaskFormProps) => {
   const dispatch = useDispatch();
   const [isError, setError] = useState<boolean>(false);
-  const [taskValue, setTaskValue] = useState<string>(task?.taskName ?? "");
+  const [taskValue, setTaskValue] = useState<string>(taskName ?? "");
 
   const onChangeTaskname = useCallback(
     (data: string) => {
@@ -20,7 +22,7 @@ export const useSubmitForm = (task: any) => {
   const onSubmit = (event?: any) => {
     event?.preventDefault();
     setTaskValue(taskValue.trim());
-    if (task.taskName && taskValue) {
+    if (taskName && taskValue) {
       handleEditTask();
     } else {
       if (!taskValue) {
@@ -36,13 +38,20 @@ export const useSubmitForm = (task: any) => {
   };
 
   const handleEditTask = () => {
-    dispatch(
-      editTask({
-        ...task,
-        taskName: taskValue.trim(),
-      }) as any
-    );
+    const task: TaskProps = {
+      id: id ?? "",
+      taskName: taskValue.trim(),
+      status,
+    };
+    dispatch(editTask(task) as any);
   };
 
-  return { onSubmit, taskValue, onChangeTaskname, isError };
+  const handlePressedEnter = (event: any, handleEditClick: Function) => {
+    if (handleEditClick) {
+      handleEditClick();
+    }
+    onSubmit(event);
+  };
+
+  return { onSubmit, taskValue, onChangeTaskname, isError, handlePressedEnter };
 };
