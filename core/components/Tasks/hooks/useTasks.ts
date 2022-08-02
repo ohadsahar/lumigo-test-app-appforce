@@ -35,11 +35,11 @@ export const useTasks = () => {
 
   const taskPendingCount = useMemo(() => {
     return toDoLaterTasks.length;
-  }, [toDoLaterTasks]);
+  }, [toDoLaterTasks.length]);
 
   const taskCompletedCount = useMemo(() => {
     return completedTasks.length;
-  }, [completedTasks]);
+  }, [completedTasks.length]);
 
   const handleEdit = useCallback((task: TaskProps) => {
     dispatch(editTask(task) as any);
