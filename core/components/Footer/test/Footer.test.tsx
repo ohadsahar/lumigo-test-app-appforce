@@ -4,7 +4,7 @@ import Footer from "../Footer";
 
 describe("Checking Alerts component", () => {
   it("Testing Alerts component exists on DOM", () => {
-    render(<Footer></Footer>);
+    render(<Footer />);
     const baseComponent = screen.getByTestId("footer-box");
     expect(baseComponent).toBeInTheDocument();
   });
