@@ -42,7 +42,7 @@ const TasksList = ({
   setEditTaskId,
 }: TaskListProps) => {
   return (
-    <TasksWrapper>
+    <TasksWrapper data-testid="task-list-box">
       {listName === TaskStatusType.PENDING && setDoLaterOpen && (
         <TaskTitleWrapper onClick={() => setDoLaterOpen(!doLaterOpen)}>
           <DownArrowWrapper>

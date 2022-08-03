@@ -24,7 +24,7 @@ const Task = ({
     setCurrentEdit();
   };
   return (
-    <CardTask>
+    <CardTask data-testid="task-box">
       <CardDetailsWrapper onClick={handleEditStatus}>
         {task.taskName}
       </CardDetailsWrapper>
