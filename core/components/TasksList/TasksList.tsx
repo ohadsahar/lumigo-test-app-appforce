@@ -21,8 +21,8 @@ interface TaskListProps {
   taskPendingCount?: number;
   editTaskId: string;
   listName: TaskStatusType;
-  handleAction: Function;
-  handleEdit: Function;
+  handleAction: (action: string) => void;
+  handleEdit: (task: TaskProps) => void;
   setDoLaterOpen?: Dispatch<SetStateAction<boolean>>;
   setCompletedOpen?: Dispatch<SetStateAction<boolean>>;
   setEditTaskId: Dispatch<SetStateAction<string>>;

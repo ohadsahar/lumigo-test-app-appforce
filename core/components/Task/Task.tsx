@@ -5,9 +5,9 @@ import { CardTask, CardDetailsWrapper } from "./styled";
 
 interface TaskViewProps {
   task: TaskProps;
-  handleAction: Function;
-  setCurrentEdit: Function;
-  handleEdit: Function;
+  handleAction: (action: string) => void;
+  setCurrentEdit: () => void;
+  handleEdit: () => void;
   showPause?: boolean;
   showCheck?: boolean;
 }

@@ -4,6 +4,11 @@ import { TaskFormProps } from "interfaces/task_form_props.interface";
 import { TaskProps } from "interfaces/task_props.interface";
 import { useCallback, useState } from "react";
 
+type SubmitTaskAction = {
+  event: React.SyntheticEvent;
+  handleEditClick: () => void;
+};
+
 export const useSubmitForm = ({ id, taskName, status }: TaskFormProps) => {
   const dispatch = useAppDispatch();
   const [isError, setError] = useState<boolean>(false);
@@ -46,11 +51,7 @@ export const useSubmitForm = ({ id, taskName, status }: TaskFormProps) => {
     dispatch(editTask(task) as any);
   };
 
-  const handlePressedEnter = (
-    event: React.SyntheticEvent,
-    handleEditClick: Function
-  ) => {
-    console.log(event);
+  const handlePressedEnter = ({ handleEditClick, event }: SubmitTaskAction) => {
     if (handleEditClick) {
       handleEditClick();
     }
