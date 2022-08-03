@@ -23,11 +23,8 @@ describe("Testing task component", () => {
         <Task
           task={task}
           setCurrentEdit={() => {}}
-          showCheck={true}
-          showPause={[
-            TaskStatusType.COMPLETED,
-            TaskStatusType.CREATED,
-          ].includes(listName)}
+          showCheck
+          showPause
           handleAction={(data: string) => {}}
           handleEdit={() => {}}
         />
