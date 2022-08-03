@@ -9,7 +9,7 @@ const SearchBar = () => {
 
   return (
     <FormWrapper
-      onSubmit={(event: React.SyntheticEvent) => event?.preventDefault()}
+      onSubmit={(event: React.SyntheticEvent) => event.preventDefault()}
       data-testid="searchbar-box"
     >
       <InputFieldWrapper>
