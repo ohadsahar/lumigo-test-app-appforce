@@ -14,8 +14,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Things I would improve
 
-Due to the times I couldn't do everything I wanted so these are the things I would improve:
-
-1.Use interfaces everywhere instead of using any\
-2.Organize and arrange the code more\
-3.Add the DND option
+1.Add the DND option
