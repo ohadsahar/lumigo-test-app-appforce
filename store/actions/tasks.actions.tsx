@@ -5,15 +5,15 @@ import store from "@/store/store";
 import { RESET_PROGRESS, SEARCH, SET_TASK } from "@/store/types/tasks.types";
 import { TaskProps } from "interfaces/task_props.interface";
 import { LocalStorageService } from "@/services/LocalStorage.service";
-import { v4 as uuid } from "uuid";
 import { setAlert } from "./alert.actions";
+import { HandleIdsService } from "@/services/IdsService.service";
 
 export const loadTasks = () => (dispatch: any) => {
   dispatch(resetDataFromLocalStorage(SET_TASK));
 };
 
 export const createTask = (taskName: string) => (dispatch: any) => {
-  const id = uuid();
+  const id = HandleIdsService.createUniqueId();
   const currentTasks = store.getState().taskState.tasks;
   const newTask: TaskProps = {
     id,

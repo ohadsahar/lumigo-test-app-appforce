@@ -24,6 +24,12 @@
       "@/services/*": ["services/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.config.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "jest.config.ts",
+    "__mocks__/fileMock.js"
+  ],
   "exclude": ["node_modules"]
 }

@@ -25,7 +25,7 @@ const Task = ({
   };
   return (
     <CardTask>
-      <CardDetailsWrapper onClick={() => handleEditStatus()}>
+      <CardDetailsWrapper onClick={handleEditStatus}>
         {task.taskName}
       </CardDetailsWrapper>
       <Actions

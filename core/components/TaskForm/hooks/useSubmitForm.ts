@@ -1,11 +1,11 @@
 import { createTask, editTask } from "@/store/actions/tasks.actions";
+import { useAppDispatch } from "@/store/store";
 import { TaskFormProps } from "interfaces/task_form_props.interface";
 import { TaskProps } from "interfaces/task_props.interface";
 import { useCallback, useState } from "react";
-import { useDispatch } from "react-redux";
 
 export const useSubmitForm = ({ id, taskName, status }: TaskFormProps) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [isError, setError] = useState<boolean>(false);
   const [taskValue, setTaskValue] = useState<string>(taskName ?? "");
 

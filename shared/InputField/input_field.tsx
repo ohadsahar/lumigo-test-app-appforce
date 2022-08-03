@@ -5,7 +5,7 @@ import { Strings } from "@/constants/strings";
 
 interface InputFieldProps {
   onChange: Function;
-  onSubmit: Function;
+  onSubmit: (e?: React.MouseEvent) => void;
   value: string;
   isEditable: boolean;
   handleEditClick: Function;
@@ -36,13 +36,9 @@ const AppInputField = ({
       />
       <AddWrapper>
         {!isEditable ? (
-          <FaPlus onClick={() => onSubmit()} />
+          <FaPlus onClick={onSubmit} />
         ) : (
-          <FaCheck
-            onClick={() => {
-              submitChanges();
-            }}
-          />
+          <FaCheck onClick={submitChanges} />
         )}
       </AddWrapper>
     </InputFieldWrapper>

@@ -1,10 +1,15 @@
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
-import HomeScreen from "../layout";
+import AppTestUtil from "../app_test.util";
+import HomeScreen from "../core/components/Layout/layout";
 
 describe("Checking Layout component", () => {
   it("Testing Layout component exists on DOM", () => {
-    render(<HomeScreen></HomeScreen>);
+    render(
+      <AppTestUtil>
+        <HomeScreen></HomeScreen>
+      </AppTestUtil>
+    );
     const baseComponent = screen.getByTestId("layout-box");
     expect(baseComponent).toBeInTheDocument();
   });
