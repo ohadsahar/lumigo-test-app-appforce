@@ -1,5 +1,10 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## A little about the project
+
+Task management application - written in React with next.js.
+Tests were written in jest and cypress.
+
 ## Getting Started
 
 First, run the development server:
