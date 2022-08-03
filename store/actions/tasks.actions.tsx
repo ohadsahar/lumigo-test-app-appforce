@@ -5,7 +5,6 @@ import store from "@/store/store";
 import { RESET_PROGRESS, SEARCH, SET_TASK } from "@/store/types/tasks.types";
 import { TaskProps } from "interfaces/task_props.interface";
 import { LocalStorageService } from "@/services/LocalStorage.service";
-import { v4 as uuid } from "uuid";
 import { setAlert } from "./alert.actions";
 
 export const loadTasks = () => (dispatch: any) => {
@@ -13,7 +12,7 @@ export const loadTasks = () => (dispatch: any) => {
 };
 
 export const createTask = (taskName: string) => (dispatch: any) => {
-  const id = uuid();
+  const id = (Math.floor(Math.random() * 100) + Date.now()).toString();
   const currentTasks = store.getState().taskState.tasks;
   const newTask: TaskProps = {
     id,
