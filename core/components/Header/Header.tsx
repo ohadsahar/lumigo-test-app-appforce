@@ -15,28 +15,32 @@ const Header = () => {
       <DateWrapper>
         <DayWrapper>
           <AppTitle
+            role="header-day-role"
             title={convertedDate?.day.toString()}
-            fontWeight={"bold"}
-            fontSize={"5vw"}
+            fontWeight="bold"
+            fontSize="5vw"
           />
         </DayWrapper>
         <YearAndMonthWrapper>
           <AppTitle
+            role="header-month-role"
             title={convertedDate?.month}
-            fontWeight={"bold"}
-            fontSize={"2vw"}
+            fontWeight="bold"
+            fontSize="2vw"
           />
           <AppTitle
+            role="header-year-role"
             title={convertedDate?.year.toString()}
-            fontWeight={"200"}
-            fontSize={"2vw"}
+            fontWeight="200"
+            fontSize="2vw"
           />
         </YearAndMonthWrapper>
       </DateWrapper>
       <AppTitle
+        role="header-day-name-role"
         title={convertedDate?.currentDay}
-        fontWeight={"100"}
-        fontSize={"1.5vw"}
+        fontWeight="100"
+        fontSize="1.5vw"
       />
     </HeaderWrapper>
   );

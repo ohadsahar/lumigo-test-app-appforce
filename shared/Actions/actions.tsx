@@ -12,7 +12,7 @@ interface ActionsProps {
 
 const Actions = ({ handleAction, showPause, showCheck }: ActionsProps) => {
   return (
-    <ActionsWrapper>
+    <ActionsWrapper data-testid="actions-box">
       <FaTimes
         color="red"
         onClick={() => handleAction(Strings.TaskActionRemove)}

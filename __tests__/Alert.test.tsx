@@ -16,5 +16,7 @@ describe("Checking Alert component", () => {
     expect(baseComponent).toBeInTheDocument();
     const text = baseComponent.textContent;
     expect(text).toEqual("This Should Error");
+    expect(baseComponent).toHaveStyle("background-color: red");
+    expect(baseComponent).not.toHaveStyle("background-color: green");
   });
 });
