@@ -1,5 +1,6 @@
 import { Strings } from "@/constants/strings";
 import AppTitle from "@/shared/typography/app_title";
+import React from "react";
 import { useSearchBar } from "./hooks/useSearchBar";
 import { FormWrapper, InputFieldWrapper, InputWrapper } from "./styled";
 
@@ -8,7 +9,7 @@ const SearchBar = () => {
 
   return (
     <FormWrapper
-      onSubmit={(event) => event?.preventDefault()}
+      onSubmit={(event: React.SyntheticEvent) => event?.preventDefault()}
       data-testid="searchbar-box"
     >
       <InputFieldWrapper>
