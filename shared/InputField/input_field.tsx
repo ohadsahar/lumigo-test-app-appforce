@@ -32,7 +32,7 @@ const AppInputField = ({
             ? Strings.InputFieldEditPlaceholder
             : Strings.InputFieldPlaceholder
         }
-        onChange={(e: React.FormEvent<HTMLInputElement>) => {
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           onChange(e.currentTarget.value);
         }}
       />

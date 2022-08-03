@@ -1,7 +1,7 @@
+import HomeScreen from "@/core/components/Layout/layout";
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 import AppTestUtil from "../app_test.util";
-import HomeScreen from "../core/components/Layout/layout";
 
 describe("Checking Layout component", () => {
   it("Testing Layout component exists on DOM", () => {

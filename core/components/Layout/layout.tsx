@@ -6,6 +6,7 @@ import SearchBar from "@/core/components/SearchBar/SearchBar";
 import TaskForm from "@/core/components/TaskForm/TaskForm";
 import Tasks from "@/core/components//Tasks/Tasks";
 import { LayoutWrapper, TopSection } from "./styled";
+import { TaskStatusType } from "@/constants/task_status";
 
 const HomeScreen = () => {
   return (
@@ -14,7 +15,11 @@ const HomeScreen = () => {
       <Header />
       <ProgressLine />
       <SearchBar />
-      <TaskForm />
+      <TaskForm
+        taskName={""}
+        status={TaskStatusType.COMPLETED}
+        handleEditClick={() => {}}
+      />
       <TopSection>
         <Tasks />
       </TopSection>
