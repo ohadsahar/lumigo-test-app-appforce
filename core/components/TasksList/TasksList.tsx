@@ -21,8 +21,8 @@ interface TaskListProps {
   taskPendingCount?: number;
   editTaskId: string;
   listName: TaskStatusType;
-  handleAction: Function;
-  handleEdit: Function;
+  handleAction: (action: string, task?: TaskProps) => void;
+  handleEdit: (task: TaskProps) => void;
   setDoLaterOpen?: Dispatch<SetStateAction<boolean>>;
   setCompletedOpen?: Dispatch<SetStateAction<boolean>>;
   setEditTaskId: Dispatch<SetStateAction<string>>;
@@ -70,7 +70,6 @@ const TasksList = ({
       <TasksLayout>
         {tasks?.map((task: TaskProps) => (
           <div key={task.id}>
-            <p>{editTaskId}</p>
             {task.id !== editTaskId ? (
               <Task
                 setCurrentEdit={() => setEditTaskId(task.id)}

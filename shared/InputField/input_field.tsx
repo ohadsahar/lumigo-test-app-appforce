@@ -4,11 +4,11 @@ import { FaPlus, FaCheck } from "react-icons/fa";
 import { Strings } from "@/constants/strings";
 
 interface InputFieldProps {
-  onChange: Function;
+  onChange: (value: string) => void;
   onSubmit: (e?: React.MouseEvent) => void;
   value: string;
   isEditable: boolean;
-  handleEditClick: Function;
+  handleEditClick: () => void;
 }
 
 const AppInputField = ({
@@ -32,7 +32,9 @@ const AppInputField = ({
             ? Strings.InputFieldEditPlaceholder
             : Strings.InputFieldPlaceholder
         }
-        onChange={(e) => onChange(e?.target?.value)}
+        onChange={(e: React.FormEvent<HTMLInputElement>) => {
+          onChange(e.currentTarget.value);
+        }}
       />
       <AddWrapper>
         {!isEditable ? (

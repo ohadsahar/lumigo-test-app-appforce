@@ -5,7 +5,7 @@ import { FaPause, FaCheck, FaTimes } from "react-icons/fa";
 import { ActionsWrapper } from "./styled";
 
 interface ActionsProps {
-  handleAction: Function;
+  handleAction: (action: string) => void;
   showPause: boolean;
   showCheck: boolean;
 }

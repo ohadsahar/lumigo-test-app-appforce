@@ -4,5 +4,5 @@ export interface TaskFormProps {
   id?: string;
   taskName: string;
   status: TaskStatusType;
-  handleEditClick: Function;
+  handleEditClick: () => void;
 }
