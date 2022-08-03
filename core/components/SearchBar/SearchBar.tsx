@@ -15,7 +15,9 @@ const SearchBar = () => {
       <InputFieldWrapper>
         <InputWrapper
           placeholder={Strings.SearchBarPlaceHolder}
-          onChange={(e) => onChange(e?.target?.value)}
+          onChange={(e: React.FormEvent<HTMLInputElement>) =>
+            onChange(e.currentTarget.value)
+          }
         />
       </InputFieldWrapper>
       <AppTitle

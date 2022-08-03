@@ -32,7 +32,9 @@ const AppInputField = ({
             ? Strings.InputFieldEditPlaceholder
             : Strings.InputFieldPlaceholder
         }
-        onChange={(e) => onChange(e?.target?.value)}
+        onChange={(e: React.FormEvent<HTMLInputElement>) => {
+          onChange(e.currentTarget.value);
+        }}
       />
       <AddWrapper>
         {!isEditable ? (

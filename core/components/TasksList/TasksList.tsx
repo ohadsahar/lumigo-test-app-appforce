@@ -70,7 +70,6 @@ const TasksList = ({
       <TasksLayout>
         {tasks?.map((task: TaskProps) => (
           <div key={task.id}>
-            <p>{editTaskId}</p>
             {task.id !== editTaskId ? (
               <Task
                 setCurrentEdit={() => setEditTaskId(task.id)}

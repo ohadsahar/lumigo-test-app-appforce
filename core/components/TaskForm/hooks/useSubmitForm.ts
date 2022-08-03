@@ -46,7 +46,11 @@ export const useSubmitForm = ({ id, taskName, status }: TaskFormProps) => {
     dispatch(editTask(task) as any);
   };
 
-  const handlePressedEnter = (event: any, handleEditClick: Function) => {
+  const handlePressedEnter = (
+    event: React.SyntheticEvent,
+    handleEditClick: Function
+  ) => {
+    console.log(event);
     if (handleEditClick) {
       handleEditClick();
     }

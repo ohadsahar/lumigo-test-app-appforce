@@ -23,14 +23,6 @@ export const useTasks = () => {
     dispatch(loadTasks() as any);
   }, [dispatch]);
 
-  const taskPendingCount =
-    tasks?.filter((task: TaskProps) => task.status === TaskStatusType.PENDING)
-      .length ?? 0;
-
-  const taskCompletedCount =
-    tasks?.filter((task: TaskProps) => task.status === TaskStatusType.COMPLETED)
-      .length ?? 0;
-
   const createdTasks = tasks.filter(
     (task: TaskProps) => task.status === TaskStatusType.CREATED
   );
@@ -40,6 +32,9 @@ export const useTasks = () => {
   const completedTasks = tasks.filter(
     (task: TaskProps) => task.status === TaskStatusType.COMPLETED
   );
+
+  const taskPendingCount = toDoLaterTasks.length;
+  const taskCompletedCount = completedTasks.length;
 
   const handleEdit = useCallback((task: TaskProps) => {
     dispatch(editTask(task) as any);

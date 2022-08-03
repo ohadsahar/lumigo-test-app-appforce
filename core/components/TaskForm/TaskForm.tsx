@@ -16,7 +16,7 @@ const TaskForm = ({ id, taskName, status, handleEditClick }: TaskFormProps) => {
 
   return (
     <FormWrapper
-      onSubmit={(event) => {
+      onSubmit={(event: React.SyntheticEvent) => {
         handlePressedEnter(event, handleEditClick);
       }}
     >
