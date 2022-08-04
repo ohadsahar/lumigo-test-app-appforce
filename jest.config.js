@@ -24,7 +24,6 @@ module.exports = {
     "<rootDir>/node_modules/",
     "<rootDir>/.next/",
     "!node_modules/",
-    "/node_modules/(?!(uuid|xxx)/)",
   ],
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": ["babel-jest", { presets: ["next/babel"] }],
