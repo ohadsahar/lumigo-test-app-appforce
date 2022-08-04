@@ -13,13 +13,8 @@ const Footer = () => {
   };
 
   return (
-    <BottomSection
-      data-testid="footer-box"
-      onClick={handleResetProgress}
-      data-cy="cy-footer"
-    >
+    <BottomSection data-testid="footer-box" onClick={handleResetProgress}>
       <AppTitle
-        dataCy="cy-app-title"
         title={Strings.FooterResetProgress}
         fontWeight={"bold"}
         fontSize={"2vw"}

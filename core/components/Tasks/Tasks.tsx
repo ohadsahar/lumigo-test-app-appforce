@@ -19,7 +19,7 @@ const Tasks = () => {
   } = useTasks();
   return (
     <>
-      <div data-cy="created-tasks-list">
+      <div data-testid="created-tasks-list">
         <TasksList
           tasks={createdTasks}
           doLaterOpen={doLaterOpen}
@@ -32,7 +32,7 @@ const Tasks = () => {
           setEditTaskId={setEditTaskId}
         />
       </div>
-      <div data-cy="do-later-tasks-list">
+      <div data-testid="do-later-tasks-list">
         <TasksList
           tasks={toDoLaterTasks}
           doLaterOpen={doLaterOpen}
@@ -45,7 +45,7 @@ const Tasks = () => {
           setEditTaskId={setEditTaskId}
         />
       </div>
-      <div data-cy="finished-tasks-list">
+      <div data-testid="finished-tasks-list">
         <TasksList
           tasks={completedTasks}
           completedOpen={completedOpen}

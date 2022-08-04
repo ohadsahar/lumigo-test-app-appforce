@@ -11,27 +11,27 @@ const Header = () => {
   const { convertedDate } = useDate();
 
   return (
-    <HeaderWrapper data-testid="header-box" data-cy="cy-header">
-      <DateWrapper data-cy="cy-header-date-wrapper">
-        <DayWrapper data-cy="cy-header-day-wrapper">
+    <HeaderWrapper data-testid="header-box">
+      <DateWrapper data-testid="header-date-wrapper">
+        <DayWrapper data-testid="header-day-wrapper">
           <AppTitle
-            dataCy="cy-header-day"
+            testId="header-day"
             role="header-day-role"
             title={convertedDate?.day.toString()}
             fontWeight="bold"
             fontSize="5vw"
           />
         </DayWrapper>
-        <YearAndMonthWrapper data-cy="cy-header-month-year-wrapper">
+        <YearAndMonthWrapper data-testid="header-month-year-wrapper">
           <AppTitle
-            dataCy="cy-header-month"
+            testId="header-month"
             role="header-month-role"
             title={convertedDate?.month}
             fontWeight="bold"
             fontSize="2vw"
           />
           <AppTitle
-            dataCy="cy-header-year"
+            testId="header-year"
             role="header-year-role"
             title={convertedDate?.year.toString()}
             fontWeight="200"
@@ -40,7 +40,7 @@ const Header = () => {
         </YearAndMonthWrapper>
       </DateWrapper>
       <AppTitle
-        dataCy="cy-header-day-name"
+        testId="header-day-name"
         role="header-day-name-role"
         title={convertedDate?.currentDay}
         fontWeight="100"

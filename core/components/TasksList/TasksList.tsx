@@ -21,6 +21,7 @@ interface TaskListProps {
   taskPendingCount?: number;
   editTaskId: string;
   listName: TaskStatusType;
+  testId?: string;
   handleAction: (action: string, task: TaskProps) => void;
   handleEdit: (task: TaskProps) => void;
   setDoLaterOpen?: Dispatch<SetStateAction<boolean>>;
@@ -40,9 +41,10 @@ const TasksList = ({
   listName,
   editTaskId,
   setEditTaskId,
+  testId = "task-list-box",
 }: TaskListProps) => {
   return (
-    <TasksWrapper data-testid="task-list-box" data-cy="task-list-wrapper">
+    <TasksWrapper data-testid={testId}>
       {listName === TaskStatusType.PENDING && setDoLaterOpen && (
         <TaskTitleWrapper onClick={() => setDoLaterOpen(!doLaterOpen)}>
           <DownArrowWrapper>
@@ -68,11 +70,11 @@ const TasksList = ({
         </TaskTitleWrapper>
       )}
 
-      <TasksLayout data-cy="task-list-items">
+      <TasksLayout data-testid="task-list-items">
         {tasks?.map((task: TaskProps) => (
           <div key={task.id}>
             {task.id !== editTaskId ? (
-              <div data-cy="task-item">
+              <div data-testid="task-item">
                 <Task
                   setCurrentEdit={() => setEditTaskId(task.id)}
                   showCheck={listName !== TaskStatusType.COMPLETED ?? false}
