@@ -19,45 +19,44 @@ const Tasks = () => {
   } = useTasks();
   return (
     <>
-      <div data-testid="created-tasks-list">
-        <TasksList
-          tasks={createdTasks}
-          doLaterOpen={doLaterOpen}
-          taskPendingCount={taskPendingCount}
-          handleAction={handleAction}
-          handleEdit={handleEdit}
-          setDoLaterOpen={setDoLaterOpen}
-          listName={TaskStatusType.CREATED}
-          editTaskId={editTaskId}
-          setEditTaskId={setEditTaskId}
-        />
-      </div>
-      <div data-testid="do-later-tasks-list">
-        <TasksList
-          tasks={toDoLaterTasks}
-          doLaterOpen={doLaterOpen}
-          taskPendingCount={taskPendingCount}
-          handleAction={handleAction}
-          handleEdit={handleEdit}
-          setDoLaterOpen={setDoLaterOpen}
-          listName={TaskStatusType.PENDING}
-          editTaskId={editTaskId}
-          setEditTaskId={setEditTaskId}
-        />
-      </div>
-      <div data-testid="finished-tasks-list">
-        <TasksList
-          tasks={completedTasks}
-          completedOpen={completedOpen}
-          taskCompletedCount={taskCompletedCount}
-          setCompletedOpen={setCompletedOpen}
-          handleAction={handleAction}
-          handleEdit={handleEdit}
-          listName={TaskStatusType.COMPLETED}
-          editTaskId={editTaskId}
-          setEditTaskId={setEditTaskId}
-        />
-      </div>
+      <TasksList
+        data-testid="created-tasks-list"
+        tasks={createdTasks}
+        doLaterOpen={doLaterOpen}
+        taskPendingCount={taskPendingCount}
+        handleAction={handleAction}
+        handleEdit={handleEdit}
+        setDoLaterOpen={setDoLaterOpen}
+        listName={TaskStatusType.CREATED}
+        editTaskId={editTaskId}
+        setEditTaskId={setEditTaskId}
+      />
+
+      <TasksList
+        data-testid="do-later-tasks-list"
+        tasks={toDoLaterTasks}
+        doLaterOpen={doLaterOpen}
+        taskPendingCount={taskPendingCount}
+        handleAction={handleAction}
+        handleEdit={handleEdit}
+        setDoLaterOpen={setDoLaterOpen}
+        listName={TaskStatusType.PENDING}
+        editTaskId={editTaskId}
+        setEditTaskId={setEditTaskId}
+      />
+
+      <TasksList
+        data-testid="finished-tasks-list"
+        tasks={completedTasks}
+        completedOpen={completedOpen}
+        taskCompletedCount={taskCompletedCount}
+        setCompletedOpen={setCompletedOpen}
+        handleAction={handleAction}
+        handleEdit={handleEdit}
+        listName={TaskStatusType.COMPLETED}
+        editTaskId={editTaskId}
+        setEditTaskId={setEditTaskId}
+      />
     </>
   );
 };

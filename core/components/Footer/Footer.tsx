@@ -15,6 +15,7 @@ const Footer = () => {
   return (
     <BottomSection data-testid="footer-box" onClick={handleResetProgress}>
       <AppTitle
+        data-testid="footer-title"
         title={Strings.FooterResetProgress}
         fontWeight={"bold"}
         fontSize={"2vw"}

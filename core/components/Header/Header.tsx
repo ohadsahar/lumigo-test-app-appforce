@@ -15,7 +15,7 @@ const Header = () => {
       <DateWrapper data-testid="header-date-wrapper">
         <DayWrapper data-testid="header-day-wrapper">
           <AppTitle
-            testId="header-day"
+            data-testid="header-day"
             role="header-day-role"
             title={convertedDate?.day.toString()}
             fontWeight="bold"
@@ -24,14 +24,14 @@ const Header = () => {
         </DayWrapper>
         <YearAndMonthWrapper data-testid="header-month-year-wrapper">
           <AppTitle
-            testId="header-month"
+            data-testid="header-month"
             role="header-month-role"
             title={convertedDate?.month}
             fontWeight="bold"
             fontSize="2vw"
           />
           <AppTitle
-            testId="header-year"
+            data-testid="header-year"
             role="header-year-role"
             title={convertedDate?.year.toString()}
             fontWeight="200"
@@ -40,7 +40,7 @@ const Header = () => {
         </YearAndMonthWrapper>
       </DateWrapper>
       <AppTitle
-        testId="header-day-name"
+        data-testid="header-day-name"
         role="header-day-name-role"
         title={convertedDate?.currentDay}
         fontWeight="100"
