@@ -1,4 +1,4 @@
-import { Strings } from "@/constants/strings";
+import { Strings } from "@/constants/Strings";
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 import AppTestUtil from "../../../AppTestUtil";

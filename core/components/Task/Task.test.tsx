@@ -1,8 +1,8 @@
-import { TaskStatusType } from "@/constants/task_status";
+import { TaskStatusType } from "@/constants/TaskStatus";
 import Task from "@/core/components/Task/Task";
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
-import { TaskProps } from "interfaces/task_props.interface";
+import { TaskProps } from "models/TaskProps.model";
 import AppTestUtil from "../../../AppTestUtil";
 
 describe("Testing task component", () => {
