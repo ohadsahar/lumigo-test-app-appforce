@@ -6,7 +6,7 @@ describe("Renders Main page of app", () => {
     cy.visit("/");
   });
 
-  it("Testing date", () => {
+  it("Testing date, Checking if the current date that shown on dom is the same like I created over here", () => {
     const today = new Date(Date.now());
     const convertedDate: DateProps = {
       day: today.getDate(),
@@ -31,14 +31,16 @@ describe("Renders Main page of app", () => {
     cy.findByTestId("pause-task").click();
     cy.findByTestId("finish-task").click();
     cy.findByTestId("remove-task").click();
+    cy.findByTestId("created-tasks-list").children().should("have.length", 0);
   });
 
-  it(`Testing Local storage and CRUD on ${lengthOfItems} tasks`, () => {
+  it(`Testing CRUD on ${lengthOfItems} tasks`, () => {
     for (let i = 0; i < lengthOfItems; i++) {
-      cy.findByTestId("task-input-field").type(`Item ${i + 1}`);
+      cy.findByTestId("task-input-field")
+        .clear()
+        .type(`Item ${i + 1}`);
       cy.findByTestId("create-task").click();
     }
-    cy.reload();
 
     cy.findByTestId("created-tasks-list")
       .children()
@@ -77,9 +79,11 @@ describe("Renders Main page of app", () => {
     cy.findByTestId("created-tasks-list")
       .children()
       .each(($el, index) => {
-        index === 2
-          ? cy.wrap($el).findByTestId("pause-task").first().click()
-          : cy.wrap($el).findByTestId("finish-task").first().click();
+        if (index === 2) {
+          cy.wrap($el).findByTestId("pause-task").first().click();
+        } else {
+          cy.wrap($el).findByTestId("finish-task").first().click();
+        }
       });
     cy.findByTestId("search-tasks").type(`Item 3`);
     cy.findByTestId("created-tasks-list").children().should("have.length", 0);
@@ -89,7 +93,6 @@ describe("Renders Main page of app", () => {
   });
 
   it("Testing Reset Progress", () => {
-    cy.wait(2000);
     cy.findByTestId("footer-title").click();
   });
 });

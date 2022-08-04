@@ -77,7 +77,7 @@ const TasksList = ({
               <div data-testid="task-item">
                 <Task
                   setCurrentEdit={() => setEditTaskId(task.id)}
-                  showCheck={listName !== TaskStatusType.COMPLETED ?? false}
+                  showCheck={listName !== TaskStatusType.COMPLETED}
                   showPause={[
                     TaskStatusType.COMPLETED,
                     TaskStatusType.CREATED,

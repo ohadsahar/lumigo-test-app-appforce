@@ -13,7 +13,6 @@ describe("Checking Alert component", () => {
       </AppTestUtil>
     );
     const baseComponent = screen.getByTestId("alert-box");
-    expect(baseComponent).toBeInTheDocument();
     const text = baseComponent.textContent;
     expect(text).toEqual("This Should Error");
     expect(baseComponent).toHaveStyle("background-color: red");
