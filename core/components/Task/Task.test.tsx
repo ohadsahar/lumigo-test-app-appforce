@@ -3,7 +3,7 @@ import Task from "@/core/components/Task/Task";
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 import { TaskProps } from "interfaces/task_props.interface";
-import AppTestUtil from "../app_test.util";
+import AppTestUtil from "../../../AppTestUtil";
 
 describe("Testing task component", () => {
   it("Testing task component showing on screen", () => {

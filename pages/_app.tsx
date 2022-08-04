@@ -3,7 +3,7 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../theme/globalStyle";
 import theme from "../theme/theme";
 import { Provider } from "react-redux";
-import store from "@/store/store";
+import store from "@/redux/store";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

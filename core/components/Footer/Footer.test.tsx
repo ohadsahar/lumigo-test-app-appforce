@@ -1,8 +1,8 @@
 import { Strings } from "@/constants/strings";
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
-import AppTestUtil from "../app_test.util";
-import Footer from "../core/components/Footer/Footer";
+import AppTestUtil from "../../../AppTestUtil";
+import Footer from "./Footer";
 
 describe("Checking Alerts component", () => {
   it("Testing Alerts component exists on DOM", () => {
