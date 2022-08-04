@@ -26,6 +26,7 @@ const AppInputField = ({
   return (
     <InputFieldWrapper>
       <InputWrapper
+        data-cy="task-input-field"
         value={value}
         placeholder={
           isEditable
@@ -38,7 +39,7 @@ const AppInputField = ({
       />
       <AddWrapper>
         {!isEditable ? (
-          <FaPlus onClick={onSubmit} />
+          <FaPlus data-cy="create-task" onClick={onSubmit} />
         ) : (
           <FaCheck onClick={submitChanges} />
         )}

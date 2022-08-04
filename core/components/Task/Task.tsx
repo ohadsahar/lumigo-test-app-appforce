@@ -25,7 +25,7 @@ const Task = ({
   };
   return (
     <CardTask data-testid="task-box">
-      <CardDetailsWrapper onClick={handleEditStatus}>
+      <CardDetailsWrapper onClick={handleEditStatus} data-cy="task-title">
         {task.taskName}
       </CardDetailsWrapper>
       <Actions

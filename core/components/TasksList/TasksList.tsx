@@ -42,7 +42,7 @@ const TasksList = ({
   setEditTaskId,
 }: TaskListProps) => {
   return (
-    <TasksWrapper data-testid="task-list-box">
+    <TasksWrapper data-testid="task-list-box" data-cy="task-list-wrapper">
       {listName === TaskStatusType.PENDING && setDoLaterOpen && (
         <TaskTitleWrapper onClick={() => setDoLaterOpen(!doLaterOpen)}>
           <DownArrowWrapper>
@@ -67,21 +67,24 @@ const TasksList = ({
           />
         </TaskTitleWrapper>
       )}
-      <TasksLayout>
+
+      <TasksLayout data-cy="task-list-items">
         {tasks?.map((task: TaskProps) => (
           <div key={task.id}>
             {task.id !== editTaskId ? (
-              <Task
-                setCurrentEdit={() => setEditTaskId(task.id)}
-                showCheck={listName !== TaskStatusType.COMPLETED ?? false}
-                showPause={[
-                  TaskStatusType.COMPLETED,
-                  TaskStatusType.CREATED,
-                ].includes(listName)}
-                task={task}
-                handleAction={(data: string) => handleAction(data, task)}
-                handleEdit={() => handleEdit(task)}
-              />
+              <div data-cy="task-item">
+                <Task
+                  setCurrentEdit={() => setEditTaskId(task.id)}
+                  showCheck={listName !== TaskStatusType.COMPLETED ?? false}
+                  showPause={[
+                    TaskStatusType.COMPLETED,
+                    TaskStatusType.CREATED,
+                  ].includes(listName)}
+                  task={task}
+                  handleAction={(data: string) => handleAction(data, task)}
+                  handleEdit={() => handleEdit(task)}
+                />
+              </div>
             ) : (
               <TaskForm handleEditClick={() => setEditTaskId("")} {...task} />
             )}

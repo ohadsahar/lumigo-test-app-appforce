@@ -24,6 +24,12 @@
       "@/services/*": ["services/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.config.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "jest.config.ts",
+    "cypress/e2e/integration/MainPage.js"
+  ],
   "exclude": ["node_modules"]
 }
