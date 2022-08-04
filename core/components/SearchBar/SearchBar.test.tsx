@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import AppTestUtil from "../app_test.util";
-import SearchBar from "../core/components/SearchBar/SearchBar";
+import AppTestUtil from "../../../AppTestUtil";
+import SearchBar from "./SearchBar";
 
 describe("Checking SearchBar component", () => {
   it("Testing SearchBar component exists on DOM", () => {

@@ -1,6 +1,6 @@
 import { Strings } from "@/constants/strings";
 import { TaskStatusType } from "@/constants/task_status";
-import AppTitle from "@/shared/typography/app_title";
+import AppTitle from "@/shared/typography/AppTitle";
 import { TaskProps } from "interfaces/task_props.interface";
 import { Dispatch, SetStateAction } from "react";
 import { FaAngleDown, FaAngleRight } from "react-icons/fa";

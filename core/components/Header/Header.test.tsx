@@ -1,7 +1,7 @@
 import { useDate } from "@/core/components/Header/hooks/useData";
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
-import Header from "../core/components/Header/Header";
+import Header from "./Header";
 
 describe("Checking Header component", () => {
   it("Testing Header component exists on DOM", () => {

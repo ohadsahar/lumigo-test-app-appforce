@@ -1,11 +1,8 @@
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
-import AppTitle from "../shared/typography/app_title";
-import ErrorText from "../shared/typography/error_text";
-import {
-  typographyErrorMock,
-  typographyAppTitle,
-} from "../__mocks__/TypographyMock";
+import AppTitle from "./AppTitle";
+import ErrorText from "./ErrorText";
+import { typographyErrorMock, typographyAppTitle } from "./TypographyMock";
 
 describe("Checking Typogrpahy components", () => {
   it("Testing Typogrpahy component exists on DOM", () => {

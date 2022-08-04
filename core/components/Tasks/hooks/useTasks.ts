@@ -6,8 +6,8 @@ import {
   finishTask,
   loadTasks,
   stopTask,
-} from "@/store/actions/tasks.actions";
-import { RootState } from "@/store/store";
+} from "@/redux/actions/tasks.actions";
+import { RootState } from "@/redux/store";
 import { TaskProps } from "interfaces/task_props.interface";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";

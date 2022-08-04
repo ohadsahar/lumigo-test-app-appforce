@@ -1,5 +1,5 @@
 import { Strings } from "@/constants/strings";
-import AppTitle from "@/shared/typography/app_title";
+import AppTitle from "@/shared/typography/AppTitle";
 import React from "react";
 import { useSearchBar } from "./hooks/useSearchBar";
 import { FormWrapper, InputFieldWrapper, InputWrapper } from "./styled";

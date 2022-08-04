@@ -1,5 +1,5 @@
-import { createTask, editTask } from "@/store/actions/tasks.actions";
-import { useAppDispatch } from "@/store/store";
+import { createTask, editTask } from "@/redux/actions/tasks.actions";
+import { useAppDispatch } from "@/redux/store";
 import { TaskFormProps } from "interfaces/task_form_props.interface";
 import { TaskProps } from "interfaces/task_props.interface";
 import { useCallback, useState } from "react";

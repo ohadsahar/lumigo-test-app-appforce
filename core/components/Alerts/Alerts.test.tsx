@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
-import AppTestUtil from "../app_test.util";
-import Alerts from "../core/components/Alerts/Alerts";
+import AppTestUtil from "../../../AppTestUtil";
+import Alerts from "./Alerts";
 
 describe("Checking Alerts component", () => {
   it("Testing Alerts component exists on DOM", () => {
