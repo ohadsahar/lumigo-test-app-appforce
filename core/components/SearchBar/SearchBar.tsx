@@ -14,6 +14,7 @@ const SearchBar = () => {
     >
       <InputFieldWrapper>
         <InputWrapper
+          data-cy="search-tasks"
           placeholder={Strings.SearchBarPlaceHolder}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             onChange(e.currentTarget.value)
