@@ -1,5 +1,5 @@
-import { Strings } from "@/constants/strings";
-import { TaskStatusType } from "@/constants/task_status";
+import { Strings } from "@/constants/Strings";
+import { TaskStatusType } from "@/constants/TaskStatus";
 import AppTitle from "@/shared/typography/AppTitle";
 import { TaskProps } from "models/task_props.interface";
 import { Dispatch, SetStateAction } from "react";

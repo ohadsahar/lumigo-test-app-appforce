@@ -1,5 +1,5 @@
-import { Strings } from "@/constants/strings";
-import { TaskStatusType } from "@/constants/task_status";
+import { Strings } from "@/constants/Strings";
+import { TaskStatusType } from "@/constants/TaskStatus";
 import {
   deleteTask,
   editTask,

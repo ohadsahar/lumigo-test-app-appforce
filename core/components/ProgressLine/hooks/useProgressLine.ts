@@ -1,4 +1,4 @@
-import { TaskStatusType } from "@/constants/task_status";
+import { TaskStatusType } from "@/constants/TaskStatus";
 import { RootState } from "@/redux/store";
 
 import { TaskProps } from "models/task_props.interface";

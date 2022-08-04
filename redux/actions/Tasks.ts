@@ -1,6 +1,6 @@
-import { LocalStorageKeys } from "@/constants/local_storage_keys";
-import { Strings } from "@/constants/strings";
-import { TaskStatusType } from "@/constants/task_status";
+import { LocalStorageKeys } from "@/constants/LocalStorageKeys";
+import { Strings } from "@/constants/Strings";
+import { TaskStatusType } from "@/constants/TaskStatus";
 import store from "@/redux/store";
 import { RESET_PROGRESS, SEARCH, SET_TASK } from "@/redux/types/Tasks";
 import { TaskProps } from "models/task_props.interface";

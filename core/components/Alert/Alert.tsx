@@ -1,4 +1,4 @@
-import { Strings } from "@/constants/strings";
+import { Strings } from "@/constants/Strings";
 import { AlertProps } from "models/alert.interface";
 import { AlertParagraph } from "./styled";
 

@@ -1,4 +1,4 @@
-import { Strings } from "@/constants/strings";
+import { Strings } from "@/constants/Strings";
 import AppTitle from "@/shared/typography/AppTitle";
 import React from "react";
 import { useSearchBar } from "./hooks/useSearchBar";
