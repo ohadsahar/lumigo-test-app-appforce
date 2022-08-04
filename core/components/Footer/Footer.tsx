@@ -1,5 +1,5 @@
-import AppTitle from "@/shared/typography/app_title";
-import { resetProgress } from "@/store/actions/tasks.actions";
+import AppTitle from "@/shared/typography/AppTitle";
+import { resetProgress } from "@/redux/actions/tasks.actions";
 import React from "react";
 import { BottomSection } from "./styled";
 import { Strings } from "@/constants/strings";

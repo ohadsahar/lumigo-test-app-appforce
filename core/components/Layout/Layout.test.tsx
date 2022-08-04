@@ -1,16 +1,16 @@
-import ProgressLine from "@/core/components/ProgressLine/progress-line";
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
-import AppTestUtil from "../app_test.util";
+import AppTestUtil from "../../../AppTestUtil";
+import HomeScreen from "./Layout";
 
 describe("Checking Layout component", () => {
   it("Testing Layout component exists on DOM", () => {
     render(
       <AppTestUtil>
-        <ProgressLine></ProgressLine>
+        <HomeScreen />
       </AppTestUtil>
     );
-    const baseComponent = screen.getByTestId("progress-line-box");
+    const baseComponent = screen.getByTestId("layout-box");
     expect(baseComponent).toBeInTheDocument();
   });
 });

@@ -14,7 +14,7 @@ module.exports = {
     "^@/components/(.*)$": "<rootDir>/components/$1",
     "^@/core/(.*)$": "<rootDir>/core/$1",
     "^@/shared/(.*)$": "<rootDir>/shared/$1",
-    "^@/store/(.*)$": "<rootDir>/store/$1",
+    "^@/redux/(.*)$": "<rootDir>/redux/$1",
     "^@/constants/(.*)$": "<rootDir>/constants/$1",
     "^@/services/(.*)$": "<rootDir>/services/$1",
     "^@/pages/(.*)$": "<rootDir>/pages/$1",

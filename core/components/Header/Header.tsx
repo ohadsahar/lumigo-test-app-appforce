@@ -1,4 +1,4 @@
-import AppTitle from "@/shared/typography/app_title";
+import AppTitle from "@/shared/typography/AppTitle";
 import { useDate } from "./hooks/useData";
 import {
   DateWrapper,

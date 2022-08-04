@@ -1,4 +1,4 @@
-import { RESET_PROGRESS, SEARCH, SET_TASK } from "@/store/types/tasks.types";
+import { RESET_PROGRESS, SEARCH, SET_TASK } from "@/redux/types/tasks.types";
 import { TaskProps } from "interfaces/task_props.interface";
 import { AnyAction } from "redux";
 

@@ -1,7 +1,7 @@
 import Alert from "../Alert/Alert";
 import { AlertsWrapper } from "./styled";
 import { useSelector } from "react-redux";
-import { RootState } from "@/store/store";
+import { RootState } from "@/redux/store";
 import { AlertProps } from "interfaces/alert.interface";
 
 const Alerts = () => {
