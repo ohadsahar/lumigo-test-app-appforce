@@ -1,5 +1,4 @@
 import { useDate } from "@/core/components/Header/hooks/useData";
-import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 import Header from "./Header";
 

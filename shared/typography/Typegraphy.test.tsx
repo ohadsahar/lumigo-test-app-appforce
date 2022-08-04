@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 import AppTitle from "./AppTitle";
 import ErrorText from "./ErrorText";

@@ -1,9 +1,8 @@
 import Alert from "@/core/components/Alert/Alert";
-import "@testing-library/jest-dom/extend-expect";
+import { expect } from "@jest/globals";
 import { render, screen } from "@testing-library/react";
-import { alert } from "./AlertMock";
-import React from "react";
 import AppTestUtil from "../../../AppTestUtil";
+import { alert } from "./AlertMock";
 
 describe("Checking Alert component", () => {
   it("Testing Alert component exists on DOM", () => {
