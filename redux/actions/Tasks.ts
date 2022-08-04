@@ -2,10 +2,10 @@ import { LocalStorageKeys } from "@/constants/local_storage_keys";
 import { Strings } from "@/constants/strings";
 import { TaskStatusType } from "@/constants/task_status";
 import store from "@/redux/store";
-import { RESET_PROGRESS, SEARCH, SET_TASK } from "@/redux/types/tasks.types";
-import { TaskProps } from "interfaces/task_props.interface";
+import { RESET_PROGRESS, SEARCH, SET_TASK } from "@/redux/types/Tasks";
+import { TaskProps } from "models/task_props.interface";
 import { LocalStorageService } from "@/services/LocalStorage.service";
-import { setAlert } from "./alert.actions";
+import { setAlert } from "./Alert";
 import { HandleIdsService } from "@/services/IdsService.service";
 
 export const loadTasks = () => (dispatch: any) => {

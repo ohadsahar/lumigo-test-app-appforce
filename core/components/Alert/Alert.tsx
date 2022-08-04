@@ -1,5 +1,5 @@
 import { Strings } from "@/constants/strings";
-import { AlertProps } from "interfaces/alert.interface";
+import { AlertProps } from "models/alert.interface";
 import { AlertParagraph } from "./styled";
 
 const Alert = ({ id, msg, alertType }: AlertProps) => {

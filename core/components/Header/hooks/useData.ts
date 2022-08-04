@@ -1,4 +1,9 @@
-import { DateProps } from "interfaces/date_props.interface";
+interface DateProps {
+  day: number;
+  month: string;
+  year: number;
+  currentDay: string;
+}
 
 export const useDate = () => {
   const today = new Date(Date.now());

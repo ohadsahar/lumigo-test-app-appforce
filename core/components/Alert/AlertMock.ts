@@ -1,4 +1,4 @@
-import { AlertProps } from "interfaces/alert.interface";
+import { AlertProps } from "models/alert.interface";
 
 export const alert: AlertProps = {
   id: "1",

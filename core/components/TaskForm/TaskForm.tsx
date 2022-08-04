@@ -1,7 +1,7 @@
 import { Strings } from "@/constants/strings";
 import AppInputField from "@/shared/InputField/InputField";
 import ErrorText from "@/shared/typography/ErrorText";
-import { TaskFormProps } from "interfaces/task_form_props.interface";
+import { TaskFormProps } from "models/task_form_props.interface";
 import { useSubmitForm } from "./hooks/useSubmitForm";
 import { FormWrapper } from "./styled";
 
