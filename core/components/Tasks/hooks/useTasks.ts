@@ -1,14 +1,14 @@
-import { Strings } from "@/constants/strings";
-import { TaskStatusType } from "@/constants/task_status";
+import { Strings } from "@/constants/Strings";
+import { TaskStatusType } from "@/constants/TaskStatus";
 import {
   deleteTask,
   editTask,
   finishTask,
   loadTasks,
   stopTask,
-} from "@/redux/actions/tasks.actions";
+} from "@/redux/actions/Tasks";
 import { RootState } from "@/redux/store";
-import { TaskProps } from "interfaces/task_props.interface";
+import { TaskProps } from "models/TaskProps.model";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 

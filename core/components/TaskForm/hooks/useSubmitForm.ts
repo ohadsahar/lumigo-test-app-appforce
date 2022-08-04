@@ -1,7 +1,7 @@
-import { createTask, editTask } from "@/redux/actions/tasks.actions";
+import { createTask, editTask } from "@/redux/actions/Tasks";
 import { useAppDispatch } from "@/redux/store";
-import { TaskFormProps } from "interfaces/task_form_props.interface";
-import { TaskProps } from "interfaces/task_props.interface";
+import { TaskFormProps } from "models/TaskFormProps.model";
+import { TaskProps } from "models/TaskProps.model";
 import { useCallback, useState } from "react";
 
 type SubmitTaskAction = {

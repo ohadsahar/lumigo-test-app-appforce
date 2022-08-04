@@ -1,6 +1,17 @@
-import { Count } from "interfaces/count.interface";
-import { ProgressLineProps } from "interfaces/progres_line_props.interface";
 import styled from "styled-components";
+
+interface Count {
+  total: number;
+  toDoLength: number;
+  completedLength: number;
+}
+
+interface ProgressLineProps {
+  tasksPercentage: string;
+  toDotasksPercentage: string;
+  completedtasksPercentage: string;
+  total?: number;
+}
 
 export const ProgressLineWrapper = styled.div<ProgressLineProps>`
   height: 2vh;

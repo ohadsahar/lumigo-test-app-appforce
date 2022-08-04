@@ -1,6 +1,6 @@
-import { AlertProps } from "interfaces/alert.interface";
+import { AlertProps } from "models/Alert.model";
 import { AnyAction } from "redux";
-import { SET_ALERT, REMOVE_ALERT } from "../types/alert.types";
+import { SET_ALERT, REMOVE_ALERT } from "../types/Alert";
 
 const initialState: AlertProps[] = [];
 

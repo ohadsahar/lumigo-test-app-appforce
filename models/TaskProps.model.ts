@@ -1,4 +1,4 @@
-import { TaskStatusType } from "@/constants/task_status";
+import { TaskStatusType } from "@/constants/TaskStatus";
 
 export interface TaskProps {
   id: string;

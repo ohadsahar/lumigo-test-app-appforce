@@ -1,4 +1,4 @@
-import { Strings } from "@/constants/strings";
+import { Strings } from "@/constants/Strings";
 import React from "react";
 
 import { FaPause, FaCheck, FaTimes } from "react-icons/fa";

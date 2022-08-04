@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { AddWrapper, InputFieldWrapper, InputWrapper } from "./styled";
 import { FaPlus, FaCheck } from "react-icons/fa";
-import { Strings } from "@/constants/strings";
+import { Strings } from "@/constants/Strings";
 
 interface InputFieldProps {
   onChange: (value: string) => void;

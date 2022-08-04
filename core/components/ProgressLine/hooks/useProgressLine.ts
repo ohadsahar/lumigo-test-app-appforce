@@ -1,6 +1,7 @@
-import { TaskStatusType } from "@/constants/task_status";
+import { TaskStatusType } from "@/constants/TaskStatus";
 import { RootState } from "@/redux/store";
-import { TaskProps } from "interfaces/task_props.interface";
+
+import { TaskProps } from "models/TaskProps.model";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 
