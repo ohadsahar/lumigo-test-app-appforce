@@ -12,8 +12,8 @@ const Header = () => {
 
   return (
     <HeaderWrapper data-testid="header-box">
-      <DateWrapper data-testid="header-date-wrapper">
-        <DayWrapper data-testid="header-day-wrapper">
+      <DateWrapper>
+        <DayWrapper>
           <AppTitle
             data-testid="header-day"
             role="header-day-role"
@@ -22,7 +22,7 @@ const Header = () => {
             fontSize="5vw"
           />
         </DayWrapper>
-        <YearAndMonthWrapper data-testid="header-month-year-wrapper">
+        <YearAndMonthWrapper>
           <AppTitle
             data-testid="header-month"
             role="header-month-role"
