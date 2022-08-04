@@ -1,5 +1,5 @@
 import Actions from "@/shared/Actions/Actions";
-import { TaskProps } from "models/task_props.interface";
+import { TaskProps } from "models/TaskProps.model";
 import React from "react";
 import { CardTask, CardDetailsWrapper } from "./styled";
 

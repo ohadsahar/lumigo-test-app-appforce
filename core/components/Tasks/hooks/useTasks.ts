@@ -8,7 +8,7 @@ import {
   stopTask,
 } from "@/redux/actions/Tasks";
 import { RootState } from "@/redux/store";
-import { TaskProps } from "models/task_props.interface";
+import { TaskProps } from "models/TaskProps.model";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
