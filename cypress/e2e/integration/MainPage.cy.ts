@@ -5,14 +5,14 @@ describe("Renders Main page of app", () => {
   const lengthOfItems = 5;
   const tasksRepeatableClass =
     '[data-cy="task-list-wrapper"] > [data-cy="task-list-items"]';
+  const dateRepeatableClass =
+    '[data-cy="cy-header"]> [data-cy="cy-header-date-wrapper"]';
 
   it("Renders correctly", () => {
     cy.visit("/");
   });
 
   it("Testing date", () => {
-    const dateRepeatableClass =
-      '[data-cy="cy-header"]> [data-cy="cy-header-date-wrapper"]';
     const today = new Date(Date.now());
     const convertedDate: DateProps = {
       day: today.getDate(),
