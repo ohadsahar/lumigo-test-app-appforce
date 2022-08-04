@@ -49,20 +49,20 @@ describe("Renders Main page of app", () => {
         }
         cy.wait(time);
       });
-    // cy.get(
-    //   '[data-cy="created-tasks-list"]> [data-cy="task-list-wrapper"] > [data-cy="task-list-items"]'
-    // )
-    //   .children()
-    //   .should("have.length", 0);
-    // cy.get(
-    //   '[data-cy="do-later-tasks-list"]> [data-cy="task-list-wrapper"] > [data-cy="task-list-items"]'
-    // )
-    //   .children()
-    //   .should("have.length", 2);
-    // cy.get(
-    //   '[data-cy="finished-tasks-list"]> [data-cy="task-list-wrapper"] > [data-cy="task-list-items"]'
-    // )
-    //   .children()
-    //   .should("have.length", 3);
+    cy.get(
+      '[data-cy="created-tasks-list"]> [data-cy="task-list-wrapper"] > [data-cy="task-list-items"]'
+    )
+      .children()
+      .should("have.length", 0);
+    cy.get(
+      '[data-cy="do-later-tasks-list"]> [data-cy="task-list-wrapper"] > [data-cy="task-list-items"]'
+    )
+      .children()
+      .should("have.length", 2);
+    cy.get(
+      '[data-cy="finished-tasks-list"]> [data-cy="task-list-wrapper"] > [data-cy="task-list-items"]'
+    )
+      .children()
+      .should("have.length", 3);
   });
 });
