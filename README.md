@@ -17,8 +17,16 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Things I would improve
+## App example
 
-1.Add the DND option
+![Screenshot](public/static/images/app_example.png)
+![Screenshot](public/static/images/search_1.png)
+![Screenshot](public/static/images/search_2.png)
+
+## Cypress Test
 
 ![Screenshot](public/static/images/cypress_test_images.png)
+
+## Jest Test
+
+![Screenshot](public/static/images/jest_tests.png.png)
