@@ -15,5 +15,4 @@ function MyApp ({ Component, pageProps }: AppProps) {
     </Provider>
   );
 }
-// hello
 export default MyApp;
