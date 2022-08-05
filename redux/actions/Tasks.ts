@@ -1,12 +1,12 @@
-import { LocalStorageKeys } from "@/constants/LocalStorageKeys";
-import { Strings } from "@/constants/Strings";
-import { TaskStatusType } from "@/constants/TaskStatus";
-import store from "@/redux/store";
-import { RESET_PROGRESS, SEARCH, SET_TASK } from "@/redux/types/Tasks";
-import { TaskProps } from "models/TaskProps.model";
-import { LocalStorageService } from "@/services/LocalStorage.service";
-import { setAlert } from "./Alert";
-import { HandleIdsService } from "@/services/IdsService.service";
+import { LocalStorageKeys } from '@/constants/LocalStorageKeys';
+import { Strings } from '@/constants/Strings';
+import { TaskStatusType } from '@/constants/TaskStatus';
+import store from '@/redux/store';
+import { RESET_PROGRESS, SEARCH, SET_TASK } from '@/redux/types/Tasks';
+import { TaskProps } from 'models/TaskProps.model';
+import { LocalStorageService } from '@/services/LocalStorage.service';
+import { setAlert } from './Alert';
+import { HandleIdsService } from '@/services/IdsService.service';
 
 export const loadTasks = () => (dispatch: any) => {
   dispatch(resetDataFromLocalStorage(SET_TASK));
@@ -140,7 +140,7 @@ export const resetProgress = () => (dispatch: any) => {
       tasks: [],
       loading: true,
       searchable: false,
-      lastSearchedWord: "",
+      lastSearchedWord: '',
     },
   });
   dispatch(setAlert(Strings.AlertSuccessResetTasks, Strings.Success));

@@ -1,8 +1,8 @@
-import { Strings } from "@/constants/Strings";
-import AppTitle from "@/shared/typography/AppTitle";
-import React from "react";
-import { useSearchBar } from "./hooks/useSearchBar";
-import { FormWrapper, InputFieldWrapper, InputWrapper } from "./styled";
+import { Strings } from '@/constants/Strings';
+import AppTitle from '@/shared/typography/AppTitle';
+import React from 'react';
+import { useSearchBar } from './hooks/useSearchBar';
+import { FormWrapper, InputFieldWrapper, InputWrapper } from './styled';
 
 const SearchBar = () => {
   const { countSearchedTasks, onChange } = useSearchBar();
@@ -22,8 +22,8 @@ const SearchBar = () => {
       </InputFieldWrapper>
       <AppTitle
         title={`Total ${countSearchedTasks} results`}
-        fontWeight={"bold"}
-        fontSize={"1vw"}
+        fontWeight={'bold'}
+        fontSize={'1vw'}
       />
     </FormWrapper>
   );

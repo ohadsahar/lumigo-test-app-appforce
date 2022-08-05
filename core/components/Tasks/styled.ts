@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface TasksLayoutProps {
   isOpen: boolean;
@@ -24,6 +24,6 @@ export const DownArrowWrapper = styled.div`
 
 export const TasksLayout = styled.div<any>`
   transform: ${(props: TasksLayoutProps) =>
-    props.isOpen ? "translateX(120%)" : "translateX(0%)"};
+    props.isOpen ? 'translateX(120%)' : 'translateX(0%)'};
   transition: 1s ease-in;
 `;

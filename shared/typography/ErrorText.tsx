@@ -1,5 +1,5 @@
-import React from "react";
-import { ErrorTextWrapper } from "./styled";
+import React from 'react';
+import { ErrorTextWrapper } from './styled';
 
 interface ErrorProps {
   text: string;

@@ -1,9 +1,9 @@
-import { Strings } from "@/constants/Strings";
-import AppInputField from "@/shared/InputField/InputField";
-import ErrorText from "@/shared/typography/ErrorText";
-import { TaskFormProps } from "models/TaskFormProps.model";
-import { useSubmitForm } from "./hooks/useSubmitForm";
-import { FormWrapper } from "./styled";
+import { Strings } from '@/constants/Strings';
+import AppInputField from '@/shared/InputField/InputField';
+import ErrorText from '@/shared/typography/ErrorText';
+import { TaskFormProps } from 'models/TaskFormProps.model';
+import { useSubmitForm } from './hooks/useSubmitForm';
+import { FormWrapper } from './styled';
 
 const TaskForm = ({ id, taskName, status, handleEditClick }: TaskFormProps) => {
   const { onSubmit, taskValue, onChangeTaskname, isError, handlePressedEnter } =

@@ -1,16 +1,16 @@
-import "@testing-library/jest-dom/extend-expect";
-import { render, screen } from "@testing-library/react";
-import AppTestUtil from "../../../AppTestUtil";
-import Alerts from "./Alerts";
+import '@testing-library/jest-dom/extend-expect';
+import { render, screen } from '@testing-library/react';
+import AppTestUtil from '../../../AppTestUtil';
+import Alerts from './Alerts';
 
-describe("Checking Alerts component", () => {
-  it("Testing Alerts component exists on DOM", () => {
+describe('Checking Alerts component', () => {
+  it('Testing Alerts component exists on DOM', () => {
     render(
       <AppTestUtil>
         <Alerts />
       </AppTestUtil>
     );
-    const baseComponent = screen.getByTestId("alerts-box");
+    const baseComponent = screen.getByTestId('alerts-box');
     expect(baseComponent).toBeInTheDocument();
   });
 });

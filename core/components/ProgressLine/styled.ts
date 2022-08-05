@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface Count {
   total: number;
@@ -27,24 +27,24 @@ export const GreenWrapper = styled.div<Count>`
   background-color: #67c967;
   border-radius: ${(props: Count) =>
     props.total === 0 || props.toDoLength === 0
-      ? "8px"
+      ? '8px'
       : props.toDoLength >= 1
-      ? "8px 0px 0px 8px;"
-      : "0px 8px 8px 0px"};
+      ? '8px 0px 0px 8px;'
+      : '0px 8px 8px 0px'};
 `;
 
 export const YellowWrapper = styled.div<Count>`
   background-color: #f9f957;
   border-radius: ${(props: Count) =>
     props.total === 0 || props.completedLength === 0
-      ? "8px"
-      : "0px 8px 8px 0px"};
+      ? '8px'
+      : '0px 8px 8px 0px'};
 `;
 
 export const GreyWrapper = styled.div<Count>`
   background-color: #2c2b2b;
   border-radius: ${(props: Count) =>
     props.total === 0 || (props.completedLength === 0 && props.toDoLength === 0)
-      ? "8px"
-      : "0px 8px 8px 0px"};
+      ? '8px'
+      : '0px 8px 8px 0px'};
 `;

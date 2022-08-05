@@ -1,17 +1,17 @@
-import { Strings } from "@/constants/Strings";
-import { TaskStatusType } from "@/constants/TaskStatus";
-import AppTitle from "@/shared/typography/AppTitle";
-import { TaskProps } from "models/TaskProps.model";
-import { Dispatch, SetStateAction } from "react";
-import { FaAngleDown, FaAngleRight } from "react-icons/fa";
-import Task from "../Task/Task";
-import TaskForm from "../TaskForm/TaskForm";
+import { Strings } from '@/constants/Strings';
+import { TaskStatusType } from '@/constants/TaskStatus';
+import AppTitle from '@/shared/typography/AppTitle';
+import { TaskProps } from 'models/TaskProps.model';
+import { Dispatch, SetStateAction } from 'react';
+import { FaAngleDown, FaAngleRight } from 'react-icons/fa';
+import Task from '../Task/Task';
+import TaskForm from '../TaskForm/TaskForm';
 import {
   DownArrowWrapper,
   TasksLayout,
   TasksWrapper,
   TaskTitleWrapper,
-} from "../Tasks/styled";
+} from '../Tasks/styled';
 
 interface TaskListProps {
   tasks: TaskProps[];
@@ -83,7 +83,7 @@ const TasksList = ({
                 handleEdit={() => handleEdit(task)}
               />
             ) : (
-              <TaskForm handleEditClick={() => setEditTaskId("")} {...task} />
+              <TaskForm handleEditClick={() => setEditTaskId('')} {...task} />
             )}
           </div>
         ))}

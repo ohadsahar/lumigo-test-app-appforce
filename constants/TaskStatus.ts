@@ -1,5 +1,5 @@
 export const enum TaskStatusType {
-  CREATED = "CREATED",
-  PENDING = "PENDING",
-  COMPLETED = "COMPLETED",
+  CREATED = 'CREATED',
+  PENDING = 'PENDING',
+  COMPLETED = 'COMPLETED',
 }

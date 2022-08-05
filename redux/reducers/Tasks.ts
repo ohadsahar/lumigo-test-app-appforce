@@ -1,6 +1,6 @@
-import { RESET_PROGRESS, SEARCH, SET_TASK } from "@/redux/types/Tasks";
-import { TaskProps } from "models/TaskProps.model";
-import { AnyAction } from "redux";
+import { RESET_PROGRESS, SEARCH, SET_TASK } from '@/redux/types/Tasks';
+import { TaskProps } from 'models/TaskProps.model';
+import { AnyAction } from 'redux';
 
 interface StoreInitialStateProps {
   tasks: TaskProps[];
@@ -12,7 +12,7 @@ const initialState: StoreInitialStateProps = {
   tasks: [],
   loading: true,
   searchable: false,
-  lastSearchedWord: "",
+  lastSearchedWord: '',
 };
 
 export const tasksReducer = (state = initialState, action: AnyAction) => {
@@ -41,7 +41,7 @@ export const tasksReducer = (state = initialState, action: AnyAction) => {
         tasks: [],
         loading: false,
         searchable: false,
-        lastSearchedWord: "",
+        lastSearchedWord: '',
       };
     default:
       return state;

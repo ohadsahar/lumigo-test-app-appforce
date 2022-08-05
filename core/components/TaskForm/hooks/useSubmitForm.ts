@@ -1,8 +1,8 @@
-import { createTask, editTask } from "@/redux/actions/Tasks";
-import { useAppDispatch } from "@/redux/store";
-import { TaskFormProps } from "models/TaskFormProps.model";
-import { TaskProps } from "models/TaskProps.model";
-import { useCallback, useState } from "react";
+import { createTask, editTask } from '@/redux/actions/Tasks';
+import { useAppDispatch } from '@/redux/store';
+import { TaskFormProps } from 'models/TaskFormProps.model';
+import { TaskProps } from 'models/TaskProps.model';
+import { useCallback, useState } from 'react';
 
 type SubmitTaskAction = {
   event: React.SyntheticEvent;
@@ -12,7 +12,7 @@ type SubmitTaskAction = {
 export const useSubmitForm = ({ id, taskName, status }: TaskFormProps) => {
   const dispatch = useAppDispatch();
   const [isError, setError] = useState<boolean>(false);
-  const [taskValue, setTaskValue] = useState<string>(taskName ?? "");
+  const [taskValue, setTaskValue] = useState<string>(taskName ?? '');
 
   const onChangeTaskname = useCallback(
     (data: string) => {
@@ -37,14 +37,14 @@ export const useSubmitForm = ({ id, taskName, status }: TaskFormProps) => {
           setError(false);
         }
         dispatch(createTask(taskValue) as any);
-        setTaskValue("");
+        setTaskValue('');
       }
     }
   };
 
   const handleEditTask = () => {
     const task: TaskProps = {
-      id: id ?? "",
+      id: id ?? '',
       taskName: taskValue.trim(),
       status,
     };
