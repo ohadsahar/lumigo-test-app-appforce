@@ -4,7 +4,8 @@
 npm run prettier-format 
 npm run prettier-lint 
 npm run test
-git add -A .
 npx lint-staged
+git add -A .
+
 
 
