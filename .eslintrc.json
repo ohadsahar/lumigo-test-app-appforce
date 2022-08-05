@@ -1,9 +1,10 @@
 {
   "env": {
+    "browser": true,
     "es2021": true,
-    "node": true
+    "jest": true
   },
-  "extends": ["standard"],
+  "extends": ["standard", "plugin:cypress/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -11,7 +12,6 @@
   },
   "plugins": ["@typescript-eslint"],
   "rules": {
-    "singleQuote": true,
     "semi": [2, "always"]
   }
 }
