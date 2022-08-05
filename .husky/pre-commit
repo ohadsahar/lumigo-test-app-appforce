@@ -3,8 +3,8 @@
 
 npm run prettier-format 
 npm run prettier-lint 
-npm run test
 npx lint-staged
+npm run test
 git add -A .
 
 
