@@ -20,3 +20,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Things I would improve
 
 1.Add the DND option
+
+![Screenshot](public/static/images/cypress_test_images.png)
