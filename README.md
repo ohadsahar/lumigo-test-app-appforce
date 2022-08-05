@@ -29,4 +29,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Jest Test
 
-![Screenshot](public/static/images/jest_tests.png.png)
+![Screenshot](public/static/images/jest_tests.png)
