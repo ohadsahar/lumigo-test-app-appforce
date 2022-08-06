@@ -3,7 +3,7 @@
 
 npm run prettier-format 
 npm run prettier-lint 
-npx eslint . --ext .js,.ts,.tsx
+npm run eslint-check
 npx lint-staged
 npm run test
 git add -A .
