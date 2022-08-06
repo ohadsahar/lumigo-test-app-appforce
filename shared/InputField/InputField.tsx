@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import { AddWrapper, InputFieldWrapper, InputWrapper } from './styled';
 import { FaPlus, FaCheck } from 'react-icons/fa';
 import { Strings } from '@/constants/Strings';

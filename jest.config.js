@@ -1,6 +1,3 @@
-const { pathsToModuleNameMapper } = require('ts-jest');
-const { compilerOptions } = require('./tsconfig.json');
-
 module.exports = {
   collectCoverageFrom: [
     '**/*.{js,jsx,ts,tsx}',
@@ -10,7 +7,8 @@ module.exports = {
   moduleNameMapper: {
     '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
     '^.+\\.(css|sass|scss)$': '<rootDir>/__mocks__/styleMock.js',
-    '^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$': `<rootDir>/__mocks__/fileMock.js`,
+    '^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$':
+      '<rootDir>/__mocks__/fileMock.js',
     '^@/components/(.*)$': '<rootDir>/components/$1',
     '^@/core/(.*)$': '<rootDir>/core/$1',
     '^@/shared/(.*)$': '<rootDir>/shared/$1',
@@ -39,7 +37,4 @@ module.exports = {
       isolatedModules: true,
     },
   },
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-    prefix: '<rootDir>/',
-  }),
 };

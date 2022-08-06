@@ -6,7 +6,7 @@ const Alert = ({ id, msg, alertType }: AlertProps) => {
   return (
     <AlertParagraph
       data-testid="alert-box"
-      danger={alertType === Strings.Error ? true : false}
+      danger={alertType === Strings.Error}
       key={id}
     >
       {msg}

@@ -4,6 +4,7 @@ import ErrorText from '@/shared/typography/ErrorText';
 import { TaskFormProps } from 'models/TaskFormProps.model';
 import { useSubmitForm } from './hooks/useSubmitForm';
 import { FormWrapper } from './styled';
+import React from 'react';
 
 const TaskForm = ({ id, taskName, status, handleEditClick }: TaskFormProps) => {
   const { onSubmit, taskValue, onChangeTaskname, isError, handlePressedEnter } =

@@ -12,7 +12,6 @@ describe('Testing task component', () => {
       taskName: 'Clean',
       status: TaskStatusType.CREATED,
     };
-    const listName = TaskStatusType.CREATED;
 
     render(
       <AppTestUtil>

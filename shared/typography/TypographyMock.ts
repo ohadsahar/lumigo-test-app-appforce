@@ -1,5 +1,3 @@
-import { AlertProps } from 'models/Alert.model';
-
 interface ErrorProps {
   text: string;
 }
