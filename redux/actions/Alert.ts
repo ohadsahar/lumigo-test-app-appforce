@@ -1,5 +1,5 @@
-import { HandleIdsService } from "@/services/IdsService.service";
-import { REMOVE_ALERT, SET_ALERT } from "../types/Alert";
+import { HandleIdsService } from '@/services/IdsService.service';
+import { REMOVE_ALERT, SET_ALERT } from '../types/Alert';
 
 export const setAlert = (msg: string, alertType: string) => (dispatch: any) => {
   const id = HandleIdsService.createUniqueId();

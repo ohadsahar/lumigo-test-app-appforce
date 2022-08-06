@@ -1,22 +1,22 @@
-import { Strings } from "@/constants/Strings";
-import { TaskStatusType } from "@/constants/TaskStatus";
+import { Strings } from '@/constants/Strings';
+import { TaskStatusType } from '@/constants/TaskStatus';
 import {
   deleteTask,
   editTask,
   finishTask,
   loadTasks,
   stopTask,
-} from "@/redux/actions/Tasks";
-import { RootState } from "@/redux/store";
-import { TaskProps } from "models/TaskProps.model";
-import { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+} from '@/redux/actions/Tasks';
+import { RootState } from '@/redux/store';
+import { TaskProps } from 'models/TaskProps.model';
+import { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const useTasks = () => {
   const { tasks } = useSelector((state: RootState) => state.taskState);
   const [doLaterOpen, setDoLaterOpen] = useState<boolean>(false);
   const [completedOpen, setCompletedOpen] = useState<boolean>(false);
-  const [editTaskId, setEditTaskId] = useState<string>("");
+  const [editTaskId, setEditTaskId] = useState<string>('');
   const dispatch = useDispatch();
 
   useEffect(() => {

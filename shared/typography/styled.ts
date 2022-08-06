@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { AppTitleProps } from "./AppTitle";
+import styled from 'styled-components';
+import { AppTitleProps } from './AppTitle';
 
 export const AppTitleWrapper = styled.p<AppTitleProps>`
   font-size: ${(props: AppTitleProps) => props.fontSize};

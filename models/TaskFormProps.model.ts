@@ -1,4 +1,4 @@
-import { TaskStatusType } from "@/constants/TaskStatus";
+import { TaskStatusType } from '@/constants/TaskStatus';
 
 export interface TaskFormProps {
   id?: string;

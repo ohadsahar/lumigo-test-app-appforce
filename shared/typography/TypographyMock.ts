@@ -1,5 +1,3 @@
-import { AlertProps } from "models/Alert.model";
-
 interface ErrorProps {
   text: string;
 }
@@ -9,9 +7,9 @@ interface TitleProps {
 }
 
 export const typographyErrorMock: ErrorProps = {
-  text: "Error should be shown",
+  text: 'Error should be shown',
 };
 
 export const typographyAppTitle: TitleProps = {
-  title: "Task app - appsforce",
+  title: 'Task app - appsforce',
 };

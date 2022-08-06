@@ -1,7 +1,7 @@
-import { search } from "@/redux/actions/Tasks";
-import { RootState } from "@/redux/store";
-import { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { search } from '@/redux/actions/Tasks';
+import { RootState } from '@/redux/store';
+import { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const useSearchBar = () => {
   const dispatch = useDispatch();

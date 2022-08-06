@@ -1,5 +1,5 @@
-import HomeScreen from "@/core/components/Layout/Layout";
-import type { NextPage } from "next";
+import HomeScreen from '@/core/components/Layout/Layout';
+import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
   return <HomeScreen />;

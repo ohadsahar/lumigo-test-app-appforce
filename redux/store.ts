@@ -1,9 +1,9 @@
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { applyMiddleware, combineReducers, createStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import thunk from "redux-thunk";
-import { alertReducer } from "./reducers/Alert";
-import { tasksReducer } from "./reducers/Tasks";
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
+import { alertReducer } from './reducers/Alert';
+import { tasksReducer } from './reducers/Tasks';
 
 const initialState = {};
 

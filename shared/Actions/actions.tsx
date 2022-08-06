@@ -1,8 +1,8 @@
-import { Strings } from "@/constants/Strings";
-import React from "react";
+import { Strings } from '@/constants/Strings';
+import React from 'react';
 
-import { FaPause, FaCheck, FaTimes } from "react-icons/fa";
-import { ActionsWrapper } from "./styled";
+import { FaPause, FaCheck, FaTimes } from 'react-icons/fa';
+import { ActionsWrapper } from './styled';
 
 interface ActionsProps {
   handleAction: (action: string) => void;

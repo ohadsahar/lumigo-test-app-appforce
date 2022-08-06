@@ -1,3 +1,3 @@
 export const enum LocalStorageKeys {
-  Tasks = "tasks",
+  Tasks = 'tasks',
 }

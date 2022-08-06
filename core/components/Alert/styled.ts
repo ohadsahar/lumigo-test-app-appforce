@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 type AlertParagraphProps = {
   danger: boolean;
@@ -6,7 +6,7 @@ type AlertParagraphProps = {
 
 export const AlertParagraph = styled.p<AlertParagraphProps>`
   background-color: ${(props: AlertParagraphProps) =>
-    props.danger ? "red" : "#67c967"};
+    props.danger ? 'red' : '#67c967'};
   color: white;
   margin: 0.5rem 0.5rem;
   border-radius: 0.4rem;
