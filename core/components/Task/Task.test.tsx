@@ -20,7 +20,7 @@ describe('Testing task component', () => {
           setCurrentEdit={() => {}}
           showCheck
           showPause
-          handleAction={(data: string) => {}}
+          handleAction={() => {}}
           handleEdit={() => {}}
         />
       </AppTestUtil>

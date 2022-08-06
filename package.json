@@ -10,6 +10,7 @@
     "prepare": "husky install",
     "prettier-lint": "prettier --check .",
     "prettier-format": "prettier --write .",
+    "eslint-check": "npx eslint . --ext .js,.ts,.tsx",
     "eslint-fix": "npx eslint . --fix",
     "test": "NODE_OPTIONS='--experimental-vm-modules --experimental-specifier-resolution=node' jest"
   },

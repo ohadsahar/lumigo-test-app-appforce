@@ -18,7 +18,7 @@ describe('Checking Typogrpahy components', () => {
     expect(errorTextComponent).toBeInTheDocument();
     const text = appTitleComponent.textContent;
     expect(text).toEqual(typographyAppTitle.title);
-    const error_text = errorTextComponent.textContent;
-    expect(error_text).toEqual(typographyErrorMock.text);
+    const errorText = errorTextComponent.textContent;
+    expect(errorText).toEqual(typographyErrorMock.text);
   });
 });
