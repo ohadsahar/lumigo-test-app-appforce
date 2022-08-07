@@ -12,7 +12,9 @@
     "prettier-format": "prettier --write .",
     "eslint-check": "npx eslint . --ext .js,.ts,.tsx",
     "eslint-fix": "npx eslint . --fix",
-    "test": "NODE_OPTIONS='--experimental-vm-modules --experimental-specifier-resolution=node' jest"
+    "cy:run": "cypress run",
+    "test": "NODE_OPTIONS='--experimental-vm-modules --experimental-specifier-resolution=node' jest",
+    "tests": "npm run test && npm run cy:run"
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
