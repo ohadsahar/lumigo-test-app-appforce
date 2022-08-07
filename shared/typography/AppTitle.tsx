@@ -1,5 +1,5 @@
-import React from "react";
-import { AppTitleWrapper } from "./styled";
+import React from 'react';
+import { AppTitleWrapper } from './styled';
 
 export interface AppTitleProps {
   title?: string;
@@ -7,15 +7,15 @@ export interface AppTitleProps {
   color?: string;
   fontSize?: string;
   role?: string;
-  "data-testid"?: string;
+  'data-testid'?: string;
 }
 const AppTitle = ({
   title,
-  fontWeight = "100",
-  color = "white",
-  fontSize = "3vw",
-  role = "app-title-role",
-  "data-testid": dataTestid = "app-title-box",
+  fontWeight = '100',
+  color = 'white',
+  fontSize = '3vw',
+  role = 'app-title-role',
+  'data-testid': dataTestid = 'app-title-box',
 }: AppTitleProps) => {
   return (
     <AppTitleWrapper

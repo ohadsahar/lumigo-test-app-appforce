@@ -1,6 +1,6 @@
-import { TaskStatusType } from "@/constants/TaskStatus";
-import TasksList from "@/core/components/TasksList/TasksList";
-import { useTasks } from "./hooks/useTasks";
+import { TaskStatusType } from '@/constants/TaskStatus';
+import TasksList from '@/core/components/TasksList/TasksList';
+import { useTasks } from './hooks/useTasks';
 const Tasks = () => {
   const {
     createdTasks,

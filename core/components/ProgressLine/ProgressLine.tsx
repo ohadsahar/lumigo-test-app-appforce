@@ -1,10 +1,10 @@
-import { useProgressLine } from "./hooks/useProgressLine";
+import { useProgressLine } from './hooks/useProgressLine';
 import {
   GreenWrapper,
   GreyWrapper,
   ProgressLineWrapper,
   YellowWrapper,
-} from "./styled";
+} from './styled';
 
 const ProgressLine = () => {
   const {
@@ -19,13 +19,13 @@ const ProgressLine = () => {
     <ProgressLineWrapper
       data-testid="progress-line-box"
       tasksPercentage={
-        totalTasks > 0 ? calculatePercentage(tasksPercentage) : "100"
+        totalTasks > 0 ? calculatePercentage(tasksPercentage) : '100'
       }
       toDotasksPercentage={
-        totalTasks > 0 ? calculatePercentage(toDoTasksPercentage) : "0"
+        totalTasks > 0 ? calculatePercentage(toDoTasksPercentage) : '0'
       }
       completedtasksPercentage={
-        totalTasks > 0 ? calculatePercentage(completedTasksPercentage) : "0"
+        totalTasks > 0 ? calculatePercentage(completedTasksPercentage) : '0'
       }
     >
       <GreenWrapper

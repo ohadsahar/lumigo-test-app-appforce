@@ -1,7 +1,7 @@
-import Actions from "@/shared/Actions/Actions";
-import { TaskProps } from "models/TaskProps.model";
-import React from "react";
-import { CardTask, CardDetailsWrapper } from "./styled";
+import Actions from '@/shared/Actions/Actions';
+import { TaskProps } from 'models/TaskProps.model';
+import React from 'react';
+import { CardTask, CardDetailsWrapper } from './styled';
 
 interface TaskViewProps {
   task: TaskProps;

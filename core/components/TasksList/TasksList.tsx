@@ -1,17 +1,17 @@
-import { Strings } from "@/constants/Strings";
-import { TaskStatusType } from "@/constants/TaskStatus";
-import AppTitle from "@/shared/typography/AppTitle";
-import { TaskProps } from "models/TaskProps.model";
-import { Dispatch, SetStateAction } from "react";
-import { FaAngleDown, FaAngleRight } from "react-icons/fa";
-import Task from "../Task/Task";
-import TaskForm from "../TaskForm/TaskForm";
+import { Strings } from '@/constants/Strings';
+import { TaskStatusType } from '@/constants/TaskStatus';
+import AppTitle from '@/shared/typography/AppTitle';
+import { TaskProps } from 'models/TaskProps.model';
+import { Dispatch, SetStateAction } from 'react';
+import { FaAngleDown, FaAngleRight } from 'react-icons/fa';
+import Task from '../Task/Task';
+import TaskForm from '../TaskForm/TaskForm';
 import {
   DownArrowWrapper,
   TasksLayout,
   TasksWrapper,
   TaskTitleWrapper,
-} from "../Tasks/styled";
+} from '../Tasks/styled';
 
 interface TaskListProps {
   tasks: TaskProps[];
@@ -21,7 +21,7 @@ interface TaskListProps {
   taskPendingCount?: number;
   editTaskId: string;
   listName: TaskStatusType;
-  "data-testid"?: string;
+  'data-testid'?: string;
   handleAction: (action: string, task: TaskProps) => void;
   handleEdit: (task: TaskProps) => void;
   setDoLaterOpen?: Dispatch<SetStateAction<boolean>>;
@@ -41,7 +41,7 @@ const TasksList = ({
   listName,
   editTaskId,
   setEditTaskId,
-  "data-testid": dataTestId = "task-list-box",
+  'data-testid': dataTestId = 'task-list-box',
 }: TaskListProps) => {
   return (
     <TasksWrapper data-testid="task-list-box">
@@ -88,7 +88,7 @@ const TasksList = ({
                 />
               </div>
             ) : (
-              <TaskForm handleEditClick={() => setEditTaskId("")} {...task} />
+              <TaskForm handleEditClick={() => setEditTaskId('')} {...task} />
             )}
           </div>
         ))}

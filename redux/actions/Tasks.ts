@@ -1,12 +1,12 @@
-import { LocalStorageKeys } from "@/constants/LocalStorageKeys";
-import { Strings } from "@/constants/Strings";
-import { TaskStatusType } from "@/constants/TaskStatus";
-import store from "@/redux/store";
-import { RESET_PROGRESS, SEARCH, SET_TASK } from "@/redux/types/Tasks";
-import { TaskProps } from "models/TaskProps.model";
-import { LocalStorageService } from "@/services/LocalStorage.service";
-import { setAlert } from "./Alert";
-import { HandleIdsService } from "@/services/IdsService.service";
+import { LocalStorageKeys } from '@/constants/LocalStorageKeys';
+import { Strings } from '@/constants/Strings';
+import { TaskStatusType } from '@/constants/TaskStatus';
+import store from '@/redux/store';
+import { RESET_PROGRESS, SEARCH, SET_TASK } from '@/redux/types/Tasks';
+import { TaskProps } from 'models/TaskProps.model';
+import { LocalStorageService } from '@/services/LocalStorage.service';
+import { setAlert } from './Alert';
+import { HandleIdsService } from '@/services/IdsService.service';
 
 export const loadTasks = () => (dispatch: any) => {
   dispatch(resetDataFromLocalStorage(SET_TASK));
@@ -52,10 +52,10 @@ export const editTask = (task: TaskProps) => (dispatch: any) => {
 export const stopTask = (task: TaskProps) => (dispatch: any) => {
   const tasks = store.getState().taskState.tasks;
   const { currentTaskDB } = handleDB();
-  let taskIndex = tasks.findIndex(
+  const taskIndex = tasks.findIndex(
     (currentTask: TaskProps) => currentTask.id === task.id
   );
-  let dbIndex = currentTaskDB.findIndex(
+  const dbIndex = currentTaskDB.findIndex(
     (currentTask: TaskProps) => currentTask.id === task.id
   );
   if (dbIndex >= 0) {
@@ -74,10 +74,10 @@ export const stopTask = (task: TaskProps) => (dispatch: any) => {
 export const finishTask = (task: TaskProps) => (dispatch: any) => {
   const { currentTaskDB } = handleDB();
   const tasks = store.getState().taskState.tasks;
-  let taskIndex = tasks.findIndex(
+  const taskIndex = tasks.findIndex(
     (currentTask: TaskProps) => currentTask.id === task.id
   );
-  let dbIndex = currentTaskDB.findIndex(
+  const dbIndex = currentTaskDB.findIndex(
     (currentTask: TaskProps) => currentTask.id === task.id
   );
   if (dbIndex >= 0) {
@@ -96,7 +96,7 @@ export const finishTask = (task: TaskProps) => (dispatch: any) => {
 export const deleteTask = (task: TaskProps) => (dispatch: any) => {
   const { currentTaskDB } = handleDB();
   const isSearching = store.getState().taskState.searchable;
-  let taskIndex = currentTaskDB.findIndex(
+  const taskIndex = currentTaskDB.findIndex(
     (currentTask: TaskProps) => currentTask.id === task.id
   );
   if (taskIndex >= 0) {
@@ -124,7 +124,7 @@ export const search = (searchValue: string) => (dispatch: any) => {
       payload: {
         tasks: currentTasks,
         lastSearchedWord: searchValue,
-        searchable: searchValue.length > 0 ? true : false,
+        searchable: searchValue.length > 0,
       },
     });
   } else {
@@ -140,7 +140,7 @@ export const resetProgress = () => (dispatch: any) => {
       tasks: [],
       loading: true,
       searchable: false,
-      lastSearchedWord: "",
+      lastSearchedWord: '',
     },
   });
   dispatch(setAlert(Strings.AlertSuccessResetTasks, Strings.Success));
@@ -148,7 +148,7 @@ export const resetProgress = () => (dispatch: any) => {
 
 const updateLists = (type: string, tasks: TaskProps[]) => (dispatch: any) => {
   dispatch({
-    type: type,
+    type,
     payload: tasks,
   });
 };
@@ -163,18 +163,18 @@ const handleDB = () => {
 };
 
 const resetDataFromLocalStorage = (type: string) => (dispatch: any) => {
-  let tasks = LocalStorageService.getNameByKey(LocalStorageKeys.Tasks);
+  const tasks = LocalStorageService.getNameByKey(LocalStorageKeys.Tasks);
   if (tasks) {
     if (type === SEARCH) {
       dispatch({
         type: SEARCH,
         payload: {
-          tasks: tasks,
+          tasks,
         },
       });
     } else {
       dispatch({
-        type: type,
+        type,
         payload: tasks ?? [],
       });
     }

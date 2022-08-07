@@ -1,9 +1,8 @@
-import { TaskStatusType } from "@/constants/TaskStatus";
-import { RootState } from "@/redux/store";
+import { TaskStatusType } from '@/constants/TaskStatus';
+import { RootState } from '@/redux/store';
 
-import { TaskProps } from "models/TaskProps.model";
-import { useMemo } from "react";
-import { useSelector } from "react-redux";
+import { TaskProps } from 'models/TaskProps.model';
+import { useSelector } from 'react-redux';
 
 export const useProgressLine = () => {
   const { tasks } = useSelector((state: RootState) => state.taskState);

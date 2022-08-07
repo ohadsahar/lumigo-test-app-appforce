@@ -1,11 +1,11 @@
-import AppTitle from "@/shared/typography/AppTitle";
-import { useDate } from "./hooks/useData";
+import AppTitle from '@/shared/typography/AppTitle';
+import { useDate } from './hooks/useData';
 import {
   DateWrapper,
   DayWrapper,
   HeaderWrapper,
   YearAndMonthWrapper,
-} from "./styled";
+} from './styled';
 
 const Header = () => {
   const { convertedDate } = useDate();
