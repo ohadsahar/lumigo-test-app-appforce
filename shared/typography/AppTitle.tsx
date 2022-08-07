@@ -7,6 +7,7 @@ export interface AppTitleProps {
   color?: string;
   fontSize?: string;
   role?: string;
+  'data-testid'?: string;
 }
 const AppTitle = ({
   title,
@@ -14,11 +15,12 @@ const AppTitle = ({
   color = 'white',
   fontSize = '3vw',
   role = 'app-title-role',
+  'data-testid': dataTestid = 'app-title-box',
 }: AppTitleProps) => {
   return (
     <AppTitleWrapper
       role={role}
-      data-testid="app-title-box"
+      data-testid={dataTestid}
       fontSize={fontSize}
       fontWeight={fontWeight}
       color={color}

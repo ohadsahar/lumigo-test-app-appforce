@@ -1,10 +1,9 @@
 import { TaskStatusType } from '@/constants/TaskStatus';
 import Task from '@/core/components/Task/Task';
-import '@testing-library/jest-dom/extend-expect';
 import { render, screen } from '@testing-library/react';
 import { TaskProps } from 'models/TaskProps.model';
 import AppTestUtil from '../../../AppTestUtil';
-
+import { expect } from '@jest/globals';
 describe('Testing task component', () => {
   it('Testing task component showing on screen', () => {
     const task: TaskProps = {
@@ -27,6 +26,6 @@ describe('Testing task component', () => {
     );
 
     const baseComponent = screen.getByTestId('task-box');
-    expect(baseComponent).toBeInTheDocument();
+    expect(baseComponent).toBeDefined();
   });
 });

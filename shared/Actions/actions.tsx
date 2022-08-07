@@ -14,11 +14,13 @@ const Actions = ({ handleAction, showPause, showCheck }: ActionsProps) => {
   return (
     <ActionsWrapper data-testid="actions-box">
       <FaTimes
+        data-testid="remove-task"
         color="red"
         onClick={() => handleAction(Strings.TaskActionRemove)}
       />
       {showPause ? (
         <FaPause
+          data-testid="pause-task"
           color="#f9f957"
           onClick={() => handleAction(Strings.TaskActionPause)}
         />
@@ -27,6 +29,7 @@ const Actions = ({ handleAction, showPause, showCheck }: ActionsProps) => {
       )}
       {showCheck ? (
         <FaCheck
+          data-testid="finish-task"
           color="#67c967"
           onClick={() => handleAction(Strings.TaskActionDone)}
         />

@@ -21,6 +21,7 @@ interface TaskListProps {
   taskPendingCount?: number;
   editTaskId: string;
   listName: TaskStatusType;
+  'data-testid'?: string;
   handleAction: (action: string, task: TaskProps) => void;
   handleEdit: (task: TaskProps) => void;
   setDoLaterOpen?: Dispatch<SetStateAction<boolean>>;
@@ -40,6 +41,7 @@ const TasksList = ({
   listName,
   editTaskId,
   setEditTaskId,
+  'data-testid': dataTestId = 'task-list-box',
 }: TaskListProps) => {
   return (
     <TasksWrapper data-testid="task-list-box">
@@ -67,21 +69,24 @@ const TasksList = ({
           />
         </TaskTitleWrapper>
       )}
-      <TasksLayout>
+
+      <TasksLayout data-testid={dataTestId}>
         {tasks?.map((task: TaskProps) => (
           <div key={task.id}>
             {task.id !== editTaskId ? (
-              <Task
-                setCurrentEdit={() => setEditTaskId(task.id)}
-                showCheck={listName !== TaskStatusType.COMPLETED ?? false}
-                showPause={[
-                  TaskStatusType.COMPLETED,
-                  TaskStatusType.CREATED,
-                ].includes(listName)}
-                task={task}
-                handleAction={(data: string) => handleAction(data, task)}
-                handleEdit={() => handleEdit(task)}
-              />
+              <div data-testid="task-item">
+                <Task
+                  setCurrentEdit={() => setEditTaskId(task.id)}
+                  showCheck={listName !== TaskStatusType.COMPLETED}
+                  showPause={[
+                    TaskStatusType.COMPLETED,
+                    TaskStatusType.CREATED,
+                  ].includes(listName)}
+                  task={task}
+                  handleAction={(data: string) => handleAction(data, task)}
+                  handleEdit={() => handleEdit(task)}
+                />
+              </div>
             ) : (
               <TaskForm handleEditClick={() => setEditTaskId('')} {...task} />
             )}

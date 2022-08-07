@@ -20,6 +20,7 @@ const Tasks = () => {
   return (
     <>
       <TasksList
+        data-testid="created-tasks-list"
         tasks={createdTasks}
         doLaterOpen={doLaterOpen}
         taskPendingCount={taskPendingCount}
@@ -30,7 +31,9 @@ const Tasks = () => {
         editTaskId={editTaskId}
         setEditTaskId={setEditTaskId}
       />
+
       <TasksList
+        data-testid="do-later-tasks-list"
         tasks={toDoLaterTasks}
         doLaterOpen={doLaterOpen}
         taskPendingCount={taskPendingCount}
@@ -41,7 +44,9 @@ const Tasks = () => {
         editTaskId={editTaskId}
         setEditTaskId={setEditTaskId}
       />
+
       <TasksList
+        data-testid="finished-tasks-list"
         tasks={completedTasks}
         completedOpen={completedOpen}
         taskCompletedCount={taskCompletedCount}

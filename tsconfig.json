@@ -22,8 +22,16 @@
       "@/constants/*": ["constants/*"],
       "@/redux/*": ["redux/*"],
       "@/services/*": ["services/*"]
-    }
+    },
+    "types": ["cypress", "@testing-library/cypress"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "jest.config.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "jest.config.ts",
+    "cypress/e2e/integration/MainPage.js",
+    "cypress/e2e/integration/MainPage.cy.test"
+  ],
   "exclude": ["node_modules"]
 }
