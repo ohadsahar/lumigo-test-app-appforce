@@ -12,7 +12,6 @@ import { TaskProps } from 'models/TaskProps.model';
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-// hello
 export const useTasks = () => {
   const { tasks } = useSelector((state: RootState) => state.taskState);
   const [doLaterOpen, setDoLaterOpen] = useState<boolean>(false);
