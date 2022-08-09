@@ -6,27 +6,43 @@ import { RESET_PROGRESS, SEARCH, SET_TASK } from '@/redux/types/Tasks';
 import { TaskProps } from 'models/TaskProps.model';
 import { LocalStorageService } from '@/services/LocalStorage.service';
 import { setAlert } from './Alert';
-import { HandleIdsService } from '@/services/IdsService.service';
+import axios from 'axios';
+import { ApiUrl } from '@/constants/Config';
+import { CreateTaskProps } from 'models/CreateTaskProps.model';
 
-export const loadTasks = () => (dispatch: any) => {
+export const loadTasks = () => async (dispatch: any) => {
   dispatch(resetDataFromLocalStorage(SET_TASK));
+  const response = await axios.get(
+    'https://ztri4rkjg9.execute-api.us-east-1.amazonaws.com/dev/task-app/all',
+    {
+      withCredentials: false,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+      },
+    }
+  );
+  console.log(response);
 };
 
-export const createTask = (taskName: string) => (dispatch: any) => {
-  const id = HandleIdsService.createUniqueId();
+export const createTask = (taskName: string) => async (dispatch: any) => {
   const currentTasks = store.getState().taskState.tasks;
-  const newTask: TaskProps = {
-    id,
+  const taskToCreate: CreateTaskProps = {
     taskName,
     status: TaskStatusType.CREATED,
   };
-  const newTasks = [...currentTasks, newTask];
-  setLocalStorageData(newTasks);
-  dispatch({
-    type: SET_TASK,
-    payload: newTasks,
-  });
-  dispatch(setAlert(Strings.AlertSuccessCreatedTask, Strings.Success));
+  const { data } = await axios.post(ApiUrl, taskToCreate);
+  if (data) {
+    const newTask: TaskProps = data;
+    const newTasks = [...currentTasks, newTask];
+    setLocalStorageData(newTasks);
+    dispatch({
+      type: SET_TASK,
+      payload: newTasks,
+    });
+
+    dispatch(setAlert(Strings.AlertSuccessCreatedTask, Strings.Success));
+  }
 };
 
 export const editTask = (task: TaskProps) => (dispatch: any) => {
@@ -93,12 +109,13 @@ export const finishTask = (task: TaskProps) => (dispatch: any) => {
   }
 };
 
-export const deleteTask = (task: TaskProps) => (dispatch: any) => {
+export const deleteTask = (task: TaskProps) => async (dispatch: any) => {
   const { currentTaskDB } = handleDB();
   const isSearching = store.getState().taskState.searchable;
   const taskIndex = currentTaskDB.findIndex(
     (currentTask: TaskProps) => currentTask.id === task.id
   );
+  const idToDelete = currentTaskDB[taskIndex].id;
   if (taskIndex >= 0) {
     currentTaskDB.splice(taskIndex, 1);
     setLocalStorageData(currentTaskDB);
@@ -107,6 +124,9 @@ export const deleteTask = (task: TaskProps) => (dispatch: any) => {
       const searchedWord = store.getState().taskState.lastSearchedWord;
       dispatch(search(searchedWord));
     }
+    await axios.delete(ApiUrl, {
+      data: { id: idToDelete },
+    });
     dispatch(setAlert(Strings.AlertSucessRemovedTask, Strings.Success));
   } else {
     dispatch(setAlert(Strings.AlertFailedRemovedTask, Strings.Error));
