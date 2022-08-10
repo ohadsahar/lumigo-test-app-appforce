@@ -1,5 +1,12 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Important
+
+The branch "aws_services" uses AWS services.
+
+Use of the following services:
+API Gateway, DynamoDB, Lambda, IAM, CloudWatch
+
 ## A little about the project
 
 Task management application - written in React with next.js.
