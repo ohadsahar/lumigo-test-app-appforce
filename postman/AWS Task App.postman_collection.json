@@ -1,0 +1,114 @@
+{
+  "info": {
+    "_postman_id": "26125d11-afac-42ad-9c2d-6a7a09d65711",
+    "name": "AWS Task App",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "8432837"
+  },
+  "item": [
+    {
+      "name": "Get All Tasks",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{server_url}}/all",
+          "host": ["{{server_url}}"],
+          "path": ["all"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Task App",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"taskName\": \"Clean the room\",\n    \"status\": \"COMPLETED\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{server_url}}/task-app",
+          "host": ["{{server_url}}"],
+          "path": ["task-app"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Task",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"id\":\"task_0.0022263283851990945\",\n    \"type\":\"all\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{server_url}}/task-app",
+          "host": ["{{server_url}}"],
+          "path": ["task-app"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Single Task",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{server_url}}/single",
+          "host": ["{{server_url}}"],
+          "path": ["single"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Task",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"id\": \"task_0.7335231799671285\",\n    \"taskName\": \"Clean the room\",\n    \"status\": \"COMPLETED\"\n}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{server_url}}/task-app",
+          "host": ["{{server_url}}"],
+          "path": ["task-app"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
