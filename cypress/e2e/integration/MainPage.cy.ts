@@ -1,6 +1,6 @@
-/* eslint-disable no-unused-expressions */
-import { LocalStorageKeys } from '@/constants/LocalStorageKeys';
 import { DateProps } from 'models/AppDate.model';
+import axios from 'axios';
+import { ApiUrl } from '@/constants/Config';
 
 const lengthOfItems = 5;
 let tasksCounter = 0;
@@ -8,7 +8,15 @@ let createdTasksCounter = 0;
 let finishedTasksCounter = 0;
 let doLaterTasksCounter = 0;
 
+// create task
+
 describe('Full testing of all app functionality', () => {
+  beforeEach(async () => {
+    await axios.delete(ApiUrl, {
+      data: { type: 'all' },
+    });
+  });
+
   it('Test No. 1 In this test we will actually check that the application loads properly', () => {
     cy.visit('/');
   });
@@ -33,6 +41,7 @@ describe('Full testing of all app functionality', () => {
   it('Test NO. 3 Testing CRUD operation on task (Create,Delete,Edit, Update)', () => {
     cy.findByTestId('task-input-field').type('Item 1');
     cy.findByTestId('create-task').click();
+    cy.contains('Item 1', { timeout: 4000 });
     tasksCounter++;
     cy.findByTestId('created-tasks-list')
       .children()
@@ -54,6 +63,8 @@ describe('Full testing of all app functionality', () => {
         .type(`Item ${i + 1}`);
       cy.findByTestId('create-task').click();
       createdTasksCounter++;
+      const text = `Item ${i + 1}`;
+      cy.contains(text, { timeout: 4000 });
     }
     cy.findByTestId('created-tasks-list')
       .children()
@@ -86,16 +97,15 @@ describe('Full testing of all app functionality', () => {
 
   it("Test NO. 5 Testing Search functionality(Using magic numbers because I'm expecting for constant values)", () => {
     const notFoundTasksLength = 0;
-    const foundedTasksLength = 1;
-    cy.clearLocalStorage();
     for (let i = 0; i < lengthOfItems; i++) {
       cy.findByTestId('task-input-field')
         .clear()
         .type(`Item ${i + 1}`);
       cy.findByTestId('create-task').click();
+      const text = `Item ${i + 1}`;
+      cy.contains(text, { timeout: 4000 });
     }
     cy.findByTestId('search-tasks').type('Ohad Sahar');
-    cy.findByTestId('created-tasks-list');
     cy.findByTestId('created-tasks-list')
       .children()
       .should('have.length', notFoundTasksLength);
@@ -119,44 +129,9 @@ describe('Full testing of all app functionality', () => {
     cy.findByTestId('created-tasks-list')
       .children()
       .should('have.length', notFoundTasksLength);
-    cy.findByTestId('do-later-tasks-list')
-      .children()
-      .should('have.length', foundedTasksLength);
-    cy.findByTestId('finished-tasks-list')
-      .children()
-      .should('have.length', foundedTasksLength);
-    cy.findByTestId('search-tasks').clear();
   });
 
-  it('Test NO. 6 Testing Local Storage functionality(Clear, Add)', () => {
-    cy.clearLocalStorage();
-    cy.reload();
-    expect(localStorage.getItem(LocalStorageKeys.Tasks)).to.be.null;
-    for (let i = 0; i < lengthOfItems; i++) {
-      cy.findByTestId('task-input-field').type(`Item ${i + 1}`);
-      cy.findByTestId('create-task').click();
-    }
-    cy.getLocalStorage(LocalStorageKeys.Tasks).then((result: string | null) => {
-      if (result) {
-        const tasks = JSON.parse(result);
-        expect(tasks.length).to.equal(lengthOfItems);
-        tasks.pop(1, 1);
-        cy.clearLocalStorage();
-
-        cy.setLocalStorage(LocalStorageKeys.Tasks, JSON.stringify(tasks));
-      }
-    });
-    cy.getLocalStorage(LocalStorageKeys.Tasks).then((result: string | null) => {
-      if (result) {
-        const tasks = JSON.parse(result);
-        expect(tasks.length).to.equal(lengthOfItems - 1);
-      }
-    });
-    cy.clearLocalStorage();
-    expect(localStorage.getItem(LocalStorageKeys.Tasks)).to.be.null;
-  });
-
-  it('Test NO. 7 Testing the functionality of Reset Progress(When press reset progress we are expecting to get no list at all)', () => {
+  it('Test NO. 6 Testing the functionality of Reset Progress(When press reset progress we are expecting to get no list at all)', () => {
     cy.findByTestId('footer-title').click();
   });
 });

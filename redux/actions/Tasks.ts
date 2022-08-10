@@ -1,28 +1,21 @@
-import { LocalStorageKeys } from '@/constants/LocalStorageKeys';
+import { ApiUrl } from '@/constants/Config';
 import { Strings } from '@/constants/Strings';
 import { TaskStatusType } from '@/constants/TaskStatus';
 import store from '@/redux/store';
 import { RESET_PROGRESS, SEARCH, SET_TASK } from '@/redux/types/Tasks';
-import { TaskProps } from 'models/TaskProps.model';
-import { LocalStorageService } from '@/services/LocalStorage.service';
-import { setAlert } from './Alert';
 import axios from 'axios';
-import { ApiUrl } from '@/constants/Config';
 import { CreateTaskProps } from 'models/CreateTaskProps.model';
+import { TaskProps } from 'models/TaskProps.model';
+import { setAlert } from './Alert';
 
 export const loadTasks = () => async (dispatch: any) => {
-  dispatch(resetDataFromLocalStorage(SET_TASK));
-  const response = await axios.get(
-    'https://ztri4rkjg9.execute-api.us-east-1.amazonaws.com/dev/task-app/all',
-    {
-      withCredentials: false,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-      },
-    }
-  );
-  console.log(response);
+  const { data } = await axios.get(`${ApiUrl}/all`);
+  if (data) {
+    dispatch({
+      type: SET_TASK,
+      payload: data ?? [],
+    });
+  }
 };
 
 export const createTask = (taskName: string) => async (dispatch: any) => {
@@ -35,39 +28,40 @@ export const createTask = (taskName: string) => async (dispatch: any) => {
   if (data) {
     const newTask: TaskProps = data;
     const newTasks = [...currentTasks, newTask];
-    setLocalStorageData(newTasks);
     dispatch({
       type: SET_TASK,
       payload: newTasks,
     });
-
     dispatch(setAlert(Strings.AlertSuccessCreatedTask, Strings.Success));
   }
 };
 
-export const editTask = (task: TaskProps) => (dispatch: any) => {
-  const { currentTaskDB } = handleDB();
+export const editTask = (task: TaskProps) => async (dispatch: any) => {
+  const currentTaskDB = store.getState().taskState.tasks;
   const isSearching = store.getState().taskState.searchable;
+
   const indexToUpdate = currentTaskDB.findIndex(
     (currentTask: TaskProps) => currentTask.id === task.id
   );
 
   if (indexToUpdate >= 0) {
     currentTaskDB[indexToUpdate] = task;
-    setLocalStorageData(currentTaskDB);
-    dispatch({ type: SET_TASK, payload: currentTaskDB });
-    if (isSearching) {
-      const searchedWord = store.getState().taskState.lastSearchedWord;
-      dispatch(search(searchedWord));
+    const result = await axios.put(ApiUrl, currentTaskDB[indexToUpdate]);
+    if (result) {
+      dispatch({ type: SET_TASK, payload: currentTaskDB });
+      if (isSearching) {
+        const searchedWord = store.getState().taskState.lastSearchedWord;
+        dispatch(search(searchedWord));
+      }
     }
   } else {
     dispatch(setAlert(Strings.AlertFailedUpdateTask, Strings.Error));
   }
 };
 
-export const stopTask = (task: TaskProps) => (dispatch: any) => {
+export const stopTask = (task: TaskProps) => async (dispatch: any) => {
   const tasks = store.getState().taskState.tasks;
-  const { currentTaskDB } = handleDB();
+  const currentTaskDB = store.getState().taskState.tasks;
   const taskIndex = tasks.findIndex(
     (currentTask: TaskProps) => currentTask.id === task.id
   );
@@ -79,16 +73,16 @@ export const stopTask = (task: TaskProps) => (dispatch: any) => {
   }
   if (taskIndex >= 0) {
     tasks[taskIndex].status = TaskStatusType.PENDING;
-    setLocalStorageData(currentTaskDB);
     dispatch(updateLists(SET_TASK, tasks));
     dispatch(setAlert(Strings.AlertSuccessTaskMovedToDoLater, Strings.Success));
+    await axios.put(ApiUrl, tasks[taskIndex]);
   } else {
     dispatch(setAlert(Strings.AlertFailedPauseTask, Strings.Error));
   }
 };
 
-export const finishTask = (task: TaskProps) => (dispatch: any) => {
-  const { currentTaskDB } = handleDB();
+export const finishTask = (task: TaskProps) => async (dispatch: any) => {
+  const currentTaskDB = store.getState().taskState.tasks;
   const tasks = store.getState().taskState.tasks;
   const taskIndex = tasks.findIndex(
     (currentTask: TaskProps) => currentTask.id === task.id
@@ -101,16 +95,16 @@ export const finishTask = (task: TaskProps) => (dispatch: any) => {
   }
   if (taskIndex >= 0) {
     tasks[taskIndex].status = TaskStatusType.COMPLETED;
-    setLocalStorageData(currentTaskDB);
     dispatch(updateLists(SET_TASK, tasks));
     dispatch(setAlert(Strings.AlertSuccessFinishTask, Strings.Success));
+    await axios.put(ApiUrl, tasks[taskIndex]);
   } else {
     dispatch(setAlert(Strings.AlertFailedCompleteTask, Strings.Error));
   }
 };
 
 export const deleteTask = (task: TaskProps) => async (dispatch: any) => {
-  const { currentTaskDB } = handleDB();
+  const currentTaskDB = store.getState().taskState.tasks;
   const isSearching = store.getState().taskState.searchable;
   const taskIndex = currentTaskDB.findIndex(
     (currentTask: TaskProps) => currentTask.id === task.id
@@ -118,7 +112,6 @@ export const deleteTask = (task: TaskProps) => async (dispatch: any) => {
   const idToDelete = currentTaskDB[taskIndex].id;
   if (taskIndex >= 0) {
     currentTaskDB.splice(taskIndex, 1);
-    setLocalStorageData(currentTaskDB);
     dispatch(updateLists(SET_TASK, currentTaskDB));
     if (isSearching) {
       const searchedWord = store.getState().taskState.lastSearchedWord;
@@ -136,7 +129,7 @@ export const deleteTask = (task: TaskProps) => async (dispatch: any) => {
 export const search = (searchValue: string) => (dispatch: any) => {
   if (searchValue.length > 0) {
     const tasks = store.getState().taskState.tasks;
-    const currentTasks = tasks.filter((task: TaskProps) =>
+    const currentTasks = tasks?.filter((task: TaskProps) =>
       task.taskName.toLowerCase().includes(searchValue.toLowerCase())
     );
     dispatch({
@@ -148,12 +141,11 @@ export const search = (searchValue: string) => (dispatch: any) => {
       },
     });
   } else {
-    dispatch(resetDataFromLocalStorage(SEARCH));
+    dispatch(fetchDataFromDB(SEARCH));
   }
 };
 
-export const resetProgress = () => (dispatch: any) => {
-  setLocalStorageData([]);
+export const resetProgress = () => async (dispatch: any) => {
   dispatch({
     type: RESET_PROGRESS,
     payload: {
@@ -162,6 +154,9 @@ export const resetProgress = () => (dispatch: any) => {
       searchable: false,
       lastSearchedWord: '',
     },
+  });
+  await axios.delete(ApiUrl, {
+    data: { type: 'all' },
   });
   dispatch(setAlert(Strings.AlertSuccessResetTasks, Strings.Success));
 };
@@ -173,18 +168,10 @@ const updateLists = (type: string, tasks: TaskProps[]) => (dispatch: any) => {
   });
 };
 
-const handleDB = () => {
-  const currentTasks = LocalStorageService.getNameByKey(LocalStorageKeys.Tasks);
-  let currentTaskDB: TaskProps[] = [];
-  if (currentTasks) {
-    currentTaskDB = (currentTasks as TaskProps[]) ?? [];
-  }
-  return { currentTaskDB };
-};
-
-const resetDataFromLocalStorage = (type: string) => (dispatch: any) => {
-  const tasks = LocalStorageService.getNameByKey(LocalStorageKeys.Tasks);
-  if (tasks) {
+const fetchDataFromDB = (type: string) => async (dispatch: any) => {
+  const { data } = await axios.get(`${ApiUrl}/all`);
+  const tasks: TaskProps[] = data;
+  if (data) {
     if (type === SEARCH) {
       dispatch({
         type: SEARCH,
@@ -195,12 +182,8 @@ const resetDataFromLocalStorage = (type: string) => (dispatch: any) => {
     } else {
       dispatch({
         type,
-        payload: tasks ?? [],
+        payload: data ?? [],
       });
     }
   }
-};
-
-const setLocalStorageData = (tasks: TaskProps[]) => {
-  LocalStorageService.setByKeyName(LocalStorageKeys.Tasks, tasks);
 };

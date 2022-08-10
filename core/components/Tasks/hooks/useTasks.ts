@@ -23,18 +23,18 @@ export const useTasks = () => {
     dispatch(loadTasks() as any);
   }, [dispatch]);
 
-  const createdTasks = tasks.filter(
+  const createdTasks = tasks?.filter(
     (task: TaskProps) => task.status === TaskStatusType.CREATED
   );
-  const toDoLaterTasks = tasks.filter(
+  const toDoLaterTasks = tasks?.filter(
     (task: TaskProps) => task.status === TaskStatusType.PENDING
   );
-  const completedTasks = tasks.filter(
+  const completedTasks = tasks?.filter(
     (task: TaskProps) => task.status === TaskStatusType.COMPLETED
   );
 
-  const taskPendingCount = toDoLaterTasks.length;
-  const taskCompletedCount = completedTasks.length;
+  const taskPendingCount = toDoLaterTasks?.length;
+  const taskCompletedCount = completedTasks?.length;
 
   const handleEdit = useCallback((task: TaskProps) => {
     dispatch(editTask(task) as any);
