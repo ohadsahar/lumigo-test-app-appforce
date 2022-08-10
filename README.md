@@ -5,6 +5,16 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 Task management application - written in React with next.js.
 Tests were written in jest and cypress.
 
+This brunch uses AWS services.
+
+Use of the following services:
+
+API Gateway
+DynamoDB
+Lambda
+IAM
+CloudWatch
+
 ## Getting Started
 
 First, run the development server:
@@ -25,7 +35,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Cypress Test
 
-![Screenshot](public/static/images/cypress_test_images.png)
+![Screenshot](public/static/images/aws_service_test.png)
 
 ## Jest Test
 
