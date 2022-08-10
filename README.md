@@ -5,7 +5,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 Task management application - written in React with next.js.
 Tests were written in jest and cypress.
 
-This brunch uses AWS services.
+This branch uses AWS services.
 
 Use of the following services:
 API Gateway, DynamoDB, Lambda, IAM, CloudWatch
