@@ -108,3 +108,4 @@ cypress/screenshots/*
 cypress/videos/*
 
 constants/
+config/
