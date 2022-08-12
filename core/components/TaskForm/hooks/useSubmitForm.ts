@@ -57,5 +57,5 @@ export const useSubmitForm = ({ id, taskName, status }: TaskFormProps) => {
     onSubmit(event);
   };
 
-  return { onSubmit, taskValue, onChangeTaskname, isError, handlePressedEnter };
+  return { onSubmit, onChangeTaskname, handlePressedEnter, isError, taskValue };
 };
