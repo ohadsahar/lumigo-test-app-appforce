@@ -3,28 +3,45 @@ import { Strings } from '@/constants/Strings';
 import { TaskStatusType } from '@/constants/TaskStatus';
 import store from '@/redux/store';
 import { RESET_PROGRESS, SEARCH, SET_TASK } from '@/redux/types/Tasks';
+import { LocalStorageService } from '@/services/LocalStorage.service';
 import axios from 'axios';
 import { CreateTaskProps } from 'models/CreateTaskProps.model';
 import { TaskProps } from 'models/TaskProps.model';
 import { setAlert } from './Alert';
 
+let tokens;
+let accessToken = '';
+let headers: any;
+
+if (typeof localStorage !== 'undefined') {
+  tokens = LocalStorageService.getNameByKey('tokens');
+  accessToken = tokens.idToken.jwtToken;
+  headers = {
+    Authorization: accessToken,
+  };
+}
+
 export const loadTasks = () => async (dispatch: any) => {
-  const { data } = await axios.get(`${ApiUrl}/all`);
-  if (data) {
-    dispatch({
-      type: SET_TASK,
-      payload: data ?? [],
-    });
+  const tokens = LocalStorageService.getNameByKey('tokens');
+  if (tokens) {
+    const { data } = await axios.get(`${ApiUrl}/all`, { headers });
+    if (data) {
+      dispatch({
+        type: SET_TASK,
+        payload: data ?? [],
+      });
+    }
   }
 };
 
 export const createTask = (taskName: string) => async (dispatch: any) => {
   const currentTasks = store.getState().taskState.tasks;
+
   const taskToCreate: CreateTaskProps = {
     taskName,
     status: TaskStatusType.CREATED,
   };
-  const { data } = await axios.post(ApiUrl, taskToCreate);
+  const { data } = await axios.post(ApiUrl, taskToCreate, { headers });
   if (data) {
     const newTask: TaskProps = data;
     const newTasks = [...currentTasks, newTask];
@@ -46,7 +63,9 @@ export const editTask = (task: TaskProps) => async (dispatch: any) => {
 
   if (indexToUpdate >= 0) {
     currentTaskDB[indexToUpdate] = task;
-    const result = await axios.put(ApiUrl, currentTaskDB[indexToUpdate]);
+    const result = await axios.put(ApiUrl, currentTaskDB[indexToUpdate], {
+      headers,
+    });
     if (result) {
       dispatch({ type: SET_TASK, payload: currentTaskDB });
       if (isSearching) {
@@ -75,7 +94,7 @@ export const stopTask = (task: TaskProps) => async (dispatch: any) => {
     tasks[taskIndex].status = TaskStatusType.PENDING;
     dispatch(updateLists(SET_TASK, tasks));
     dispatch(setAlert(Strings.AlertSuccessTaskMovedToDoLater, Strings.Success));
-    await axios.put(ApiUrl, tasks[taskIndex]);
+    await axios.put(ApiUrl, tasks[taskIndex], { headers });
   } else {
     dispatch(setAlert(Strings.AlertFailedPauseTask, Strings.Error));
   }
@@ -97,7 +116,7 @@ export const finishTask = (task: TaskProps) => async (dispatch: any) => {
     tasks[taskIndex].status = TaskStatusType.COMPLETED;
     dispatch(updateLists(SET_TASK, tasks));
     dispatch(setAlert(Strings.AlertSuccessFinishTask, Strings.Success));
-    await axios.put(ApiUrl, tasks[taskIndex]);
+    await axios.put(ApiUrl, tasks[taskIndex], { headers });
   } else {
     dispatch(setAlert(Strings.AlertFailedCompleteTask, Strings.Error));
   }
@@ -117,9 +136,8 @@ export const deleteTask = (task: TaskProps) => async (dispatch: any) => {
       const searchedWord = store.getState().taskState.lastSearchedWord;
       dispatch(search(searchedWord));
     }
-    await axios.delete(ApiUrl, {
-      data: { id: idToDelete },
-    });
+
+    await axios.delete(ApiUrl, { data: { id: idToDelete }, headers });
     dispatch(setAlert(Strings.AlertSucessRemovedTask, Strings.Success));
   } else {
     dispatch(setAlert(Strings.AlertFailedRemovedTask, Strings.Error));
@@ -157,6 +175,7 @@ export const resetProgress = () => async (dispatch: any) => {
   });
   await axios.delete(ApiUrl, {
     data: { type: 'all' },
+    headers: { headers },
   });
   dispatch(setAlert(Strings.AlertSuccessResetTasks, Strings.Success));
 };

@@ -14,8 +14,6 @@ interface emailAttributeProps {
   Value: string;
 }
 
-let userToken = '';
-
 export class AuthService {
   static confirmUser = (fullName: string, validationCode: string) => {
     const confirmData: any = { Username: fullName, Pool: userPool };
@@ -58,8 +56,8 @@ export class AuthService {
     return new Promise<CognitoUserSession>((resolve: any, reject: any) => {
       cognitoUser.authenticateUser(authDetails, {
         onSuccess(result: CognitoUserSession) {
+          localStorage.setItem('tokens', JSON.stringify(result));
           resolve(result);
-          userToken = result.getAccessToken().getJwtToken();
         },
         onFailure(err) {
           reject(err);
@@ -74,9 +72,5 @@ export class AuthService {
 
   static logout = () => {
     userPool.getCurrentUser()?.signOut();
-  };
-
-  static getJWTToken = () => {
-    return userToken;
   };
 }
