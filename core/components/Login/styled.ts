@@ -18,7 +18,7 @@ export const LoginFormWrapper = styled.form`
   height: 50vh;
   border-radius: 8px;
   margin: auto;
-  width: 40%;
+  width: 350px;
 `;
 
 export const InputsWrapper = styled.div`
