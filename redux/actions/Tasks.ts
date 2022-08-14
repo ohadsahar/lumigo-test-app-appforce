@@ -1,4 +1,5 @@
 import { ApiUrl } from '@/constants/Config';
+import { LocalStorageKeys } from '@/constants/LocalStorageKeys';
 import { Strings } from '@/constants/Strings';
 import { TaskStatusType } from '@/constants/TaskStatus';
 import store from '@/redux/store';
@@ -14,7 +15,7 @@ let accessToken = '';
 let headers: any;
 
 if (typeof localStorage !== 'undefined') {
-  tokens = LocalStorageService.getNameByKey('tokens');
+  tokens = LocalStorageService.getNameByKey(LocalStorageKeys.TOKENS);
   accessToken = tokens.idToken.jwtToken;
   headers = {
     Authorization: accessToken,
@@ -22,7 +23,7 @@ if (typeof localStorage !== 'undefined') {
 }
 
 export const loadTasks = () => async (dispatch: any) => {
-  const tokens = LocalStorageService.getNameByKey('tokens');
+  const tokens = LocalStorageService.getNameByKey(LocalStorageKeys.TOKENS);
   if (tokens) {
     const { data } = await axios.get(`${ApiUrl}/all`, { headers });
     if (data) {

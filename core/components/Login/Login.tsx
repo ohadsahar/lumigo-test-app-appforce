@@ -1,13 +1,18 @@
+import { LoginStatusType } from '@/constants/LoginStatus';
 import AppButton from '@/shared/Button/Button';
 import LoginField from '@/shared/LoginField/LoginField';
 import React from 'react';
-import SignUp from '../SignUp/SignUp';
 import { useLogin } from '../Tasks/hooks/useLogin';
-import { LoginFormWrapper, LoginWrapper } from './styled';
+import {
+  ButtonsWrapper,
+  HintWrapper,
+  InputsWrapper,
+  LoginFormWrapper,
+  LoginWrapper,
+} from './styled';
 
 const Login = () => {
   const {
-    loginState,
     fullName,
     password,
     handleLoginState,
@@ -15,34 +20,37 @@ const Login = () => {
     onChangePassword,
     onSubmitLogin,
   } = useLogin();
-
   return (
     <LoginWrapper>
-      <AppButton
-        buttonText={loginState ? 'Sign up' : 'Login'}
-        onSubmit={handleLoginState}
-      />
-      {loginState ? (
-        <LoginFormWrapper>
+      <LoginFormWrapper>
+        <InputsWrapper>
           <LoginField
             onChange={onChangeFullName}
-            placeholder="Type your Full name"
+            placeholder="Username"
             value={fullName}
             type="text"
             data-testid="fullname"
           />
           <LoginField
             onChange={onChangePassword}
-            placeholder="Type your password"
+            placeholder="Password"
             value={password}
             type="password"
             data-testid="password"
           />
-          <AppButton buttonText="Submit" onSubmit={onSubmitLogin} />
-        </LoginFormWrapper>
-      ) : (
-        <SignUp />
-      )}
+        </InputsWrapper>
+        <ButtonsWrapper>
+          <AppButton buttonText="Login" onSubmit={onSubmitLogin} />
+          <HintWrapper onClick={() => handleLoginState(LoginStatusType.SIGNUP)}>
+            Doesnt have an account ? Sign up
+          </HintWrapper>
+          <HintWrapper
+            onClick={() => handleLoginState(LoginStatusType.VALIDATION)}
+          >
+            Just need a validation ? Validate
+          </HintWrapper>
+        </ButtonsWrapper>
+      </LoginFormWrapper>
     </LoginWrapper>
   );
 };

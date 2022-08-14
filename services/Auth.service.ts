@@ -1,3 +1,4 @@
+import { LocalStorageKeys } from '@/constants/LocalStorageKeys';
 import { POOL_DATA } from '@/constants/Secret';
 import {
   AuthenticationDetails,
@@ -34,6 +35,7 @@ export class AuthService {
       Name: 'email',
       Value: email,
     };
+    console.log(email, fullName);
     const attributeList: CognitoUserAttribute[] = [];
     attributeList.push(new CognitoUserAttribute(attributeEmail));
     return new Promise<boolean>((resolve: any, reject: any) => {
@@ -56,7 +58,7 @@ export class AuthService {
     return new Promise<CognitoUserSession>((resolve: any, reject: any) => {
       cognitoUser.authenticateUser(authDetails, {
         onSuccess(result: CognitoUserSession) {
-          localStorage.setItem('tokens', JSON.stringify(result));
+          localStorage.setItem(LocalStorageKeys.TOKENS, JSON.stringify(result));
           resolve(result);
         },
         onFailure(err) {

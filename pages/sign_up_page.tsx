@@ -1,14 +1,14 @@
 import Alerts from '@/core/components/Alerts/Alerts';
-import Login from '@/core/components/Login/Login';
+import SignUp from '@/core/components/SignUp/SignUp';
 import type { NextPage } from 'next';
 
-const LoginPage: NextPage = () => {
+const SignUpPage: NextPage = () => {
   return (
     <>
       <Alerts />
-      <Login />;
+      <SignUp />;
     </>
   );
 };
 
-export default LoginPage;
+export default SignUpPage;
