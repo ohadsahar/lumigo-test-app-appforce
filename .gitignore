@@ -108,3 +108,6 @@ cypress/videos/*
 
 .DS_STORE
 .DS_Store
+/out
+/constants
+/terraform_deployment/.terraform
