@@ -23,4 +23,7 @@ export const enum Strings {
   TaskActionRemove = 'remove',
   TaskActionPause = 'pause',
   TaskActionDone = 'done',
+  FailedLogin = 'We had error while trying connect your user, please try again',
+  FailedSignUp = 'We had error while trying signup, please try again',
+  ValidationError = 'We had a problem with validate your account, please try again',
 }
