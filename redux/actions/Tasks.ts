@@ -25,7 +25,7 @@ if (typeof localStorage !== 'undefined') {
 export const loadTasks = () => async (dispatch: any) => {
   const tokens = LocalStorageService.getNameByKey(LocalStorageKeys.TOKENS);
   if (tokens) {
-    const { data } = await axios.get(`${ApiUrl}/all`, { headers });
+    const { data } = await axios.get(`${ApiUrl}/get_tasks/all`, { headers });
     if (data) {
       dispatch({
         type: SET_TASK,
@@ -42,7 +42,9 @@ export const createTask = (taskName: string) => async (dispatch: any) => {
     taskName,
     status: TaskStatusType.CREATED,
   };
-  const { data } = await axios.post(ApiUrl, taskToCreate, { headers });
+  const { data } = await axios.post(`${ApiUrl}/create_task`, taskToCreate, {
+    headers,
+  });
   if (data) {
     const newTask: TaskProps = data;
     const newTasks = [...currentTasks, newTask];
@@ -64,9 +66,13 @@ export const editTask = (task: TaskProps) => async (dispatch: any) => {
 
   if (indexToUpdate >= 0) {
     currentTaskDB[indexToUpdate] = task;
-    const result = await axios.put(ApiUrl, currentTaskDB[indexToUpdate], {
-      headers,
-    });
+    const result = await axios.put(
+      `${ApiUrl}/update_task`,
+      currentTaskDB[indexToUpdate],
+      {
+        headers,
+      }
+    );
     if (result) {
       dispatch({ type: SET_TASK, payload: currentTaskDB });
       if (isSearching) {
@@ -95,7 +101,7 @@ export const stopTask = (task: TaskProps) => async (dispatch: any) => {
     tasks[taskIndex].status = TaskStatusType.PENDING;
     dispatch(updateLists(SET_TASK, tasks));
     dispatch(setAlert(Strings.AlertSuccessTaskMovedToDoLater, Strings.Success));
-    await axios.put(ApiUrl, tasks[taskIndex], { headers });
+    await axios.put(`${ApiUrl}/update_task`, tasks[taskIndex], { headers });
   } else {
     dispatch(setAlert(Strings.AlertFailedPauseTask, Strings.Error));
   }
@@ -117,7 +123,7 @@ export const finishTask = (task: TaskProps) => async (dispatch: any) => {
     tasks[taskIndex].status = TaskStatusType.COMPLETED;
     dispatch(updateLists(SET_TASK, tasks));
     dispatch(setAlert(Strings.AlertSuccessFinishTask, Strings.Success));
-    await axios.put(ApiUrl, tasks[taskIndex], { headers });
+    await axios.put(`${ApiUrl}/update_task`, tasks[taskIndex], { headers });
   } else {
     dispatch(setAlert(Strings.AlertFailedCompleteTask, Strings.Error));
   }
@@ -138,7 +144,10 @@ export const deleteTask = (task: TaskProps) => async (dispatch: any) => {
       dispatch(search(searchedWord));
     }
 
-    await axios.delete(ApiUrl, { data: { id: idToDelete }, headers });
+    await axios.delete(`${ApiUrl}/delete_task`, {
+      data: { id: idToDelete },
+      headers,
+    });
     dispatch(setAlert(Strings.AlertSucessRemovedTask, Strings.Success));
   } else {
     dispatch(setAlert(Strings.AlertFailedRemovedTask, Strings.Error));

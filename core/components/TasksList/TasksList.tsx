@@ -71,8 +71,8 @@ const TasksList = ({
       )}
 
       <TasksLayout data-testid={dataTestId}>
-        {tasks?.map((task: TaskProps) => (
-          <div key={task.id}>
+        {tasks?.map((task: TaskProps, index: number) => (
+          <div key={index}>
             {task.id !== editTaskId ? (
               <div data-testid="task-item">
                 <Task
@@ -88,7 +88,11 @@ const TasksList = ({
                 />
               </div>
             ) : (
-              <TaskForm handleEditClick={() => setEditTaskId('')} {...task} />
+              <TaskForm
+                key={task.id}
+                handleEditClick={() => setEditTaskId('')}
+                {...task}
+              />
             )}
           </div>
         ))}
