@@ -109,7 +109,6 @@ cypress/videos/*
 .DS_STORE
 .DS_Store
 /out
-constants
 /terraform_deployment/.terraform
 /terraform_deployment/*.zip
 /terraform_deployment/terraform.tfstate
