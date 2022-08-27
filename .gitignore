@@ -111,3 +111,6 @@ cypress/videos/*
 /out
 /constants
 /terraform_deployment/.terraform
+/terraform_deployment/*.zip
+/terraform_deployment/terraform.tfstate
+/terraform_deployment/terraform.tfstate.backup
