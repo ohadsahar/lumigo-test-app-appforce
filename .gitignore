@@ -114,3 +114,4 @@ cypress/videos/*
 /terraform_deployment/terraform.tfstate
 /terraform_deployment/terraform.tfstate.backup
 
+/constants
