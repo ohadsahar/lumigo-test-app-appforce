@@ -102,10 +102,15 @@ dist
 
 # TernJS port file
 .tern-port
-.DS_STORE
-.DS_Store
 cypress/screenshots/*
 cypress/videos/*
 
-constants/
-out
+
+.DS_STORE
+.DS_Store
+/out
+constants
+/terraform_deployment/.terraform
+/terraform_deployment/*.zip
+/terraform_deployment/terraform.tfstate
+/terraform_deployment/terraform.tfstate.backup
