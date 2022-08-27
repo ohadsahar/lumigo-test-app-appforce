@@ -105,10 +105,6 @@ dist
 cypress/screenshots/*
 cypress/videos/*
 
-/constants/*
-/constants/Config.ts
-/constants/Secret.ts
-
 .DS_STORE
 .DS_Store
 
@@ -117,4 +113,7 @@ cypress/videos/*
 /terraform_deployment/*.zip
 /terraform_deployment/terraform.tfstate
 /terraform_deployment/terraform.tfstate.backup
+
+/constants/Config.ts
+/constants/Secret.ts
 
