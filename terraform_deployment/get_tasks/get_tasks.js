@@ -2,6 +2,7 @@ const AWS = require('aws-sdk');
 const dynamoDB = new AWS.DynamoDB({ region: 'us-east-1' });
 
 exports.handler = (event, context, callback) => {
+  console.log('wow');
   const type = event.pathParameters.type;
   if (type === 'all') {
     const params = {

@@ -108,8 +108,7 @@ cypress/videos/*
 
 .DS_STORE
 .DS_Store
-/constants/Config.ts
-/constants/Secret.ts
+
 /out
 /terraform_deployment/.terraform
 /terraform_deployment/*.zip

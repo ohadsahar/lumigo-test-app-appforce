@@ -15,7 +15,7 @@
     "cy:run": "cypress run",
     "test": "NODE_OPTIONS='--experimental-vm-modules --experimental-specifier-resolution=node' jest",
     "tests": "npm run cy:run",
-    "t-clean": "rm -rf .terraform* && rm -rf terraform.tfstate*",
+    "t-clean": "cd terraform_deployment && rm -rf .terraform* && rm -rf terraform.tfstate* && rm *.zip && cd ..",
     "zones": "aws ec2 describe-instance-type-offerings --location-type availability-zone  --filters Name=instance-type,Values=t3.micro --region us-east-1 --output table"
   },
   "dependencies": {
