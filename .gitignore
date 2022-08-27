@@ -105,6 +105,9 @@ dist
 cypress/screenshots/*
 cypress/videos/*
 
+/constants/*
+/constants/Config.ts
+/constants/Secret.ts
 
 .DS_STORE
 .DS_Store
