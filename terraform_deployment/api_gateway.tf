@@ -1,8 +1,13 @@
 resource "aws_apigatewayv2_api" "task_app_main" {
   name          = "task_app_main"
   protocol_type = "HTTP"
+  cors_configuration {
+    allow_origins  = ["*"]
+    allow_methods  = ["*"]
+    allow_headers  = ["*"]
+    expose_headers = ["*"]
+  }
 }
-
 
 resource "aws_cloudwatch_log_group" "task_app_main_api_gw" {
   name              = "/aws/api-gw/${aws_apigatewayv2_api.task_app_main.name}"

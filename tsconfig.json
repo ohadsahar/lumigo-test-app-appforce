@@ -31,7 +31,8 @@
     "**/*.tsx",
     "jest.config.ts",
     "cypress/e2e/integration/MainPage.js",
-    "cypress/e2e/integration/MainPage.cy.test"
+    "cypress/e2e/integration/MainPage.cy.test",
+    "terraform_deployment/create_task/create_task.js"
   ],
   "exclude": ["node_modules"]
 }
