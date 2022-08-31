@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm run prettier-format 
-npm run prettier-lint 
-npx lint-staged
+# npm run prettier-format 
+# npm run prettier-lint 
+# npx lint-staged
 # npm run tests
 git add -A .
 
