@@ -8,13 +8,14 @@ pipeline {
         }
       steps {
         sh 'node --version'
-      }
-    }
-        stage('Install Dependencies') {
-      steps {
         sh 'npm i'
       }
-        }
+    }
+  //   stage('Install Dependencies') {
+  // steps {
+  //   sh 'npm i'
+  // }
+  //   }
   }
 }
 
