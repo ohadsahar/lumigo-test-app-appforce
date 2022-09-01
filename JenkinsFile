@@ -28,25 +28,11 @@
 //     }
 // }
 
-// pipeline {
-//   stages {
-//     stage('Test') {
-//         agent {
-//         docker { image 'node:16-alpine' }
-//         }
-//       steps {
-//         sh 'node --version'
-//       }
-//     }
-//   }
-// }
-
 pipeline {
-  agent none
   stages {
     stage('Test') {
         agent {
-        docker 'node:16-alpine'
+        docker { image 'node:16-alpine' }
         }
       steps {
         sh 'node --version'
@@ -54,3 +40,17 @@ pipeline {
     }
   }
 }
+
+// pipeline {
+//   agent none
+//   stages {
+//     stage('Test') {
+//         agent {
+//         docker 'node:16-alpine'
+//         }
+//       steps {
+//         sh 'node --version'
+//       }
+//     }
+//   }
+// }
