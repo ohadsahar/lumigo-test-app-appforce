@@ -1,10 +1,8 @@
 pipeline {
     agent {
-        docker {
-      image 'node:lts-buster-slim'
-      args '-p 3000:3000'
-        }
+    label 'docker'
     }
+
     environment {
     CI = 'true'
     HOME = '.'
@@ -12,6 +10,12 @@ pipeline {
     }
     stages {
         stage('Build') {
+      agent {
+        docker {
+          image 'node:lts-buster-slim'
+          args '-p 3000:3000'
+        }
+      }
       steps {
         sh 'npm cache clean -f'
         sh 'rm -rf node_modules'
