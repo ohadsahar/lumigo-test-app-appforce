@@ -19,19 +19,19 @@ pipeline {
         sh 'npm install'
       }
         }
-        stage('Test and Build') {
-      parallel {
-        stage('Run Tests') {
-          steps {
-            echo 'Should run test over here'
-          }
-        }
-        stage('Create Build Artifacts') {
-          steps {
-            echo 'Should run test over here'
-          }
-        }
-      }
-        }
+      //   stage('Test and Build') {
+      // parallel {
+      //   stage('Run Tests') {
+      //     steps {
+      //       echo 'Should run test over here'
+      //     }
+      //   }
+      //   stage('Create Build Artifacts') {
+      //     steps {
+      //       echo 'Should run test over here'
+      //     }
+      //   }
+      // }
+      //   }
     }
 }
