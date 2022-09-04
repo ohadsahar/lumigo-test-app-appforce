@@ -17,7 +17,6 @@ pipeline {
         // sh 'rm -rf node_modules'
         // sh 'rm -rf package-lock.json'
         sh "export HOME=${env.WORKSPACE}"
-        sh 'npm run e2e-ci'
         sh 'npm install'
       }
         }
