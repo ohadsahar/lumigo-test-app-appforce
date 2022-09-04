@@ -16,6 +16,7 @@ pipeline {
         sh 'npm cache clean -f'
         sh 'rm -rf node_modules'
         sh 'rm -rf package-lock.json'
+        sh 'npm install cypress --save-dev'
         sh 'npm install'
       }
         }

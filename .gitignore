@@ -113,7 +113,6 @@ cypress/videos/*
 /terraform_deployment/*.zip
 /terraform_deployment/terraform.tfstate
 /terraform_deployment/terraform.tfstate.backup
-
 /constants/Config.ts
 /constants/Secret.ts
 
