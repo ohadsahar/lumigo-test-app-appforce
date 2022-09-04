@@ -29,7 +29,7 @@ pipeline {
             echo 'Should run test over here'
           }
         }
-        stage('Create Build Artifacts') {
+        stage('Create Build Artifacts!!') {
           steps {
             sh 'npm run build'
           }
