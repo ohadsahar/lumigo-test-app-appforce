@@ -1,3 +1,42 @@
+// pipeline {
+//     agent {
+//         docker {
+//           image 'node:lts-buster-slim'
+//           args '-p 8000:8000'
+//         }
+//     }
+//     environment {
+//     CI = 'true'
+//     HOME = '.'
+//     npm_config_cache = 'npm-cache'
+//     }
+//     stages {
+//         stage('Build') {
+//       steps {
+//         sh 'npm cache clean -f'
+//         sh 'rm -rf node_modules'
+//         sh 'rm -rf package-lock.json'
+//         sh 'npm install cypress --save-dev'
+//         sh 'npm install'
+//       }
+//         }
+//     //   stage('Test and Build') {
+//     // parallel {
+//     //   stage('Run Tests') {
+//     //     steps {
+//     //       echo 'Should run test over here'
+//     //     }
+//     //   }
+//     //   stage('Create Build Artifacts') {
+//     //     steps {
+//     //       echo 'Should run test over here'
+//     //     }
+//     //   }
+//     // }
+//     //   }
+//     }
+// }
+
 pipeline {
     agent {
         docker {
@@ -13,26 +52,18 @@ pipeline {
     stages {
         stage('Build') {
       steps {
-        sh 'npm cache clean -f'
-        sh 'rm -rf node_modules'
-        sh 'rm -rf package-lock.json'
-        sh 'npm install cypress --save-dev'
-        sh 'npm install'
+        echo 'Hello Appsforce now we are in the Build stage'
       }
         }
-    //   stage('Test and Build') {
-    // parallel {
-    //   stage('Run Tests') {
-    //     steps {
-    //       echo 'Should run test over here'
-    //     }
-    //   }
-    //   stage('Create Build Artifacts') {
-    //     steps {
-    //       echo 'Should run test over here'
-    //     }
-    //   }
-    // }
-    //   }
+    stage('Test') {
+      steps {
+        echo 'Hello Appsforce now we are in the test stage'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        echo 'Hello Appsforce now we are in the deploy stage'
+      }
+    }
     }
 }
