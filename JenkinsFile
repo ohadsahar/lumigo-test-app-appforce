@@ -62,7 +62,7 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        echo 'Hello Appsforce now we are in the deploy stage'
+        echo 'Hello Appsforce now we are in the deploy stage!'
       }
     }
     }
